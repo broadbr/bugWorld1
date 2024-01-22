@@ -2,10 +2,10 @@ import java.util.*;
 public class bugs {
 
     private String name ="";
-    private int health = 0;
+    private int damage = 0;
 
-    public String getName(){
+    public String getName() {
         return name;
-
+    }
 
 }
