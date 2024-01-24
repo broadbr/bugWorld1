@@ -22,11 +22,17 @@ public class foodMaker {
                 @Override
                 public void run() {
                     if(counter%2==0) {
+                        //random food
                         int randomNum = ThreadLocalRandom.current().nextInt(1, 2 + 1);//(min,max)
+                        //random row
+                        int x = ThreadLocalRandom.current().nextInt(1,16 +1);
+                        //random col
+                        int y = ThreadLocalRandom.current().nextInt(1,16+1);
+
                         //if #==1 create leaf, otherwise create other food
                         if(randomNum == 1){
                             /*{
-                                leaf l = new leaf();
+                                leaf l = new leaf(name leaf, health 1, row x, column y);
                                 return l;
                             }*/
                         }
