@@ -1,8 +1,15 @@
 public class leaf {
 
+    //leaf is the low health low value food
+    //leafs *should spawn around the map randomly
+    //other foods may extend leaf
+
+
     // leaf stats
     private String name ="";
-    private int health = 0;
+    private int health = 1;
+    private int value = 1;//amount rewarded for eating
+
 
     // leaf location
     protected int row;
@@ -28,6 +35,10 @@ public class leaf {
 
     public int getHealth(){
         return health;
+    }
+
+    public int getValue(){
+        return value;
     }
 
     public int getRow(){

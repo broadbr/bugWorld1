@@ -1,14 +1,13 @@
 public class ant {
     //MVP should start with one bug type 'ant'
-    //bugs need damage, price, speed, and ai
+    //bugs need damage, price, and ai
     //other bugs can inherit from ant or be separate
 
 
     // ant stats
     private String name ="ant";
     private int damage = 1;
-
-    private int price = 1;
+    private int price = 1;//cost to purchase bug
 
 
     //ant location
