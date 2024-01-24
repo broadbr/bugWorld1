@@ -32,7 +32,7 @@ public class foodMaker {
                         //if #==1 create leaf, otherwise create other food
                         if(randomNum == 1){
                             /*{
-                                leaf l = new leaf(name leaf, health 1, row x, column y);
+                                leaf l = new leaf(row x, column y);
                                 return l;
                             }*/
                         }

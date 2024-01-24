@@ -22,7 +22,7 @@ public class leaf {
     }
 
     //set location
-    protected leaf(int row, int col){
+    protected leaf(int row, int column){
         this.row=row;
         this.column=column;
     }
