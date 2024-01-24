@@ -2,6 +2,7 @@ public class ant {
     //MVP should start with one bug type 'ant'
     //bugs need damage, price, and ai
     //other bugs can inherit from ant or be separate
+    //Test Colin can Push
 
 
     // ant stats
