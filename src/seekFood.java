@@ -21,7 +21,10 @@ import java.util.*;
             foodCol = a.getColumn();
 
             if ((bugRow == foodRow) && (bugCol == foodCol)){
-                //do nothing
+                //set value for eating leaf
+                bank bank = new bank();
+                leaf leaf = new leaf();
+                bank.setEarnt(leaf.getValue());
             }
             else {
                 if (Math.abs(bugRow-foodRow) > Math.abs(bugCol-foodCol)){
