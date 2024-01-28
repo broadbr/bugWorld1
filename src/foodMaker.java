@@ -34,19 +34,14 @@ public class foodMaker {
                             if(randomNum == 1)
                             {
                                 System.out.println("TESTText");
-                            /*{
-                                leaf l = new leaf(row x, column y);
-                                return l;
-                            }*/
+                                leaf l = new leaf( x, y);
                             }
                             else
                             {
 
                                 System.out.println("TEST2");
-                            /*{
-                                leaf l = new OtherFoodType();
-                                return l;
-                            }*/
+                                //leaf l = new OtherFoodType( x, y);
+
                             }
                         }
             }, 1, 3L, TimeUnit.SECONDS);

@@ -25,8 +25,9 @@ public class leaf {
     protected leaf(int row, int column){
         this.row=row;
         this.column=column;
+        System.out.println("hello from leaf!!");
+        System.out.println("leaf cordinates: row: "+row +" col: " +column);
     }
-
 
     //access leaf stats
     public String getName(){
