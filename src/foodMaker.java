@@ -1,53 +1,56 @@
 import java.util.Timer;
 import java.util.*;
-import java.util.Random;
+//import java.util.Random;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 public class foodMaker {
 
     // spawns random food around the tileset every n seconds
 
 
-    public int foodType = 0;
-    public int count =0;
-
-
     // code for a 2-second timer
     // will create a random food every 2 seconds
-        public static void produce(String[] args) {
+        public static void produce() {//String[] args
 
-            Timer foodTime = new Timer();
-            TimerTask task = new TimerTask() {
+            //Timer foodTime = new Timer();
+            //TimerTask task = new TimerTask() {
+            ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
 
-                int counter = 0;
+                scheduler.scheduleWithFixedDelay(new Runnable() {
                 @Override
-                public void run() {
-                    if(counter%2==0) {
+                    public void run()
+                    {
+
                         //random food
-                        int randomNum = ThreadLocalRandom.current().nextInt(1, 2 + 1);//(min,max)
+                            int randomNum = ThreadLocalRandom.current().nextInt(1, 2 + 1);//(min,max)
                         //random row
-                        int x = ThreadLocalRandom.current().nextInt(1,16 +1);
+                            int x = ThreadLocalRandom.current().nextInt(1,16 +1);
                         //random col
-                        int y = ThreadLocalRandom.current().nextInt(1,16+1);
+                            int y = ThreadLocalRandom.current().nextInt(1,16+1);
 
                         //if #==1 create leaf, otherwise create other food
-                        if(randomNum == 1){
+                            if(randomNum == 1)
+                            {
+                                System.out.println("TESTText");
                             /*{
                                 leaf l = new leaf(row x, column y);
                                 return l;
                             }*/
-                        }
-                        else{
+                            }
+                            else
+                            {
+
+                                System.out.println("TEST2");
                             /*{
                                 leaf l = new OtherFoodType();
                                 return l;
                             }*/
+                            }
                         }
+            }, 1, 3L, TimeUnit.SECONDS);
 
-                        counter++;
-                    }
-                }
-            };
-            foodTime.scheduleAtFixedRate(task, 0, 1000);
         }
 
 }
