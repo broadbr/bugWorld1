@@ -31,5 +31,9 @@ public class shopDisplay extends JFrame{
         setVisible(true);
     }
 
+    public static void main(String[] args) {
+        // Create and display the window
+        new shopDisplay();
+    }
 }
 
