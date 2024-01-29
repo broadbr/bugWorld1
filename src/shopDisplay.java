@@ -6,12 +6,18 @@ import java.awt.event.*;
 public class shopDisplay extends JFrame{
 
     public shopDisplay(){
+
+        ant Ant = new ant();
+
         JButton antPurchase = new JButton("purchase ant");
 
         // Add an action listener to the button
         antPurchase.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e){
+
+                bank.setSpend(ant.price());
+
                 // Handle the button click event
                 JOptionPane.showMessageDialog(null, "ant purchased!");
             }

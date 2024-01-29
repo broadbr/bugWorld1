@@ -8,7 +8,7 @@ public class ant {
     // ant stats
     private String name ="ant";
     private int damage = 1;
-    private int price = 1;//cost to purchase bug
+    protected int price = 1;//cost to purchase bug
 
     //ant location
     protected int row;
