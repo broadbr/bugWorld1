@@ -13,57 +13,37 @@ public class farmer {
 
     public void move(farmer current, ant a){
 
-        bugRow = current.getRow();
-        bugCol = current.getColumn();
-        bossRow = a.getRow();
-        bossCol = a.getColumn();
+        bossRow = current.getRow();
+        bossCol = current.getColumn();
+        antRow = a.getRow();
+        antCol = a.getColumn();
 
-        if ((bugRow == foodRow) && (bugCol == foodCol)){
-            //set value for eating leaf
-            bank bank = new bank();
-            leaf leaf = new leaf();
+        if ((bossRow == bugRow) && (bossCol == bugCol)){
 
-            //damaging food
-            int temp = current.getHealth();
-            while(temp > 0)
-            {
-                temp -= a.getDamage();
-                try
-                {
-                    TimeUnit.SECONDS.sleep(1);
-                }
-                catch(InterruptedException ex)
-                {
-                    Thread.currentThread().interrupt();
-                }
-            }
-            bank.setEarnt(leaf.getValue());
-
-            //implement code to delete current food?
 
         }
         else {
-            if (Math.abs(bugRow-foodRow) > Math.abs(bugCol-foodCol)){
-                if((bugRow-foodRow) < 0){
-                    current.setRow(bugRow+1);
+            if (Math.abs(bossRow-bugRow) > Math.abs(bossCol-bugCol)){
+                if((bossRow-bugRow) < 0){
+                    current.setRow(bossRow+1);
                 }
                 else{
-                    current.setRow(bugRow-1);
+                    current.setRow(bossRow-1);
                 }
 
             }
             else{
-                if((bugCol-foodCol) < 0){
-                    current.setColumn(bugCol+1);
+                if((bossCol-bugCol) < 0){
+                    current.setColumn(bossCol+1);
                 }
                 else{
-                    current.setColumn(bugCol-1);
+                    current.setColumn(bossCol-1);
                 }
             }
 
         }
 
     }
-*/
 
+*/
 }
