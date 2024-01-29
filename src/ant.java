@@ -10,7 +10,6 @@ public class ant {
     private int damage = 1;
     private int price = 1;//cost to purchase bug
 
-
     //ant location
     protected int row;
     protected int column;
@@ -26,7 +25,6 @@ public class ant {
         this.row=row;
         this.column=column;
     }
-
 
 
     //access ant stats

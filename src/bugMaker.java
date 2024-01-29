@@ -5,11 +5,11 @@ public class bugMaker {
     // and spawn that bug in ??center of screen??
 
 
-    /*
-    if (name.equals("ant"))
-    {
-        ant a = new ant();//(int row,int column)???
-        return a;
+
+    public void makeAnt() {
+        ant a = new ant(8,8);
+
+        }
     }
-    */
-}
+
+

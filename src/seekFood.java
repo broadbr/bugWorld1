@@ -24,7 +24,17 @@ import java.util.*;
                 //set value for eating leaf
                 bank bank = new bank();
                 leaf leaf = new leaf();
+
+                //damaging food
+                /*int temp = current;
+                while(temp > 0)
+                {
+                    temp -= a.getDamage();
+                    wait(1000);
+                }*/
+
                 bank.setEarnt(leaf.getValue());
+
             }
             else {
                 if (Math.abs(bugRow-foodRow) > Math.abs(bugCol-foodCol)){

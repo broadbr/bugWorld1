@@ -33,13 +33,13 @@ public class foodMaker {
                         //if #==1 create leaf, otherwise create other food
                             if(randomNum == 1)
                             {
-                                System.out.println("TESTText");
+                                System.out.println("newAnt");
                                 leaf l = new leaf( x, y);
                             }
                             else
                             {
 
-                                System.out.println("TEST2");
+                                System.out.println("newOther");
                                 //leaf l = new OtherFoodType( x, y);
 
                             }
