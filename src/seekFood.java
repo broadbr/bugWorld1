@@ -1,5 +1,5 @@
 import java.util.*;
-
+import java.util.concurrent.TimeUnit;
 // heavily referenced from 'Seek.Player' CS249 Dr. Reale
 //behaviour that bugs could implement to reach food
 
@@ -26,14 +26,22 @@ import java.util.*;
                 leaf leaf = new leaf();
 
                 //damaging food
-                /*int temp = current;
+                int temp = current.getHealth();
                 while(temp > 0)
                 {
                     temp -= a.getDamage();
-                    wait(1000);
-                }*/
-
+                    try
+                    {
+                        TimeUnit.SECONDS.sleep(1);
+                    }
+                     catch(InterruptedException ex)
+                    {
+                        Thread.currentThread().interrupt();
+                    }
+                }
                 bank.setEarnt(leaf.getValue());
+
+                //implement code to delete current food?
 
             }
             else {
