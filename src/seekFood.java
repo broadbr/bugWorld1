@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
         private int bugRow;
         private int bugCol;
 
-        public void move(leaf current, ant a){
+        public void move(leaf current, bug a){
 
             bugRow = current.getRow();
             bugCol = current.getColumn();
