@@ -5,18 +5,18 @@ public class farmer {
     //farmer is purchased with ~coins from the shop
     //farmer approaches the bugs and attacks them
     //farmer drops gems that increase stage (?later provide buffs?)
-/*
+
     private int bossRow;
     private int bossCol;
     private int bugRow;
     private int bugCol;
 
-    public void move(farmer current, ant a){
+    public void move(boss current, ant a){
 
         bossRow = current.getRow();
         bossCol = current.getColumn();
-        antRow = a.getRow();
-        antCol = a.getColumn();
+        bugRow = a.getRow();
+        bugCol = a.getColumn();
 
         if ((bossRow == bugRow) && (bossCol == bugCol)){
 
@@ -45,5 +45,5 @@ public class farmer {
 
     }
 
-*/
+
 }
