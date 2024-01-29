@@ -7,7 +7,7 @@ public class shopDisplay extends JFrame{
 
     public shopDisplay(){
 
-        ant Ant = new ant();
+        shopDisplay sd = new shopDisplay();
 
         JButton antPurchase = new JButton("purchase ant");
 
@@ -16,7 +16,8 @@ public class shopDisplay extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e){
 
-                bank.setSpend(ant.price());
+
+                bank.setSpend(ant.getPrice());
 
                 // Handle the button click event
                 JOptionPane.showMessageDialog(null, "ant purchased!");
