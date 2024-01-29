@@ -10,6 +10,8 @@ public class ant {
     private int damage = 1;
     private int price = 1;//cost to purchase bug
 
+    private int health = 1;
+
     //ant location
     protected int row;
     protected int column;
