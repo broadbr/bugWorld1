@@ -9,7 +9,9 @@ public class Main extends JPanel {
         System.out.println("");
 
         foodMaker fm = new foodMaker();
-        foodMaker.produce();
+        foodMaker.stage1();//call stage2 will gems after defeating farmer
+
+
 
         gridMap f = new gridMap();
         f.setButtonColor(0 , "green");
