@@ -11,7 +11,8 @@ public class Main extends JPanel {
         foodMaker fm = new foodMaker();
         foodMaker.produce();
 
-        new gridMap();
+        gridMap f = new gridMap();
+        f.setButtonColor(0 , "green");
 
     }
 }
