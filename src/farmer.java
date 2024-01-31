@@ -20,6 +20,7 @@ public class farmer {
 
         if ((bossRow == bugRow) && (bossCol == bugCol)){
 
+        //bug.takeDamage(3);//
 
         }
         else {

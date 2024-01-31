@@ -72,7 +72,7 @@ public class foodMaker {
                 //if #==1 create leaf, otherwise create other food
                 if (randomNum == 1) {
                     System.out.println("newAnt");
-                    leaf l = new leaf(x, y);
+                    leaf l = new leaf(x, y);//addFood
                 } else {
 
                     System.out.println("newOther");
