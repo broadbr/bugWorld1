@@ -31,8 +31,10 @@ public class Main extends JPanel {
         System.out.println("Bank: " + bank.getAccount());
 
         //shopDisplay sd = new shopDisplay();
-        for(int i=0;i<0;i++){
-            if (i%2000==0){
+        //
+        //testing
+        for(int i=0;i>=0;i++){
+            if (i%2==0){
                 leafList.listLeafs();
             }
 
