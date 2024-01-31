@@ -61,7 +61,8 @@ public class leaf {
     public void damageLeaf(int damage){
         health = health-damage;
         if (health<=0){
-            leafList.removeFood(this);
+            //leafList.removeFood(this);
+            //bank.setEarnt(value);
         }
     }
 }

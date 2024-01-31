@@ -3,8 +3,6 @@ import java.util.concurrent.TimeUnit;
 // heavily referenced from 'Seek.Player' CS249 Dr. Reale
 //behaviour that bugs could implement to reach food
 
-// could be set on a timer
-
 
     public class seekFood {
 
@@ -25,9 +23,7 @@ import java.util.concurrent.TimeUnit;
                 bank bank = new bank();
                 leaf leaf = new leaf();
 
-                bank.setEarnt(leaf.getValue());
-
-                //implement code to delete current food?
+                //leaf.damageLeaf(this.bug.getDamage());
 
             }
             else {

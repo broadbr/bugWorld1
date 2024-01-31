@@ -69,6 +69,13 @@ public class bug {
         this.health = health;
     }
 
+    public void damageBug(int damage){
+        health = health-damage;
+        if (health<=0){
+            //bugList.removeBug(this);
+        }
+    }
+
     /*
     public void setName(String bugName){
         name = bugName;
