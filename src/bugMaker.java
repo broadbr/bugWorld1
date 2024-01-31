@@ -7,12 +7,12 @@ public class bugMaker {
 
     // call bugtracker when buying a bug
     public void makeAnt() {
-        ant a = new ant(8,8);
+        bug a = new bug(8,8);
 
         }
 
     public void makeAnt(int row, int column) {
-        ant a = new ant(row, column);
+        bug a = new bug(row, column);
 
     }
 }
