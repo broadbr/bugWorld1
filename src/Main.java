@@ -7,7 +7,8 @@ public class Main extends JPanel {
 
     public static void main(String[] args) {
         System.out.println("");
-
+        bugList bugList = new bugList();
+        leafList leafList = new leafList();
         bank bank = new bank();
 
         foodMaker fm = new foodMaker();
@@ -29,6 +30,13 @@ public class Main extends JPanel {
 
         System.out.println("Bank: " + bank.getAccount());
 
-        shopDisplay sd = new shopDisplay();
+        //shopDisplay sd = new shopDisplay();
+        for(int i=0;i<0;i++){
+            if (i%2000==0){
+                leafList.listLeafs();
+            }
+
+        }
+
     }
 }
