@@ -16,5 +16,15 @@ public class bugList {
             objects.remove(obj);
         }
 
+    public void listBugs ()
+    {
+        int i =0;
+        for(bug b ;  objects)
+        {
+            i=i+1;
+            System.out.print(objects.get(i));
+        }
     }
+
+}
 
