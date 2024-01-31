@@ -29,6 +29,13 @@ public class gridMap{
     JButton btn23 = new JButton("23");
     JButton btn24 = new JButton("24");
 
+    JButton[] btnArr = new JButton[]
+            {
+                   btn0 , btn1, btn2, btn3, btn4, btn5, btn6, btn7 , btn8, btn9 , btn10, btn11, btn12,
+                    btn13, btn14 ,btn15 , btn16, btn17,btn18,btn19,btn20,btn21,btn22,btn23,btn24
+            };
+
+    Font fnt = new Font("Arial" , Font.BOLD , 18);
     gridMap() {
         JFrame frame = new JFrame();
 
@@ -707,4 +714,39 @@ public class gridMap{
 
     }
 
+    //Adds/sets bugs on a tile
+    //Needs which button(0 is top left, what bug, and the number of bugs
+    protected void addBug(int btnNum , String bugType , int numBugs)
+    {
+        while(numBugs > 0)
+        {
+            String whatBugs;
+            for (int i = 0; i < 25; i++) {
+                if (i == btnNum) {
+                    if (bugType.equals("ant")) {
+                        whatBugs = btnArr[i].getText();
+                        btnArr[i].setForeground(Color.white);
+                        btnArr[i].setFont(fnt);
+                        btnArr[i].setText("A");
+                    }
+                }
+            }
+            numBugs--;
+        }
+        return;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
 }
