@@ -15,7 +15,7 @@ public class Main extends JPanel {
 
         gridMap f = new gridMap();
         f.setButtonColor(0 , "green");
-        f.addBug(5,"ant" , 1);
+        f.addBug(4,"ant" , 3);
 
         ant a = new ant();
         spider s = new spider();
