@@ -16,5 +16,12 @@ public class Main extends JPanel {
         gridMap f = new gridMap();
         f.setButtonColor(0 , "green");
 
+        ant a = new ant();
+        spider s = new spider();
+        beetle b = new beetle();
+
+        System.out.println("Ant: \n" + a.getName() + a.getPrice());
+        System.out.println("beetle: \n" + b.getName() + b.getPrice());
+        System.out.println("spider: \n" + s.getName() + s.getPrice());
     }
 }
