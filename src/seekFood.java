@@ -25,20 +25,6 @@ import java.util.concurrent.TimeUnit;
                 bank bank = new bank();
                 leaf leaf = new leaf();
 
-                //damaging food
-                int temp = current.getHealth();
-                while(temp > 0)
-                {
-                    temp -= a.getDamage();
-                    try
-                    {
-                        TimeUnit.SECONDS.sleep(1);
-                    }
-                     catch(InterruptedException ex)
-                    {
-                        Thread.currentThread().interrupt();
-                    }
-                }
                 bank.setEarnt(leaf.getValue());
 
                 //implement code to delete current food?

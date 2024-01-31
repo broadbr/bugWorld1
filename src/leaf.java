@@ -61,7 +61,7 @@ public class leaf {
     public void damageLeaf(int damage){
         health = health-damage;
         if (health<=0){
-            objectList.removeFood(this);
+            leafList.removeFood(this);
         }
     }
 }
