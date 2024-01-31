@@ -15,7 +15,8 @@ public class shopDisplay extends JFrame{
         antPurchase.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-
+                ant ant = new ant();
+                bank bank = new bank();
 
                 bank.setSpend(ant.getPrice());
 
@@ -38,7 +39,7 @@ public class shopDisplay extends JFrame{
         setVisible(true);
     }
 
-    public static void main(String[] args) {
+    public static void displayShop(){
         // Create and display the window
         new shopDisplay();
     }

@@ -8,6 +8,8 @@ public class Main extends JPanel {
     public static void main(String[] args) {
         System.out.println("");
 
+        bank bank = new bank();
+
         foodMaker fm = new foodMaker();
         foodMaker.stage1();//call stage2 & cancelStage X2 with gems after defeating farmer
 
@@ -23,5 +25,9 @@ public class Main extends JPanel {
         System.out.println("Ant: \n" + a.getName() + a.getPrice());
         System.out.println("beetle: \n" + b.getName() + b.getPrice());
         System.out.println("spider: \n" + s.getName() + s.getPrice());
+
+        System.out.println("Bank: " + bank.getAccount());
+
+        shopDisplay.displayShop();
     }
 }
