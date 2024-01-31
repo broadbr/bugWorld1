@@ -29,6 +29,6 @@ public class Main extends JPanel {
 
         System.out.println("Bank: " + bank.getAccount());
 
-        shopDisplay.displayShop();
+        shopDisplay sd = new shopDisplay();
     }
 }
