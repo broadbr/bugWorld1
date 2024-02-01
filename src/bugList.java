@@ -19,10 +19,10 @@ public class bugList {
     public void listBugs ()
     {
         int i =0;
-        for(bug b ;  objects)
+        for(bug b : objects)
         {
             i=i+1;
-            System.out.print(objects.get(i));
+            System.out.print("list"+ objects.get(i));
         }
     }
 

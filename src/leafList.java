@@ -13,4 +13,14 @@ public class leafList {
                 objects.remove(obj);
             }
 
+    public void listLeafs ()
+    {
+        int i =0;
+        for(leaf b : objects)
+        {
+            i=i+1;
+            System.out.print(objects.get(i));
+        }
+    }
+
 }
