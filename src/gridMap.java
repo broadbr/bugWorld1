@@ -99,6 +99,7 @@ public class gridMap{
 
 
 
+
     }
 
     //Adds/sets bugs on a tile
@@ -120,20 +121,30 @@ public class gridMap{
             }
             numBugs--;
         }
-        return;
 
 
+    }
 
+    //Deletes a specific number of bugs and bug type from a tile
+    //Requires the tile spot, bug type(CAPITALIZED) , and the number of bugs
+    protected void deleteBug(int btnNum , String bugType , int numBugs)
+    {
+        StringBuilder sb = new StringBuilder();
+        int length = btnArr[btnNum].getText().length();
+        sb.append(btnArr[btnNum].getText());
 
+        while(numBugs > 0)
+        {
+            for (int i = 0; i < length; i++) {
+                if (bugType.charAt(0) == btnArr[btnNum].getText().charAt(i)) {
+                    sb.deleteCharAt(i);
+                    btnArr[btnNum].setText(sb.toString());
+                    break;
+                }
 
-
-
-
-
-
-
-
-
+            }
+            numBugs--;
+        }
 
     }
 }
