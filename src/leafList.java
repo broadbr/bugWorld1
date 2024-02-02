@@ -1,7 +1,7 @@
 import java.util.*;
 public class leafList {
 
-        private List<leaf> objects = new ArrayList<>();
+        public static List<leaf> objects = new ArrayList<>();
 
 
             public void addFood (leaf obj)
@@ -15,7 +15,7 @@ public class leafList {
 
     public void listLeafs ()
     {
-        int i =0;
+        int i =-1;
         for(leaf b : objects)
         {
             i=i+1;

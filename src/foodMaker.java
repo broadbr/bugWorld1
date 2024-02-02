@@ -9,10 +9,10 @@ import java.util.concurrent.ScheduledExecutorService;
 public class foodMaker {
 
     // spawns random food around the tileset every n seconds
-    public static boolean cancel = false;
+    public boolean cancel = false;
     // code for a 2-second timer
     // will create a random food every 4 seconds
-    public static void stage1() {//String[] args
+    public void stage1() {//String[] args
 
         ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
 
@@ -33,8 +33,10 @@ public class foodMaker {
 
                 //if #==1 create leaf, otherwise create other food
                 if (randomNum == 1) {
-                    System.out.println("newAnt");
+                    System.out.println("newFood");
                     leaf l = new leaf(x, y);
+                    leafList leafList = new leafList();
+                    leafList.addFood(l);
                 } else {
 
                     System.out.println("newOther");
@@ -47,7 +49,7 @@ public class foodMaker {
     }
 
     //second stage spawns food faster
-    public static void stage2() {//String[] args
+    public void stage2() {//String[] args
 
         ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
 
@@ -70,6 +72,7 @@ public class foodMaker {
                 if (randomNum == 1) {
                     System.out.println("newFood");
                     leaf l = new leaf(x, y);//addFood
+                    leafList.objects.add(l);
                 } else {
 
                     System.out.println("newOther");

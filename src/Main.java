@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.Timer;
+import java.util.*;
 
 public class Main extends JPanel {
 
@@ -9,12 +11,11 @@ public class Main extends JPanel {
         System.out.println("");
         bugList bugList = new bugList();
         leafList leafList = new leafList();
+        foodMaker foodMaker= new foodMaker();
         bank bank = new bank();
 
-        foodMaker fm = new foodMaker();
+
         foodMaker.stage1();//call stage2 & cancelStage X2 with gems after defeating farmer
-
-
 
         gridMap f = new gridMap();
         f.setButtonColor(0 , "green");
@@ -34,12 +35,17 @@ public class Main extends JPanel {
         //shopDisplay sd = new shopDisplay();
         //
         //testing
-        for(int i=0;i>=0;i++){
-            if (i%2==0){
-                leafList.listLeafs();
-            }
+        Timer t = new Timer();
+        t.schedule(new TimerTask()
+        {
+            @Override
+            public void run()
+                {
 
-        }
+                        leafList.listLeafs();
+                }
+
+        }, 0, 5000);
 
     }
 }
