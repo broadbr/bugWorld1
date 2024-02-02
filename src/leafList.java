@@ -16,11 +16,13 @@ public class leafList {
     public void listLeafs ()
     {
         int i =-1;
+        System.out.print("leafList content: ");
         for(leaf b : objects)
         {
             i=i+1;
-            System.out.print(objects.get(i));
+            System.out.print(objects.get(i).getName()+",");
         }
+        System.out.print("\n");
     }
 
 }

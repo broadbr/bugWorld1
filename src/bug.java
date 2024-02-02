@@ -5,6 +5,7 @@ public class bug {
     /* Changed ant class to bug
     **/
 
+    bugList bugList = new bugList();
 
     //bug stats
     private String name;
@@ -72,7 +73,7 @@ public class bug {
     public void damageBug(int damage){
         health = health-damage;
         if (health<=0){
-            //bugList.removeBug(this);
+            bugList.removeBug(this);
         }
     }
 

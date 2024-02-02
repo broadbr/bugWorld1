@@ -18,12 +18,14 @@ public class bugList {
 
     public void listBugs ()
     {
-        int i =0;
+        int i =-1;
+        System.out.print("bugList content: ");
         for(bug b : objects)
         {
             i=i+1;
-            System.out.print("list"+ objects.get(i));
+            System.out.print(objects.get(i).getName()+",");
         }
+        System.out.print("\n");
     }
 
 }

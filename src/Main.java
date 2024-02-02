@@ -12,6 +12,7 @@ public class Main extends JPanel {
         bugList bugList = new bugList();
         leafList leafList = new leafList();
         foodMaker foodMaker= new foodMaker();
+        bugMaker bugMaker = new bugMaker();
         bank bank = new bank();
 
 
@@ -33,19 +34,42 @@ public class Main extends JPanel {
         System.out.println("Bank: " + bank.getAccount());
 
         //shopDisplay sd = new shopDisplay();
+
+
+
+
         //
-        //testing
+        //testing list content
         Timer t = new Timer();
         t.schedule(new TimerTask()
         {
             @Override
             public void run()
                 {
-
                         leafList.listLeafs();
+                        bugList.listBugs();
                 }
 
         }, 0, 5000);
 
+        //testing damage
+        Timer d = new Timer();
+        d.schedule(new TimerTask()
+        {
+            @Override
+            public void run()
+            {
+                if(!leafList.objects.isEmpty()){
+                    leafList.objects.get(0).damageLeaf(2);
+                    //bugMaker.makeBug(leafList.objects.get(0).getRow(),leafList.objects.get(0).getColumn());
+                }
+            }
+        }, 0, 15000);
+
+
+
+
+
     }
+
 }
