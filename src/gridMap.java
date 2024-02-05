@@ -27,22 +27,22 @@ public class gridMap{
     JButton btn21 = new JButton("");
     JButton btn22 = new JButton("");
     JButton btn23 = new JButton("");
-    JButton btn24 = new JButton("");
+    JButton btn24 = new JButton(""); 
 
     JButton[] btnArr = new JButton[]
             {
                    btn0 , btn1, btn2, btn3, btn4, btn5, btn6, btn7 , btn8, btn9 , btn10, btn11, btn12,
                     btn13, btn14 ,btn15 , btn16, btn17,btn18,btn19,btn20,btn21,btn22,btn23,btn24
-            };
+            }; 
 
     Font fnt = new Font("Arial" , Font.BOLD , 18);
     gridMap() {
         JFrame frame = new JFrame();
 
-        for(int i = 0; i < 25; i++)
+         for(int i = 0; i < 25; i++)
         {
             frame.add(btnArr[i]);
-        }
+        } 
 
         frame.setLayout(new GridLayout(5, 5));
         frame.setSize(700, 700);
@@ -54,7 +54,7 @@ public class gridMap{
         {
             btnArr[b].setBackground(Color.getHSBColor(.14f,.90f,.25f));
 
-        }
+        } 
 
 
         frame.setVisible(true);
@@ -63,7 +63,7 @@ public class gridMap{
 
     //Can set a tile to green, blue, black, and brown
     //Needs where the button is(0 is top left, and what color)
-    protected void setButtonColor(int btnNum , String color)
+     protected void setButtonColor(int btnNum , String color)
     {
 
         if(btnNum > 25 || btnNum < 0)
@@ -100,7 +100,7 @@ public class gridMap{
 
 
 
-    }
+    } 
 
     //Adds/sets bugs on a tile
     //Needs which button(0 is top left, what bug, and the number of bugs

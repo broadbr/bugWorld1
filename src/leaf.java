@@ -1,4 +1,7 @@
+import java.awt.*;
+
 public class leaf {
+
 
     leafList leafList = new leafList();
     bank bank = new bank();
@@ -19,8 +22,8 @@ public class leaf {
 
     //initialize location
     protected leaf(){
-        row = 0;
-        column = 0;
+        row = 100;
+        column = 100;
     }
 
     //set location
@@ -30,6 +33,20 @@ public class leaf {
         System.out.println("new leaf at, row: "+row +" col: " +column+"\n");
     }
 
+    public void Update() {
+       
+    }
+
+    public void Render(Graphics g) {
+        g.setColor(Color.blue);
+        //row=row*40;
+        //column=column*40;
+        g.fillRect(row*40-40,column*40-40 ,20, 20);
+    }
+
+    public Rectangle getBounds() {
+        return null;
+    }
     //access leaf stats
     public String getName(){
         return name;
