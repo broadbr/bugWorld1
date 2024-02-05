@@ -19,7 +19,9 @@ public abstract class bug {
 
     //bug location
     protected int row;
+    protected int x;
     protected int column;
+    protected int y;
 
     //initialize location
     protected bug(){

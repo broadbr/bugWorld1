@@ -9,9 +9,10 @@ public class ant extends bug{
     private int cost = 1; 
     private int health = 1;
     test*/
-    
+    protected int x;
+    protected int y;
     ant(){
-    super("ant", 1, 1, 1, 0,0 );
+    super("ant", 1, 1, 1, 0, 0);
     }
 
     @Override

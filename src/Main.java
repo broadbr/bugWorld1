@@ -12,6 +12,7 @@ public class Main extends Canvas implements Runnable {
     private bugList bugList;
     private leafList leafList;
     private foodMaker foodMaker;
+    private bugMaker bugMaker;
 
      public Main() {
         new window (640,740, "Bug World 1", this);
@@ -20,7 +21,7 @@ public class Main extends Canvas implements Runnable {
         bugList = new bugList();
         leafList = new leafList();
         foodMaker = new foodMaker();
-
+        bugMaker = new bugMaker();
 
         
         /* Timer t = new Timer();
@@ -103,6 +104,8 @@ public class Main extends Canvas implements Runnable {
         g.fillRect(0,0,640,640);
 
         foodMaker.stage1();
+        ant b = new ant();
+        bugList.addBug(b);
 
         
         bugList.Render(g);
