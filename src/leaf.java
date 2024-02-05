@@ -19,8 +19,8 @@ public class leaf {
 
     //initialize location
     protected leaf(){
-        row = 0;
-        column = 0;
+        row = 100;
+        column = 100;
     }
 
     //set location

@@ -1,3 +1,7 @@
+import java.awt.Graphics;
+import java.awt.Color;
+import java.awt.Rectangle;
+
 public class ant extends bug{
     /* Values are subject to change
     private String name = "ant";
@@ -7,6 +11,24 @@ public class ant extends bug{
     test*/
     
     ant(){
-    super("ant", 1, 1, 1);
+    super("ant", 1, 1, 1, 0,0 );
     }
+
+    @Override
+    public void Update() {
+
+        
+    }
+
+    @Override
+    public void Render(Graphics g) {
+        
+        g.setColor(Color.black);
+        g.fillRect(5,5 ,20, 20);
+    }
+
+    @Override
+     public Rectangle getBounds() {
+        return null;
+    } 
 }

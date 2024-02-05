@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit;
                 //set value for eating leaf
                 bank bank = new bank();
                 leaf leaf = new leaf();
-                bug bug = new bug();
+                bug bug = new ant();
 
                 leaf.damageLeaf(bug.getDamage());
 
