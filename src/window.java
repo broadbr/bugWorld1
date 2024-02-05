@@ -6,7 +6,7 @@ import java.util.*;
 public class window {
 
     public window(int width, int height, String title, Main game) {
-        //set fram name title
+        //set frame name title
         JFrame frame = new JFrame(title);
         //set size
         frame.setPreferredSize(new Dimension(width, height));
@@ -18,8 +18,7 @@ public class window {
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
-        JButton antButton = new JButton("Buy ant");
-        frame.add(antButton);
+
     }
 
 }
