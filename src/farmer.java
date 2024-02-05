@@ -12,6 +12,7 @@ public class farmer {
         health = health- damage;
         if(health<=0){
             //killfarmer
+            //setBank
         }
     }
 

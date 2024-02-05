@@ -39,7 +39,9 @@ public class leaf {
 
     public void Render(Graphics g) {
         g.setColor(Color.blue);
-        g.fillRect(5,5 ,20, 20);
+        row=row*40;
+        column=column*40;
+        g.fillRect(row,column ,20, 20);
     }
 
     public Rectangle getBounds() {
