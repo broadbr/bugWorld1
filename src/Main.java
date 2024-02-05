@@ -100,8 +100,9 @@ public class Main extends Canvas implements Runnable {
                 // Customize cell appearance based on game logic (e.g., player, obstacles)
             }
         }  */
-        g.setColor(Color.green);
+        g.setColor(Color.getHSBColor(.14f,.90f,.25f));
         g.fillRect(0,0,640,640);
+
 
         foodMaker.stage1();
         ant b = new ant();
@@ -135,12 +136,6 @@ public class Main extends Canvas implements Runnable {
         f.setButtonColor(0 , "green");
         f.addBug(4,"ant" , 7);
         f.deleteBug(4,"Ant" , 5); */
-
-
-        System.out.println("Bank: " + bank.getAccount());
-
-        //shopDisplay sd = new shopDisplay();
-
 
 
 
