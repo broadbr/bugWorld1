@@ -110,6 +110,7 @@ public class Main extends Canvas implements Runnable {
 
         g.dispose();
         bs.show();
+        //foodMaker.stage1();
     }
 
     public static void main(String[] args) {
@@ -167,8 +168,6 @@ public class Main extends Canvas implements Runnable {
                 }
             }
         }, 0, 15000);
-
-
 
 
 
