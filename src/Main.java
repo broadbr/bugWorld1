@@ -99,7 +99,7 @@ public class Main extends Canvas implements Runnable {
                 // Customize cell appearance based on game logic (e.g., player, obstacles)
             }
         }  */
-        g.setColor(Color.green);
+        g.setColor(Color.getHSBColor(.14f,.90f,.25f));
         g.fillRect(0,0,640,640);
 
         foodMaker.stage1();

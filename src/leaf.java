@@ -38,7 +38,7 @@ public class leaf {
     }
 
     public void Render(Graphics g) {
-        g.setColor(Color.blue);
+        g.setColor(Color.green);
         //row=row*40;
         //column=column*40;
         g.fillRect(row*40-40,column*40-40 ,20, 20);
