@@ -1,9 +1,9 @@
 import javax.swing.*;
-import java.awt.*;
+import java.awt.event.*;
 
 public class Main extends JPanel {
 
-
+    private JPanel shopPanel;
 
     public static void main(String[] args) {
         System.out.println("");
@@ -11,7 +11,7 @@ public class Main extends JPanel {
         bank bank = new bank();
 
         foodMaker fm = new foodMaker();
-        foodMaker.stage1();//call stage2 & cancelStage X2 with gems after defeating farmer
+        //foodMaker.stage1();//call stage2 & cancelStage X2 with gems after defeating farmer
 
 
 
@@ -29,6 +29,12 @@ public class Main extends JPanel {
 
         System.out.println("Bank: " + bank.getAccount());
 
-        shopDisplay.displayShop();
+
+        //shopDisplay.displayShop(); // Call the function here
+
+
+        System.out.println("Bank: " + bank.getAccount());
+
+
     }
 }
