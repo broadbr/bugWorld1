@@ -6,23 +6,26 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.Executors;
 import java.util.concurrent.*;
 import java.util.concurrent.ScheduledExecutorService;
-public class foodMaker {
+public class foodMaker
+{
 
+    leafList leafList = new leafList();
     // spawns random food around the tileset every n seconds
-    public static boolean cancel = false;
+    public boolean cancel = false;
     // code for a 2-second timer
-    // will create a random food every 2 seconds
-    public static void stage1() {//String[] args
-
-        //Timer foodTime = new Timer();
-        //TimerTask task = new TimerTask() {
+    // will create a random food every 4 seconds
+    public void stage1()
+    {
         ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
 
-        scheduler.scheduleWithFixedDelay(new Runnable() {
+        scheduler.scheduleWithFixedDelay(new Runnable()
+        {
             @Override
-            public void run() {
+            public void run()
+            {
 
-                if(cancel){
+                if(cancel)
+                {
                     scheduler.shutdown();
                 }
 
@@ -34,31 +37,56 @@ public class foodMaker {
                 int y = ThreadLocalRandom.current().nextInt(1, 16 + 1);
 
                 //if #==1 create leaf, otherwise create other food
-                if (randomNum == 1) {
-                    System.out.println("newAnt");
-                    leaf l = new leaf(x, y);
-                } else {
+                if (randomNum == 1)
+                {
+                    //checks for existing leafs in same position
+                    int i =-1;// controls objects in list
+                    boolean overlap = false;// trip if an object is in same location
+                    //checks existing food locations
+                    for(leaf b : leafList.objects)
+                    {
+                        i=i+1;
+                        int tempRow = leafList.objects.get(i).getRow();
+                        int tempCol = leafList.objects.get(i).getColumn();
+                        if ((tempRow==x)&&(tempCol==y))
+                        {
+                            overlap = true;
+                        }
+                    }
+                    if(overlap)
+                    {
 
-                    System.out.println("newOther");
+                    }
+                    else
+                    {
+                        leaf l = new leaf(x, y);//creates new leaf
+                        leafList.addFood(l);//adds it to list
+                    }
+                    overlap=false;
+                }
+                else
+                {
                     //leaf l = new OtherFoodType( x, y);
-
                 }
             }
         }, 1, 4L, TimeUnit.SECONDS);
 
     }
 
-    public static void stage2() {//String[] args
+    //second stage spawns food faster
+    public void stage2()
+    {
 
-        //Timer foodTime = new Timer();
-        //TimerTask task = new TimerTask() {
         ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
 
-        scheduler.scheduleWithFixedDelay(new Runnable() {
+        scheduler.scheduleWithFixedDelay(new Runnable()
+        {
             @Override
-            public void run() {
+            public void run()
+            {
 
-                if(cancel){
+                if(cancel)
+                {
                     scheduler.shutdown();
                 }
 
@@ -70,19 +98,42 @@ public class foodMaker {
                 int y = ThreadLocalRandom.current().nextInt(1, 16 + 1);
 
                 //if #==1 create leaf, otherwise create other food
-                if (randomNum == 1) {
-                    System.out.println("newAnt");
-                    leaf l = new leaf(x, y);//addFood
-                } else {
+                if (randomNum == 1)
+                {
+                    //checks for existing leafs in same position
+                    int i =-1;// controls objects in list
+                    boolean overlap = false;// trip if an object is in same location
+                    //checks existing food locations
+                    for(leaf b : leafList.objects)
+                    {
+                        i=i+1;
+                        int tempRow = leafList.objects.get(i).getRow();
+                        int tempCol = leafList.objects.get(i).getColumn();
+                        if ((tempRow==x)&&(tempCol==y))
+                        {
+                            overlap = true;
+                        }
+                    }
+                    if(overlap)
+                    {
 
-                    System.out.println("newOther");
+                    }
+                    else
+                    {
+                        leaf l = new leaf(x, y);//creates new leaf
+                        leafList.addFood(l);//adds it to list
+                    }
+                    overlap=false;
+                }
+                else
+                {
                     //leaf l = new OtherFoodType( x, y);
-
                 }
             }
         }, 1, 3L, TimeUnit.SECONDS);
 
     }
+    //call cancel to end stage and before starting another
     public void cancelStage(){
         cancel = !cancel;
     }

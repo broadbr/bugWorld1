@@ -1,50 +1,47 @@
-import java.util.concurrent.TimeUnit;
-
 public class farmer {
 
-    //farmer is purchased with ~coins from the shop
-    //farmer approaches the bugs and attacks them
-    //farmer drops gems that increase stage (?later provide buffs?)
+    private String name ="Farmer";
+    public int damage = 3;
+    public int price = 10;
 
-    private int bossRow;
-    private int bossCol;
-    private int bugRow;
-    private int bugCol;
+    public int health = 10;
+    public int row;
+    public int column;
 
-    public void move(boss current, ant a){
-
-        bossRow = current.getRow();
-        bossCol = current.getColumn();
-        bugRow = a.getRow();
-        bugCol = a.getColumn();
-
-        if ((bossRow == bugRow) && (bossCol == bugCol)){
-
-        //bug.takeDamage(3);//
-
+    public void damageBoss(int damage){
+        health = health- damage;
+        if(health<=0){
+            //killfarmer
         }
-        else {
-            if (Math.abs(bossRow-bugRow) > Math.abs(bossCol-bugCol)){
-                if((bossRow-bugRow) < 0){
-                    current.setRow(bossRow+1);
-                }
-                else{
-                    current.setRow(bossRow-1);
-                }
-
-            }
-            else{
-                if((bossCol-bugCol) < 0){
-                    current.setColumn(bossCol+1);
-                }
-                else{
-                    current.setColumn(bossCol-1);
-                }
-            }
-
-        }
-
     }
 
+    public String getName() {
+        return name;
+    }
 
+    public int getDamage() {
+        return damage;
+    }
+
+    public int getPrice(){
+        return price;
+    }
+
+    public int getHealth(){return health;}
+
+    public int getRow(){
+        return row;
+    }
+
+    public int getColumn(){
+        return column;
+    }
+
+    public void setRow(int row){
+        this.row = row;
+    }
+
+    public void setColumn(int column){
+        this.column = column;
+    }
 }

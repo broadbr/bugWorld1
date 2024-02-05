@@ -1,7 +1,7 @@
 import java.util.*;
 public class leafList {
 
-        private List<leaf> objects = new ArrayList<>();
+        public static List<leaf> objects = new ArrayList<>();
 
 
             public void addFood (leaf obj)
@@ -12,5 +12,17 @@ public class leafList {
             {
                 objects.remove(obj);
             }
+
+    public void listLeafs ()
+    {
+        int i =-1;
+        System.out.print("leafList content: ");
+        for(leaf b : objects)
+        {
+            i=i+1;
+            System.out.print(objects.get(i).getName()+",");
+        }
+        System.out.print("\n");
+    }
 
 }
