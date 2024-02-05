@@ -1,4 +1,8 @@
-public class bug {
+import java.awt.Graphics;
+
+import java.awt.Rectangle;
+
+public abstract class bug {
     //MVP should start with one bug type 'ant'
     //bugs need damage, price, and ai
     //other bugs can inherit from ant or be separate
@@ -8,10 +12,10 @@ public class bug {
     bugList bugList = new bugList();
 
     //bug stats
-    private String name;
-    private int damage;
-    private int price;//cost to purchase bug
-    private int health;
+    protected String name;
+    protected int damage;
+    protected int price;//cost to purchase bug
+    protected int health;
 
     //bug location
     protected int row;
@@ -29,8 +33,21 @@ public class bug {
         this.column=column;
     }
 
+    bug(String name, int damage, int price, int health, int x, int y){
+        this.name = name;
+        this.damage = damage;
+        this.price = price;
+        this.health = health;
+        this.row = x;
+        this.column = y;
+    }
 
-    //access ant stats
+    public abstract void Update();
+    public abstract void Render(Graphics g);
+    public abstract Rectangle getBounds();
+
+
+    //access bug stats
     public String getName() {
         return name;
     }
@@ -63,12 +80,7 @@ public class bug {
         this.column = column;
     }
     
-    bug(String name, int damage, int price, int health){
-        this.name = name;
-        this.damage = damage;
-        this.price = price;
-        this.health = health;
-    }
+   
 
     public void damageBug(int damage){
         health = health-damage;

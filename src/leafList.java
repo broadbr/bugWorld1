@@ -1,4 +1,5 @@
 import java.util.*;
+import java.awt.Graphics;
 public class leafList {
 
         public static List<leaf> objects = new ArrayList<>();
@@ -11,6 +12,20 @@ public class leafList {
             public void removeFood (leaf obj)
             {
                 objects.remove(obj);
+            }
+
+            public void Update() {
+                for(int i = 0; i < objects.size(); i++) {
+                    leaf obj = objects.get(i);
+                    obj.Update();
+                }
+            }
+    
+            public void Render(Graphics g) {
+                for(int i = 0; i < objects.size(); i++) {
+                    leaf obj = objects.get(i);
+                    obj.Render(g);
+                }
             }
 
     public void listLeafs ()
