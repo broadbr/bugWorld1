@@ -13,15 +13,25 @@ public class Main extends Canvas implements Runnable {
     private leafList leafList;
 
      public Main() {
-        new window (640,640, "Bug World 1", this);
+        new window (640,740, "Bug World 1", this);
         start();
 
         bugList = new bugList();
         leafList = new leafList();
 
-        bugList.addBug(new ant());
-        leafList.addFood(new leaf());
         
+        
+        Timer t = new Timer();
+        t.schedule(new TimerTask()
+        {
+            @Override
+            public void run()
+                {
+                    bugList.addBug(new ant());
+                    leafList.addFood(new leaf());
+                }
+
+        }, 0, 5000);
     } 
     private void start(){
         isRunning = true;
@@ -89,7 +99,10 @@ public class Main extends Canvas implements Runnable {
         }  */
         g.setColor(Color.green);
         g.fillRect(0,0,640,640); 
+
+        
         bugList.Render(g);
+        leafList.Render(g);
 
         g.dispose();
         bs.show();
@@ -102,7 +115,7 @@ public class Main extends Canvas implements Runnable {
         
         
         foodMaker foodMaker= new foodMaker();
-        bugMaker bugMaker = new bugMaker();
+        //bugMaker bugMaker = new bugMaker();
         bugList bugList = new bugList();
         leafList leafList = new leafList();
         bank bank = new bank();

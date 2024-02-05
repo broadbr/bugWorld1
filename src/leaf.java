@@ -1,4 +1,7 @@
+import java.awt.*;
+
 public class leaf {
+
 
     leafList leafList = new leafList();
     bank bank = new bank();
@@ -30,6 +33,18 @@ public class leaf {
         System.out.println("new leaf at, row: "+row +" col: " +column+"\n");
     }
 
+    public void Update() {
+       
+    }
+
+    public void Render(Graphics g) {
+        g.setColor(Color.blue);
+        g.fillRect(5,5 ,20, 20);
+    }
+
+    public Rectangle getBounds() {
+        return null;
+    }
     //access leaf stats
     public String getName(){
         return name;
