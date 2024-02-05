@@ -134,12 +134,6 @@ public class Main extends Canvas implements Runnable {
         f.deleteBug(4,"Ant" , 5); */
 
 
-        System.out.println("Bank: " + bank.getAccount());
-
-        //shopDisplay sd = new shopDisplay();
-
-
-
 
         //
         //testing list content
