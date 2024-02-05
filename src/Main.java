@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.Timer;
+import java.util.*;
 
 public class Main extends JPanel {
 
@@ -9,12 +11,12 @@ public class Main extends JPanel {
         System.out.println("");
         bugList bugList = new bugList();
         leafList leafList = new leafList();
+        foodMaker foodMaker= new foodMaker();
+        bugMaker bugMaker = new bugMaker();
         bank bank = new bank();
 
-        foodMaker fm = new foodMaker();
+
         foodMaker.stage1();//call stage2 & cancelStage X2 with gems after defeating farmer
-
-
 
         gridMap f = new gridMap();
         f.setButtonColor(0 , "green");
@@ -32,14 +34,42 @@ public class Main extends JPanel {
         System.out.println("Bank: " + bank.getAccount());
 
         //shopDisplay sd = new shopDisplay();
-        //
-        //testing
-        for(int i=0;i>=0;i++){
-            if (i%2==0){
-                leafList.listLeafs();
-            }
 
-        }
+
+
+
+        //
+        //testing list content
+        Timer t = new Timer();
+        t.schedule(new TimerTask()
+        {
+            @Override
+            public void run()
+                {
+                        leafList.listLeafs();
+                        bugList.listBugs();
+                }
+
+        }, 0, 5000);
+
+        //testing damage
+        Timer d = new Timer();
+        d.schedule(new TimerTask()
+        {
+            @Override
+            public void run()
+            {
+                if(!leafList.objects.isEmpty()){
+                    leafList.objects.get(0).damageLeaf(2);
+                    //bugMaker.makeBug(leafList.objects.get(0).getRow(),leafList.objects.get(0).getColumn());
+                }
+            }
+        }, 0, 15000);
+
+
+
+
 
     }
+
 }
