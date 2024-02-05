@@ -11,6 +11,7 @@ public class Main extends Canvas implements Runnable {
     private Thread thread;
     private bugList bugList;
     private leafList leafList;
+    private foodMaker foodMaker;
 
      public Main() {
         new window (640,740, "Bug World 1", this);
@@ -18,10 +19,11 @@ public class Main extends Canvas implements Runnable {
 
         bugList = new bugList();
         leafList = new leafList();
+        foodMaker = new foodMaker();
 
+        foodMaker.stage1();
         
-        
-        Timer t = new Timer();
+        /* Timer t = new Timer();
         t.schedule(new TimerTask()
         {
             @Override
@@ -31,7 +33,7 @@ public class Main extends Canvas implements Runnable {
                     leafList.addFood(new leaf());
                 }
 
-        }, 0, 5000);
+        }, 0, 5000); */
     } 
     private void start(){
         isRunning = true;
