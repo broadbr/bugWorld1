@@ -1,10 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyListener;
 import java.util.Timer;
 import java.util.*;
 
-public class Main extends JPanel {
-
+public class Main extends JPanel{
 
 
     public static void main(String[] args) {
