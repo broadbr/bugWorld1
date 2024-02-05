@@ -102,6 +102,7 @@ public class Main extends Canvas implements Runnable {
         g.setColor(Color.green);
         g.fillRect(0,0,640,640);
 
+
         foodMaker.stage1();
 
         

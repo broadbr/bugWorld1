@@ -16,7 +16,10 @@ public class window {
         frame.add(game); 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
-        frame.setVisible(true); 
+        frame.setVisible(true);
+
+        JButton antButton = new JButton("Buy ant");
+        frame.add(antButton);
     }
 
 }
