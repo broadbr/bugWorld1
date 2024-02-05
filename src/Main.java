@@ -21,7 +21,7 @@ public class Main extends Canvas implements Runnable {
         leafList = new leafList();
         foodMaker = new foodMaker();
 
-        foodMaker.stage1();
+
         
         /* Timer t = new Timer();
         t.schedule(new TimerTask()
@@ -100,7 +100,9 @@ public class Main extends Canvas implements Runnable {
             }
         }  */
         g.setColor(Color.green);
-        g.fillRect(0,0,640,640); 
+        g.fillRect(0,0,640,640);
+
+        foodMaker.stage1();
 
         
         bugList.Render(g);
