@@ -41,7 +41,7 @@ public class leaf {
         g.setColor(Color.green);
         //row=row*40;
         //column=column*40;
-        g.fillRect(row*40-40,column*40-40 ,20, 20);
+        g.fillRect(row*40-40,column*40-40 ,40, 40);
     }
 
     public Rectangle getBounds() {

@@ -12,7 +12,7 @@ public class ant extends bug{
     protected int x;
     protected int y;
     ant(){
-    super("ant", 1, 1, 1, 0, 0);
+    super("ant", 1, 1, 1, 320, 320);
     }
 
     @Override
@@ -25,7 +25,7 @@ public class ant extends bug{
     public void Render(Graphics g) {
         
         g.setColor(Color.black);
-        g.fillRect(5,5 ,20, 20);
+        g.fillRect(280,280 ,40, 40);
     }
 
     @Override

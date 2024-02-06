@@ -11,7 +11,7 @@ public class spider extends bug {
     */
 
     spider(){
-    super("spider", 4, 6, 4,0,0);
+    super("spider", 4, 6, 4,320,320);
     }
 
     @Override

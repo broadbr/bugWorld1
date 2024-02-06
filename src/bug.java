@@ -25,8 +25,8 @@ public abstract class bug {
 
     //initialize location
     protected bug(){
-        row = 0;
-        column = 0;
+        row = 300;
+        column = 350;
     }
     // set ant location
 

@@ -11,16 +11,18 @@ public class Main extends Canvas implements Runnable {
     private Thread thread;
     private bugList bugList;
     private leafList leafList;
-    private foodMaker foodMaker;
+    //private foodMaker foodMaker;
     private bugMaker bugMaker;
+    public foodMaker2 foodMaker2;
 
      public Main() {
-        new window (640,740, "Bug World 1", this);
+        new window (680,740, "Bug World 1", this);
         start();
 
         bugList = new bugList();
         leafList = new leafList();
-        foodMaker = new foodMaker();
+        //foodMaker = new foodMaker();
+        foodMaker2 = new foodMaker2();
         bugMaker = new bugMaker();
 
         
@@ -103,35 +105,34 @@ public class Main extends Canvas implements Runnable {
         g.setColor(Color.getHSBColor(.14f,.90f,.25f));
         g.fillRect(0,0,640,640);
 
+        //foodMaker.stage1();
+        //foodMaker2.stage1();
 
-        foodMaker.stage1();
         ant b = new ant();
         bugList.addBug(b);
-
-        
         bugList.Render(g);
         leafList.Render(g);
 
         g.dispose();
         bs.show();
-        //foodMaker.stage1();
     }
 
     public static void main(String[] args) {
         new Main();
 
         System.out.println("");
-        
+        foodMaker2 foodMaker2;
         
         foodMaker foodMaker= new foodMaker();
         //bugMaker bugMaker = new bugMaker();
         bugList bugList = new bugList();
         leafList leafList = new leafList();
         bank bank = new bank();
+        foodMaker2 = new foodMaker2();
 
 
-        foodMaker.stage1();//call stage2 & cancelStage X2 with gems after defeating farmer
-
+        //foodMaker.stage1();//call stage2 & cancelStage X2 with gems after defeating farmer
+        foodMaker2.stage1();
        /*  gridMap f = new gridMap();
         f.setButtonColor(0 , "green");
         f.addBug(4,"ant" , 7);
