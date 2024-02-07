@@ -39,5 +39,8 @@ public class leafList {
         }
         System.out.print("\n");
     }
+    public leaf getTop(){
+                return objects.get(0);
+    }
 
 }

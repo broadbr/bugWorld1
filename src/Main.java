@@ -5,13 +5,13 @@ import java.awt.image.BufferStrategy;
 import java.nio.Buffer;
 import java.util.Timer;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 public class Main extends Canvas implements Runnable {
     private Boolean isRunning = false;
     private Thread thread;
     private bugList bugList;
     private leafList leafList;
-    //private foodMaker foodMaker;
     private bugMaker bugMaker;
     public foodMaker2 foodMaker2;
 
@@ -21,23 +21,10 @@ public class Main extends Canvas implements Runnable {
 
         bugList = new bugList();
         leafList = new leafList();
-        //foodMaker = new foodMaker();
         foodMaker2 = new foodMaker2();
         bugMaker = new bugMaker();
 
-        
-        /* Timer t = new Timer();
-        t.schedule(new TimerTask()
-        {
-            @Override
-            public void run()
-                {
-                    bugList.addBug(new ant());
-                    leafList.addFood(new leaf());
-                }
-
-        }, 0, 5000); */
-    } 
+    }
     private void start(){
         isRunning = true;
         thread = new Thread(this);
@@ -105,8 +92,6 @@ public class Main extends Canvas implements Runnable {
         g.setColor(Color.getHSBColor(.14f,.90f,.25f));
         g.fillRect(0,0,640,640);
 
-        //foodMaker.stage1();
-        //foodMaker2.stage1();
 
         ant b = new ant();
         bugList.addBug(b);
@@ -119,26 +104,26 @@ public class Main extends Canvas implements Runnable {
 
     public static void main(String[] args) {
         new Main();
-
-        System.out.println("");
         foodMaker2 foodMaker2;
-        
-        foodMaker foodMaker= new foodMaker();
+        seekFood seekFood;
+
         //bugMaker bugMaker = new bugMaker();
         bugList bugList = new bugList();
         leafList leafList = new leafList();
         bank bank = new bank();
         foodMaker2 = new foodMaker2();
+        bugMaker bugMaker = new bugMaker();
 
 
         //foodMaker.stage1();//call stage2 & cancelStage X2 with gems after defeating farmer
         foodMaker2.stage1();
+        ant b = new ant();
+        bugList.addBug(b);
+
        /*  gridMap f = new gridMap();
         f.setButtonColor(0 , "green");
         f.addBug(4,"ant" , 7);
         f.deleteBug(4,"Ant" , 5); */
-
-
 
         //
         //testing list content
@@ -148,14 +133,34 @@ public class Main extends Canvas implements Runnable {
             @Override
             public void run()
                 {
+                    seekFood seekFood = new seekFood();
+                        //ant a = new ant();
+                        //bugList.addBug(a);
                         leafList.listLeafs();
                         bugList.listBugs();
+
+                        //int i = -1;
+                    //for(bug b : bugList.objects)
+                    //{
+                        //i=i+1;
+                        //b=bugList.objects.get(i);
+                        if(leafList.objects.isEmpty()){
+                            try {
+                            TimeUnit.SECONDS.sleep(5);}
+                            catch (InterruptedException e) {
+
+                            }
+                            bug b = bugList.objects.get(0);
+                            leaf l = leafList.objects.get(0);
+                            seekFood.move(b,l);
+                    //}
+                    }
                 }
 
         }, 0, 5000);
 
         //testing damage
-        Timer d = new Timer();
+/*        Timer d = new Timer();
         d.schedule(new TimerTask()
         {
             @Override
@@ -167,9 +172,7 @@ public class Main extends Canvas implements Runnable {
                 }
             }
         }, 0, 15000);
-
-
-
+*/
     }
 
 }

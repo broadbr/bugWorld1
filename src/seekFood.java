@@ -11,38 +11,32 @@ import java.util.concurrent.TimeUnit;
         private int bugRow;
         private int bugCol;
 
-        public void move(leaf current, bug a){
+        public void move(bug current, leaf l){
 
-            bugRow = current.getRow();
-            bugCol = current.getColumn();
-            foodRow = a.getRow();
-            foodCol = a.getColumn();
+            bugRow = current.getX();
+            bugCol = current.getY();
+            foodRow = l.getRow()*40;
+            foodCol = l.getColumn()*40;
 
             if ((bugRow == foodRow) && (bugCol == foodCol)){
-                //set value for eating leaf
-                bank bank = new bank();
-                leaf leaf = new leaf();
-                bug bug = new ant();
-
-                leaf.damageLeaf(bug.getDamage());
-
+                l.damageLeaf(current.getDamage());
             }
             else {
                 if (Math.abs(bugRow-foodRow) > Math.abs(bugCol-foodCol)){
                     if((bugRow-foodRow) < 0){
-                        current.setRow(bugRow+1);
+                        current.setX(bugRow+40);
                     }
                     else{
-                        current.setRow(bugRow-1);
+                        current.setX(bugRow-40);
                     }
 
                 }
                 else{
                     if((bugCol-foodCol) < 0){
-                        current.setColumn(bugCol+1);
+                        current.setY(bugCol+40);
                     }
                     else{
-                        current.setColumn(bugCol-1);
+                        current.setY(bugCol-40);
                     }
                 }
 

@@ -1,5 +1,5 @@
 public class bugMaker {
-
+bugList bugList = new bugList();
     // class that generates bugs, **should work with any bug
     // will take reduce currency of player and take what bug they bought..
     // and spawn that bug in ??center of screen??
@@ -8,6 +8,7 @@ public class bugMaker {
     // call bugtracker when buying a bug
      public void makeAnt() {
         bug a = new ant();
+        bugList.addBug(a);
         
         }
 /*

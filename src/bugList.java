@@ -5,7 +5,7 @@ import java.awt.Graphics;
 public class bugList {
 
 
-        private List<bug> objects = new ArrayList<>();
+        public List<bug> objects = new ArrayList<>();
 
 
         public void addBug (bug obj)
@@ -38,6 +38,10 @@ public class bugList {
         {
             i=i+1;
             System.out.print(objects.get(i).getName()+",");
+
+        }
+        if(!objects.isEmpty()){
+            System.out.print("\nbug at "+objects.get(0).getX()+", "+objects.get(0).getY());
         }
         System.out.print("\n");
     }
