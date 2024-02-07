@@ -9,6 +9,7 @@ public class window {
         //set frame name title
         JFrame frame = new JFrame(title);
         JButton myButton = new JButton("test");
+        myButton.setPreferredSize(new Dimension(10,10));
         //set size
         frame.setPreferredSize(new Dimension(width, height));
         frame.setMaximumSize(new Dimension(width, height));
