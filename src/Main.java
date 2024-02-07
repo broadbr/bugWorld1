@@ -5,36 +5,26 @@ import java.awt.image.BufferStrategy;
 import java.nio.Buffer;
 import java.util.Timer;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 public class Main extends Canvas implements Runnable {
     private Boolean isRunning = false;
     private Thread thread;
     private bugList bugList;
     private leafList leafList;
-    private foodMaker foodMaker;
+    private bugMaker bugMaker;
+    public foodMaker2 foodMaker2;
 
      public Main() {
-        new window (640,740, "Bug World 1", this);
+        new window (680,740, "Bug World 1", this);
         start();
 
         bugList = new bugList();
         leafList = new leafList();
-        foodMaker = new foodMaker();
+        foodMaker2 = new foodMaker2();
+        bugMaker = new bugMaker();
 
-
-        
-        /* Timer t = new Timer();
-        t.schedule(new TimerTask()
-        {
-            @Override
-            public void run()
-                {
-                    bugList.addBug(new ant());
-                    leafList.addFood(new leaf());
-                }
-
-        }, 0, 5000); */
-    } 
+    }
     private void start(){
         isRunning = true;
         thread = new Thread(this);
@@ -70,7 +60,7 @@ public class Main extends Canvas implements Runnable {
 				frames++;
 				delta--;
 				if(System.currentTimeMillis() - time >= 1000) {
-					System.out.println("fps:" + frames);
+					//System.out.println("fps:" + frames);
 					time += 1000;
 					frames = 0;
 				}
@@ -103,55 +93,82 @@ public class Main extends Canvas implements Runnable {
         g.fillRect(0,0,640,640);
 
 
-        foodMaker.stage1();
-
-        
+        //ant b = new ant();
+        //bugList.addBug(b);
         bugList.Render(g);
         leafList.Render(g);
 
         g.dispose();
         bs.show();
-        //foodMaker.stage1();
     }
 
     public static void main(String[] args) {
         new Main();
+        foodMaker2 foodMaker2;
 
-        System.out.println("");
-        
-        
-        foodMaker foodMaker= new foodMaker();
         //bugMaker bugMaker = new bugMaker();
         bugList bugList = new bugList();
         leafList leafList = new leafList();
         bank bank = new bank();
+        foodMaker2 = new foodMaker2();
+        bugMaker bugMaker = new bugMaker();
+        seekFood seekFood = new seekFood();
+        seekFood2 seekFood2 = new seekFood2();
 
 
-        foodMaker.stage1();//call stage2 & cancelStage X2 with gems after defeating farmer
+        //foodMaker.stage1();//call stage2 & cancelStage X2 with gems after defeating farmer
+        foodMaker2.stage1();
+        ant b = new ant();
+        bugList.addBug(b);
 
        /*  gridMap f = new gridMap();
         f.setButtonColor(0 , "green");
         f.addBug(4,"ant" , 7);
         f.deleteBug(4,"Ant" , 5); */
 
-
-
         //
         //testing list content
+
+
+        if(leafList.objects.isEmpty()) {
+            try {
+                System.out.print("\n");
+                TimeUnit.SECONDS.sleep(5);
+            } catch (InterruptedException e) {
+            }
+        }
+
         Timer t = new Timer();
         t.schedule(new TimerTask()
         {
             @Override
             public void run()
                 {
+                    //seekFood seekFood = new seekFood();
+                        //ant a = new ant();
+                        //bugList.addBug(a);
                         leafList.listLeafs();
                         bugList.listBugs();
-                }
 
-        }, 0, 5000);
+                        //int i = -1;
+                    //for(bug b : bugList.objects)
+                    //{
+                        //i=i+1;
+                        //b=bugList.objects.get(i);
+
+                            bug b = bugList.objects.get(0);
+                            leaf l = leafList.objects.get(0);
+                            System.out.print("\nleaf1 at "+ l.getRow()*40+", "+ l.getColumn()*40+"\n");
+                            seekFood.move(b,l);
+                            //seekFood2.move(b,leafList);
+                    //}
+                    }
+
+
+        }, 0, 250);//5000
 
         //testing damage
-        Timer d = new Timer();
+/*        Timer d = new Timer();
         d.schedule(new TimerTask()
         {
             @Override
@@ -163,9 +180,7 @@ public class Main extends Canvas implements Runnable {
                 }
             }
         }, 0, 15000);
-
-
-
+*/
     }
 
 }

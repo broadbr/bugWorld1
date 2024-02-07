@@ -11,7 +11,7 @@ public class hornet extends bug{
     */
 
     hornet(){
-        super("hornet", 5, 7, 5,0,0);
+        super("hornet", 5, 7, 5,320,320);
     }
 
     @Override

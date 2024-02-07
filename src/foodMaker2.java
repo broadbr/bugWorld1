@@ -1,12 +1,13 @@
-import java.util.Timer;
-import java.util.*;
 //import java.util.Random;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.ThreadLocalRandom;
+
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.Executors;
-import java.util.concurrent.*;
 import java.util.concurrent.ScheduledExecutorService;
-public class foodMaker
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.TimeUnit;
+
+public class foodMaker2
 {
 
     leafList leafList = new leafList();
@@ -14,20 +15,11 @@ public class foodMaker
     public boolean cancel = false;
     // code for a 2-second timer
     // will create a random food every 4 seconds
-    public void stage1()
-    {
-        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
-
-        scheduler.scheduleWithFixedDelay(new Runnable()
-        {
+    public void stage1() {
+        Timer t = new Timer();
+        t.schedule(new TimerTask() {
             @Override
-            public void run()
-            {
-
-                if(cancel)
-                {
-                    scheduler.shutdown();
-                }
+            public void run() {
 
                 //random food
                 int randomNum = ThreadLocalRandom.current().nextInt(1, 2 + 1);//(min,max)
@@ -37,39 +29,32 @@ public class foodMaker
                 int y = ThreadLocalRandom.current().nextInt(1, 16 + 1);
 
                 //if #==1 create leaf, otherwise create other food
-                if (randomNum == 1)
-                {
+                if (randomNum == 1) {
                     //checks for existing leafs in same position
-                    int i =-1;// controls objects in list
+                    int i = -1;// controls objects in list
                     boolean overlap = false;// trip if an object is in same location
                     //checks existing food locations
-                    for(leaf b : leafList.objects)
-                    {
-                        i=i+1;
+                    for (leaf b : leafList.objects) {
+                        i = i + 1;
                         int tempRow = leafList.objects.get(i).getRow();
                         int tempCol = leafList.objects.get(i).getColumn();
-                        if ((tempRow==x)&&(tempCol==y))
-                        {
+                        if ((tempRow == x) && (tempCol == y)) {
                             overlap = true;
                         }
                     }
-                    if(overlap)
-                    {
+                    if (overlap) {
 
-                    }
-                    else
-                    {
+                    } else {
                         leaf l = new leaf(x, y);//creates new leaf
                         leafList.addFood(l);//adds it to list
                     }
-                    overlap=false;
-                }
-                else
-                {
+                    overlap = false;
+                } else {
                     //leaf l = new OtherFoodType( x, y);
                 }
             }
-        }, 1, 4L, TimeUnit.SECONDS);
+        },1, 900);
+
 
     }
 
@@ -77,18 +62,10 @@ public class foodMaker
     public void stage2()
     {
 
-        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
-
-        scheduler.scheduleWithFixedDelay(new Runnable()
-        {
+        Timer t = new Timer();
+        t.schedule(new TimerTask() {
             @Override
-            public void run()
-            {
-
-                if(cancel)
-                {
-                    scheduler.shutdown();
-                }
+            public void run() {
 
                 //random food
                 int randomNum = ThreadLocalRandom.current().nextInt(1, 2 + 1);//(min,max)
@@ -130,11 +107,12 @@ public class foodMaker
                     //leaf l = new OtherFoodType( x, y);
                 }
             }
-        }, 1, 3L, TimeUnit.SECONDS);
+        }, 2, 800);
 
     }
     //call cancel to end stage and before starting another
-    public void cancelStage(){
+    //obsolete replace
+    public void cancelStage() {
         cancel = !cancel;
     }
 

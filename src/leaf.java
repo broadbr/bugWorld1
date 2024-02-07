@@ -30,7 +30,7 @@ public class leaf {
     protected leaf(int row, int column){
         this.row=row;
         this.column=column;
-        System.out.println("new leaf at, row: "+row +" col: " +column+"\n");
+        //System.out.println("new leaf at, row: "+row +" col: " +column+"\n");
     }
 
     public void Update() {
@@ -38,10 +38,9 @@ public class leaf {
     }
 
     public void Render(Graphics g) {
+        //ImageMaker i = new ImageMaker();
         g.setColor(Color.green);
-        //row=row*40;
-        //column=column*40;
-        g.fillRect(row*40-40,column*40-40 ,20, 20);
+        g.fillRect(row*40-40,column*40-40 ,40, 40);
     }
 
     public Rectangle getBounds() {

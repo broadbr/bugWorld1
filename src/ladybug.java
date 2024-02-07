@@ -10,7 +10,7 @@ public class ladybug extends bug {
     private int health = 2;
     */
     ladybug(){
-        super("ladybug",2,3,2,0,0);
+        super("ladybug",2,3,2,320,320);
     }
 
     @Override
