@@ -18,6 +18,16 @@ import java.util.concurrent.TimeUnit;
             foodRow = l.getRow()*40;//-40
             foodCol = l.getColumn()*40;//-40
 
+                /*int i = -1;
+            for(leaf b : leafList.objects){
+                i=i+1;
+                int k = leafList.objects.get(i).getRow()*40;
+                int j = leafList.objects.get(i).getColumn()*40;
+                if((bugRow == k) && (bugCol == j)){
+                    leafList.objects.get(i).damageLeaf(current.getDamage());
+                }
+
+            }*/
             if ((bugRow == foodRow) && (bugCol == foodCol)){
                 l.damageLeaf(current.getDamage());
             }
