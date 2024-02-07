@@ -60,7 +60,7 @@ public class Main extends Canvas implements Runnable {
 				frames++;
 				delta--;
 				if(System.currentTimeMillis() - time >= 1000) {
-					System.out.println("fps:" + frames);
+					//System.out.println("fps:" + frames);
 					time += 1000;
 					frames = 0;
 				}
@@ -93,8 +93,8 @@ public class Main extends Canvas implements Runnable {
         g.fillRect(0,0,640,640);
 
 
-        ant b = new ant();
-        bugList.addBug(b);
+        //ant b = new ant();
+        //bugList.addBug(b);
         bugList.Render(g);
         leafList.Render(g);
 
@@ -113,6 +113,7 @@ public class Main extends Canvas implements Runnable {
         foodMaker2 = new foodMaker2();
         bugMaker bugMaker = new bugMaker();
         seekFood seekFood = new seekFood();
+        seekFood2 seekFood2 = new seekFood2();
 
 
         //foodMaker.stage1();//call stage2 & cancelStage X2 with gems after defeating farmer
@@ -131,7 +132,7 @@ public class Main extends Canvas implements Runnable {
 
         if(leafList.objects.isEmpty()) {
             try {
-                System.out.print("\nnot cool\n");
+                System.out.print("\n");
                 TimeUnit.SECONDS.sleep(5);
             } catch (InterruptedException e) {
             }
@@ -157,13 +158,14 @@ public class Main extends Canvas implements Runnable {
 
                             bug b = bugList.objects.get(0);
                             leaf l = leafList.objects.get(0);
-                            System.out.print("\nleaf1 at "+ l.getRow()*40+", "+ l.getColumn()*40);
+                            System.out.print("\nleaf1 at "+ l.getRow()*40+", "+ l.getColumn()*40+"\n");
                             seekFood.move(b,l);
+                            //seekFood2.move(b,leafList);
                     //}
                     }
 
 
-        }, 0, 5000);
+        }, 0, 250);//5000
 
         //testing damage
 /*        Timer d = new Timer();

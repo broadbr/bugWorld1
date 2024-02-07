@@ -30,7 +30,7 @@ public class leaf {
     protected leaf(int row, int column){
         this.row=row;
         this.column=column;
-        System.out.println("new leaf at, row: "+row +" col: " +column+"\n");
+        //System.out.println("new leaf at, row: "+row +" col: " +column+"\n");
     }
 
     public void Update() {
