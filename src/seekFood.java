@@ -15,8 +15,8 @@ import java.util.concurrent.TimeUnit;
 
             bugRow = current.getX();
             bugCol = current.getY();
-            foodRow = l.getRow()*40;
-            foodCol = l.getColumn()*40;
+            foodRow = l.getRow()*40;//-40
+            foodCol = l.getColumn()*40;//-40
 
             if ((bugRow == foodRow) && (bugCol == foodCol)){
                 l.damageLeaf(current.getDamage());

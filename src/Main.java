@@ -105,7 +105,6 @@ public class Main extends Canvas implements Runnable {
     public static void main(String[] args) {
         new Main();
         foodMaker2 foodMaker2;
-        seekFood seekFood;
 
         //bugMaker bugMaker = new bugMaker();
         bugList bugList = new bugList();
@@ -113,6 +112,7 @@ public class Main extends Canvas implements Runnable {
         bank bank = new bank();
         foodMaker2 = new foodMaker2();
         bugMaker bugMaker = new bugMaker();
+        seekFood seekFood = new seekFood();
 
 
         //foodMaker.stage1();//call stage2 & cancelStage X2 with gems after defeating farmer
@@ -127,13 +127,23 @@ public class Main extends Canvas implements Runnable {
 
         //
         //testing list content
+
+
+        if(leafList.objects.isEmpty()) {
+            try {
+                System.out.print("\nnot cool\n");
+                TimeUnit.SECONDS.sleep(5);
+            } catch (InterruptedException e) {
+            }
+        }
+
         Timer t = new Timer();
         t.schedule(new TimerTask()
         {
             @Override
             public void run()
                 {
-                    seekFood seekFood = new seekFood();
+                    //seekFood seekFood = new seekFood();
                         //ant a = new ant();
                         //bugList.addBug(a);
                         leafList.listLeafs();
@@ -144,18 +154,14 @@ public class Main extends Canvas implements Runnable {
                     //{
                         //i=i+1;
                         //b=bugList.objects.get(i);
-                        if(leafList.objects.isEmpty()){
-                            try {
-                            TimeUnit.SECONDS.sleep(5);}
-                            catch (InterruptedException e) {
 
-                            }
                             bug b = bugList.objects.get(0);
                             leaf l = leafList.objects.get(0);
+                            System.out.print("\nleaf1 at "+ l.getRow()*40+", "+ l.getColumn()*40);
                             seekFood.move(b,l);
                     //}
                     }
-                }
+
 
         }, 0, 5000);
 
