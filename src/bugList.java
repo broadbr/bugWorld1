@@ -5,7 +5,7 @@ import java.awt.Graphics;
 public class bugList {
 
 
-        public List<bug> objects = new ArrayList<>();
+        public static List<bug> objects = new ArrayList<>();
 
 
         public void addBug (bug obj)

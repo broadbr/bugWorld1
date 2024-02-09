@@ -89,12 +89,19 @@ public abstract class bug {
 
 
 
+    public double distance(bug other) {
+        double dx = this.x - other.x;
+        double dy = this.y - other.y;
+        return Math.sqrt(dx * dx + dy * dy);
+    }
+
     public void damageBug(int damage){
         health = health-damage;
         if (health<=0){
             bugList.removeBug(this);
         }
     }
+
 
     /*
     public void setName(String bugName){
