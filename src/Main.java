@@ -108,9 +108,10 @@ public class Main extends Canvas implements Runnable {
         leafList.Render(g);
 
         g.setColor(Color.black);
-        g.drawString("Bank: "+ bank.getAccount(),10,650);
-        g.drawString("Leafs: "+ leafList.getAmount(),10,675);
-        g.drawString("Ants: "+ bugList.getAmount(),10,700);
+        g.clearRect(10, 640, 100, 75);
+        g.drawString("Bank: "+ bank.getAccount(),10,655);
+        g.drawString("Leafs: "+ leafList.getAmount(),10,680);
+        g.drawString("Ants: "+ bugList.getAmount(),10,705);
 
 
         g.dispose();
