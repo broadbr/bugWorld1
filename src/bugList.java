@@ -46,5 +46,12 @@ public class bugList {
         System.out.print("\n");
     }
 
+    public int getAmount(){
+        int count =0;
+        for(bug l : objects){
+            count++;
+        }
+        return count;
+    }
 }
 

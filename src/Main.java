@@ -16,7 +16,7 @@ public class Main extends Canvas implements Runnable {
     public foodMaker2 foodMaker2;
 
     public Main() {
-        new window(680, 740, "Bug World 1", this);
+        new window(740, 740, "Bug World 1", this);
         start();
 
         bugList = new bugList();
@@ -87,6 +87,7 @@ public class Main extends Canvas implements Runnable {
         }
 
         Graphics g = bs.getDrawGraphics();
+        bank bank = new bank();
         //attempting to make grid
         /*  for (int i = 0; i < 16; i++) {
             for (int j = 0; j < 16; j++) {
@@ -99,14 +100,23 @@ public class Main extends Canvas implements Runnable {
         g.setColor(Color.getHSBColor(.14f, .90f, .25f));
         g.fillRect(0, 0, 640, 640);
 
+        
 
         //ant b = new ant();
         //bugList.addBug(b);
         bugList.Render(g);
         leafList.Render(g);
 
+        g.setColor(Color.black);
+        g.drawString("Bank: "+ bank.getAccount(),10,650);
+        g.drawString("Leafs: "+ leafList.getAmount(),10,675);
+        g.drawString("Ants: "+ bugList.getAmount(),10,700);
+
+
         g.dispose();
         bs.show();
+
+        
     }
 
     public static void main(String[] args) {
