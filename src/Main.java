@@ -16,7 +16,7 @@ public class Main extends Canvas implements Runnable {
     public foodMaker2 foodMaker2;
 
     public Main() {
-        new window(740, 740, "Bug World 1", this);
+        new window(750, 750, "Bug World 1", this);
         start();
 
         bugList = new bugList();
