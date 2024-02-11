@@ -11,7 +11,7 @@ public class leaf {
 
 
     // leaf stats
-    private String name ="leaf";
+    private String name = "leaf";
     private int health = 1;
     private int value = 1;//amount rewarded for eating
 
@@ -21,66 +21,68 @@ public class leaf {
     protected int column;
 
     //initialize location
-    protected leaf(){
+    protected leaf() {
         row = 100;
         column = 100;
     }
 
     //set location
-    protected leaf(int row, int column){
-        this.row=row;
-        this.column=column;
+    protected leaf(int row, int column) {
+        this.row = row;
+        this.column = column;
         //System.out.println("new leaf at, row: "+row +" col: " +column+"\n");
     }
 
     public void Update() {
-       
+
     }
 
     public void Render(Graphics g) {
         //ImageMaker i = new ImageMaker();
         g.setColor(Color.green);
-        g.fillRect(row*40-40,column*40-40 ,40, 40);
+        g.fillRect(row * 40 - 40, column * 40 - 40, 40, 40);
     }
 
     public Rectangle getBounds() {
         return null;
     }
+
     //access leaf stats
-    public String getName(){
+    public String getName() {
         return name;
     }
 
-    public int getHealth(){
+    public int getHealth() {
         return health;
     }
 
-    public int getValue(){
+    public int getValue() {
         return value;
     }
 
-    public int getRow(){
+    public int getRow() {
         return row;
     }
 
-    public void setRow(int row){
+    public void setRow(int row) {
         this.row = row;
     }
 
-    public int getColumn(){
+    public int getColumn() {
         return column;
     }
 
-    public void setColumn(int column){
+    public void setColumn(int column) {
         this.column = column;
     }
 
-    public void damageLeaf(int damage){
-        health = health-damage;
-        if (health<=0){
+    public void damageLeaf(int damage) {
+        health = health - damage;
+        if (health <= 0) {
             leafList.removeFood(this);
             bank.setEarnt(value);
-            System.out.print("leaf killed!!, money earnt\n");
+            System.out.print("\nleaf killed\n");
         }
     }
+
 }

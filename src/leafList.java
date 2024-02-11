@@ -43,4 +43,11 @@ public class leafList {
                 return objects.get(0);
     }
 
+    public int getAmount(){
+        int count =0;
+        for(leaf l : objects){
+            count++;
+        }
+        return count;
+    }
 }

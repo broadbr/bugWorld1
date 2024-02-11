@@ -10,47 +10,44 @@ public class seekFood2 {
     private int bugRow;
     private int bugCol;
 
-    public void move(bug current, leafList l){
+    //public void move(bugList bl, leafList ll) {
+    public void move(bug current, leafList l) {
 
-        bugRow = current.getX();
-        bugCol = current.getY();
+        for (int i = 0; i < l.objects.size(); i++) {
+
+            if ((current.getX() == leafList.objects.get(0).getRow() && current.getY() == leafList.objects.get(0).getColumn())) {
+                leafList.objects.get(i).damageLeaf(current.getDamage());
+            }
+        }
         //foodRow = l.objects.getRow()*40;//-40
         //foodCol = l.getColumn()*40;//-40
+        int closestLeafIndex = 0;
+        int minDistance = Integer.MAX_VALUE;
+        for (int i = 0; i < leafList.objects.size(); i++) {
+            int distanceX = Math.abs(leafList.objects.get(i).getRow() - current.getX());
+            int distanceY = Math.abs(leafList.objects.get(i).getColumn() - current.getY());
 
-        int i = -1;
-        int tempRow = 0;
-        int tempCol = 0;
-        for(leaf a : l.objects)
-        {
-            i=i+1;
-            int k = l.objects.get(i).getRow()*40;
-            int j = l.objects.get(i).getColumn()*40;
+            int totalDistance = distanceX + distanceY;
 
-            if ((bugRow == l.objects.get(i).getRow()) && (bugCol == l.objects.get(i).getColumn())) {
-                l.objects.get(i).damageLeaf(current.getDamage());
+            if (totalDistance < minDistance) {
+                minDistance = totalDistance;
+                closestLeafIndex = i;
             }
-            if(Math.abs(current.getRow()+k) > Math.abs(tempRow)){
-                    tempRow=k;
-            }
-            if(Math.abs(current.getRow()-k) < Math.abs(tempRow)){
-                tempRow = k;
-            }
-            if(Math.abs(current.getRow()+j) > Math.abs(tempRow)){
-                tempCol=j;
-            }
-            if(Math.abs(current.getRow()-j) < Math.abs(tempRow)){
-                tempCol = j;
-            }
+        }
+
+        leaf closestLeaf = leafList.objects.get(closestLeafIndex);
+        int deltaX = closestLeaf.getRow() - current.getX();
+        int deltaY = closestLeaf.getColumn() - current.getY();
+
+// Move the bug towards the closest leaf
+        if (Math.abs(deltaX) <= Math.abs(deltaY)) {
+            current.setX(current.getX() + (int) Math.signum(deltaX) * 40);
+        } else {
+            current.setY(current.getY() + (int) Math.signum(deltaY) * 40);
+        }
+
 
 
         }
-
-        current.setX(tempRow);
-        current.setY(tempCol);//-current.getY()
     }
-
-
-
-}
-
 
