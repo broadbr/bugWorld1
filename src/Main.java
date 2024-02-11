@@ -14,6 +14,7 @@ public class Main extends Canvas implements Runnable {
     private leafList leafList;
     private bugMaker bugMaker;
     public foodMaker2 foodMaker2;
+    seekFood seekFood = new seekFood();
 
     public Main() {
         new window(750, 750, "Bug World 1", this);
@@ -23,7 +24,7 @@ public class Main extends Canvas implements Runnable {
         leafList = new leafList();
         foodMaker2 = new foodMaker2();
         bugMaker = new bugMaker();
-        seekFood seekFood = new seekFood();
+        
         bank bank = new bank();
 
 
@@ -109,7 +110,7 @@ public class Main extends Canvas implements Runnable {
 
         g.setColor(Color.black);
         g.clearRect(10, 640, 100, 75);
-        g.drawString("Bank: "+ bank.getAccount(),10,655);
+        g.drawString("Bank: "+ seekFood.getBank(),10,655);
         g.drawString("Leafs: "+ leafList.getAmount(),10,680);
         g.drawString("Ants: "+ bugList.getAmount(),10,705);
 
@@ -176,9 +177,9 @@ public class Main extends Canvas implements Runnable {
                 leaf l = leafList.objects.get(0);
                 System.out.print("\nleaf1 at " + l.getRow() * 40 + ", " + l.getColumn() * 40 + "\n");
                 System.out.print("bank value:" + bank.getAccount() + "\n");
-                //seekFood.move(b, l);
+                seekFood.move(b, l);
                 //seekFood2.move(bugList, leafList);
-                seekFood2.move(b, leafList);
+                //seekFood2.move(b, leafList);
 
                 //seekFood2.move(b,leafList);
                 //}

@@ -9,6 +9,7 @@ public class seekFood2 {
     private int foodCol;
     private int bugRow;
     private int bugCol;
+    private int bank;
 
     //public void move(bugList bl, leafList ll) {
     public void move(bug current, leafList l) {
