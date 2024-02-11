@@ -7,6 +7,7 @@ import java.awt.event.*;
 public class window{
 
     bugList buglist = new bugList();
+    ant a = new ant();
 
     public window(int width, int height, String title, Main game) {
         //set frame name title
@@ -16,16 +17,18 @@ public class window{
 
         JButton myButton = new JButton("buy ant");
 
-        /*
+
         myButton.addActionListener(new ActionListener() {
             @Override public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == myButton) {
-          //How can I call an ant to spawn here?
+                    buglist.addBug(a);
+                    System.out.println("Ant from shop");
 
                 }
             }
-        }
-*/
+
+        });
+
 
         buttonFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         buttonFrame.getContentPane().add(myButton);
