@@ -10,6 +10,7 @@ import java.util.concurrent.TimeUnit;
         private int foodCol;
         private int bugRow;
         private int bugCol;
+        private int bank;
 
         public void move(bug current, leaf l){
 
@@ -29,7 +30,9 @@ import java.util.concurrent.TimeUnit;
 
             }*/
             if ((bugRow == foodRow) && (bugCol == foodCol)){
+                bank ++;
                 l.damageLeaf(current.getDamage());
+                
             }
             else {
                 if (Math.abs(bugRow-foodRow) > Math.abs(bugCol-foodCol)){
@@ -52,6 +55,10 @@ import java.util.concurrent.TimeUnit;
 
             }
 
+        }
+
+        public int getBank() {
+            return bank;
         }
 
     }
