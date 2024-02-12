@@ -15,6 +15,8 @@ public class Main extends Canvas implements Runnable {
     private bugMaker bugMaker;
     public foodMaker2 foodMaker2;
     seekFood seekFood = new seekFood();
+    public int account = 1;
+    public int leafs = 0;
 
     public Main() {
         new window(750, 750, "Bug World 1", this);
@@ -107,10 +109,14 @@ public class Main extends Canvas implements Runnable {
         //bugList.addBug(b);
         bugList.Render(g);
         leafList.Render(g);
+       
 
+        if(leafList.getAmount()<leafs) account++;
+        leafs = leafList.getAmount();
+        
         g.setColor(Color.black);
         g.clearRect(10, 640, 100, 75);
-        g.drawString("Bank: "+ seekFood.getBank(),10,655);
+        g.drawString("Bank: "+ account,10,655);
         g.drawString("Leafs: "+ leafList.getAmount(),10,680);
         g.drawString("Ants: "+ bugList.getAmount(),10,705);
 
