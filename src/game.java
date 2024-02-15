@@ -1,11 +1,13 @@
- import java.awt.Canvas;
- import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferStrategy;
+
+import javax.swing.*;
 
  public class Game extends Canvas implements Runnable {
     
     private int bank =1; //eventual track account here
     private boolean isRunning = false;
-
+    private Thread thread;
 
     public Game() {
         new Window(680,320,"Bug World 1",this);//shop+upgrades = 100x2+width = 24x20 = 480+200=680 & height = 16x20=320
@@ -39,21 +41,45 @@
 	}
     public void start() {
         isRunning = true;
+        thread = new Thread();
+        thread.start();
     }
     public void stop() {
         isRunning = false;
+        try{
+            thread.join();
+        }
+        catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
     public void update() {
 
     }
     public void render() {
+        BufferStrategy buff = this.getBufferStrategy();
+        
+        if(buff == null) { 
+            this.createBufferStrategy(3);
+            return; 
+        }
+        
+        Graphics g = buff.getDrawGraphics();
+        
+        g.setColor(Color.green);
+        g.fillRect(0,0,680,320);
 
+        g.clearRect(9,20,50,50);
+        g.drawString("Shop",10,10);
+        g.drawString("Update",590,10);
+
+        g.dispose();
+        buff.show();
     }
     public static void main(String[] args) {
         
         new Game();
         
-        System.out.println("test");
 
 
     }
