@@ -79,6 +79,13 @@ import javax.swing.*;
     public static void main(String[] args) {
         
         new Game();
+        new bugList();
+
+
+        //testing insects
+        bug b = new ant();
+        bugList.objects.add(b);
+        bugList.listBugs();
         
 
 
