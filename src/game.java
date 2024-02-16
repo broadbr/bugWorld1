@@ -79,13 +79,16 @@ import javax.swing.*;
     public static void main(String[] args) {
         
         new Game();
-        new bugList();
+        bugList bugList = new bugList();
 
 
         //testing insects
         bug b = new ant();
-        bugList.objects.add(b);
+        bugList.addBug(b);
         bugList.listBugs();
+        String name= "";
+        name = bugList.objects.get(0).getName();
+        System.out.print("type of bug: " + name);
         
 
 

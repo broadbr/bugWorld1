@@ -34,6 +34,22 @@ public class bugList {
         objects.add(var1);
     }
 
+    //top of list
+    //also try bugList.objects.get(i);
+    public void topBug(){objects.get(0);}
+
+
+    //list type of object
+    /*
+    public String bugName(){
+        bug top = objects.get(0);
+        if (top instanceof ant) {
+            ant a = (ant)top;
+            String n = a.getName();
+        }
+        return n;
+    }*/
+
 
     //display all bugs to terminal
     public void listBugs(){

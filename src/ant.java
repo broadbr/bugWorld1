@@ -42,18 +42,22 @@ public class ant extends bug {
     }
 
     //Get/Set
+        @Override
         public String getName() {
-            return this.name;
+            return "ant";
         }
 
+        @Override
         public int getDamage() {
-            return this.damage;
+            return 1;
         }
 
+        @Override
         public int getPrice() {
-            return this.price;
+            return 1;
         }
 
+        @Override
         public int getHealth() {
             return this.health;
         }

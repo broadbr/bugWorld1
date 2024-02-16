@@ -3,6 +3,12 @@ import java.awt.*;
     public abstract class bug
     {
 
+        protected String name = "bug";
+
+        protected int damage;
+        protected int price;
+        protected int health;
+
         protected int x;
         protected int y;
 
@@ -40,6 +46,22 @@ import java.awt.*;
 
         public void setY(int y) {
             this.y = y;
+        }
+
+        public String getName() {
+            return this.name;
+        }
+
+        public int getDamage() {
+            return this.damage;
+        }
+
+        public int getPrice() {
+            return this.price;
+        }
+
+        public int getHealth() {
+            return this.health;
         }
 
 

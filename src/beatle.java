@@ -47,15 +47,19 @@ public class beatle extends bug {
 
 
     //Get/Set
+    @Override
     public String getName () {
-        return this.name;
+        return "beatle";
     }
+    @Override
         public int getDamage () {
-            return this.damage;
-        }
-        public int getPrice () {
-            return this.price;
+            return 2;
     }
+    @Override
+    public int getPrice () {
+        return 3;
+    }
+    @Override
         public int getHealth () {
             return this.health;
     }
