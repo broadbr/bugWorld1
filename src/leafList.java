@@ -2,10 +2,10 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class bugList {
+public class leafList {
     public static List<gameObject> objects = new ArrayList();
 
-    public bugList() {
+    public leafList() {
     }
 
 
@@ -29,13 +29,13 @@ public class bugList {
 
     //Add a bug
     //also try: bugList.objects.add(bug);
-    public void addBug(gameObject var1) {
+    public void addLeaf(gameObject var1) {
         objects.add(var1);
     }
 
     //top of list
     //also try bugList.objects.get(i);
-    public void topBug(){objects.get(0);}
+    public void topLeaf(){objects.get(0);}
 
 
     //list type of object
@@ -51,15 +51,14 @@ public class bugList {
 
 
     //display all bugs to terminal
-    public void listBugs(){
+    public void listLeaves(){
 
-        System.out.print("bug content");
+        System.out.print("food content");
         for(int i = 0; i < objects.size(); i++)
         {
             System.out.print(objects.get(i));
         }
         System.out.print("\n");
     }
-
 
 }

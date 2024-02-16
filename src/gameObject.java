@@ -1,6 +1,6 @@
 import java.awt.*;
 
-    public abstract class bug
+    public abstract class gameObject
     {
 
         protected String name = "bug";
@@ -12,12 +12,12 @@ import java.awt.*;
         protected int x;
         protected int y;
 
-        protected bug(){
+        protected gameObject(){
             x=200;
             y=200;
         };
 
-        protected bug(int x, int y) {
+        protected gameObject(int x, int y) {
 
             this.x=x;
             this.y=y;
@@ -46,6 +46,9 @@ import java.awt.*;
 
         public void setY(int y) {
             this.y = y;
+        }
+        public int getValue() {
+            return 1;
         }
 
         public String getName() {

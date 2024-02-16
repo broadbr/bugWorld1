@@ -1,9 +1,7 @@
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 
-import javax.swing.*;
-
- public class Game extends Canvas implements Runnable {
+public class Game extends Canvas implements Runnable {
     
     private int bank =1; //eventual track account here
     private boolean isRunning = false;
@@ -80,15 +78,24 @@ import javax.swing.*;
         
         new Game();
         bugList bugList = new bugList();
+        leafList leafList = new leafList();
 
 
         //testing insects
-        bug b = new ant();
+        gameObject b = new ant();
         bugList.addBug(b);
         bugList.listBugs();
         String name= "";
         name = bugList.objects.get(0).getName();
         System.out.print("type of bug: " + name);
+
+        //testing food
+        gameObject l = new leaf();
+        leafList.addLeaf(l);
+        leafList.listLeaves();
+        String name2= "";
+        name = leafList.objects.get(0).getName();
+        System.out.print("type of food: " + name2);
         
 
 

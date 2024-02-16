@@ -1,6 +1,7 @@
 import java.awt.*;
 
-public class ant extends bug {
+//game object that have ally behaviour
+public class ant extends gameObject implements ally {
 
     protected String name = "ant";
 
@@ -33,7 +34,7 @@ public class ant extends bug {
 
 
     //Kill bug
-    public void damageBug(int var1) {
+    public void damageObject(int var1) {
         this.health -= var1;
         if (this.health <= 0) {
             bugList.objects.remove(this);
@@ -62,6 +63,9 @@ public class ant extends bug {
             return this.health;
         }
 
+        public void move(gameObject bug, gameObject leaf){
+            //
+        }
 
 
 }

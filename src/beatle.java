@@ -1,5 +1,5 @@
 import java.awt.*;
-public class beatle extends bug {
+public class beatle extends gameObject implements ally {
 
 
     protected String name = "beatle";
@@ -37,7 +37,7 @@ public class beatle extends bug {
 
 
     //Kill bug
-    public void damageBug ( int var1){
+    public void damageObject ( int var1){
         this.health -= var1;
         if (this.health <= 0) {
             bugList.objects.remove(this);
@@ -62,6 +62,10 @@ public class beatle extends bug {
     @Override
         public int getHealth () {
             return this.health;
+    }
+
+    public void move(gameObject bug, gameObject leaf){
+        //
     }
 
 }
