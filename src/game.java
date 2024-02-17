@@ -1,14 +1,14 @@
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 
-public class Game extends Canvas implements Runnable {
+public class game extends Canvas implements Runnable {
     
     private int bank =1; //eventual track account here
     private boolean isRunning = false;
     private Thread thread;
 
-    public Game() {
-        new Window(680,320,"Bug World 1",this);//shop+upgrades = 100x2+width = 24x20 = 480+200=680 & height = 16x20=320
+    public game() {
+        new window(680,320,"Bug World 1",this);//shop+upgrades = 100x2+width = 24x20 = 480+200=680 & height = 16x20=320
     }
 
     public void run() {
@@ -76,7 +76,7 @@ public class Game extends Canvas implements Runnable {
     }
     public static void main(String[] args) {
         
-        new Game();
+        new game();
         bugList bugList = new bugList();
         leafList leafList = new leafList();
 
