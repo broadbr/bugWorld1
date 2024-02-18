@@ -1,17 +1,17 @@
 import java.awt.*;
 
-public class leaf extends gameObject implements food{
+public class berry extends gameObject implements food{
 
 
-    protected String name = "leaf";
-    protected int value = 1;
-    protected int health = 1;
+    protected String name = "berry";
+    protected int value = 2;
+    protected int health = 3;
 
     //
-    public leaf(){
+    public berry(){
     };
 
-    public leaf(int x, int y) {
+    public berry(int x, int y) {
         super.setX(x);
         super.setY(y);
     }
@@ -42,12 +42,12 @@ public class leaf extends gameObject implements food{
     //Get/Set
     @Override
     public String getName() {
-        return "leaf";
+        return "berry";
     }
 
     @Override
     public int getValue() {
-        return 1;
+        return 2;
     }
 
     @Override
@@ -56,7 +56,7 @@ public class leaf extends gameObject implements food{
     }
 
     public void grow(gameObject food){
-        //
+
     }
 
 }

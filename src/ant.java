@@ -1,35 +1,71 @@
-import java.awt.Graphics;
-import java.awt.Color;
-import java.awt.Rectangle;
+import java.awt.*;
 
-public class ant extends bug{
-    /* Values are subject to change
-    private String name = "ant";
-    private int damage = 1;
-    private int cost = 1; 
-    private int health = 1;
-    test*/
-    protected int x;
-    protected int y;
-    ant(){
-    super("ant", 1, 1, 1, 320, 320);
+//game object that have ally behaviour
+public class ant extends gameObject implements ally {
+
+    protected String name = "ant";
+
+    protected int damage = 1;
+    protected int price = 1;
+    protected int health = 1;
+
+
+    //
+    public ant(){
+    };
+
+    public ant(int x, int y) {
+        super.setX(x);
+        super.setY(y);
     }
 
-    @Override
+
+    //Graphics
     public void Update() {
-
-        
     }
 
-    @Override
-    public void Render(Graphics g) {
-        
-        g.setColor(Color.black);
-        g.fillRect(280,280 ,40, 40);
+    public void Render(Graphics var1) {
+        var1.setColor(Color.black);
+        var1.fillRect(280, 280, 20, 20);
     }
-
-    @Override
-     public Rectangle getBounds() {
+    public Rectangle getBounds() {
         return null;
-    } 
+    }
+
+
+    //Kill bug
+    public void damageObject(int var1) {
+        this.health -= var1;
+        if (this.health <= 0) {
+            bugList.objects.remove(this);
+        }
+
+    }
+
+    //Get/Set
+        @Override
+        public String getName() {
+            return "ant";
+        }
+
+        @Override
+        public int getDamage() {
+            return 1;
+        }
+
+        @Override
+        public int getPrice() {
+            return 1;
+        }
+
+        @Override
+        public int getHealth() {
+            return this.health;
+        }
+
+        public void move(gameObject bug, gameObject leaf){
+            //
+        }
+
+
 }

@@ -1,53 +1,64 @@
-import java.util.*;
-import java.awt.Graphics;
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
+
 public class leafList {
+    public static List<gameObject> objects = new ArrayList();
 
-        public static List<leaf> objects = new ArrayList<>();
+    public leafList() {
+    }
 
 
-            public void addFood (leaf obj)
-            {
-                objects.add(obj);
-            }
-            public void removeFood (leaf obj)
-            {
-                objects.remove(obj);
-            }
 
-            public void Update() {
-                for(int i = 0; i < objects.size(); i++) {
-                    leaf obj = objects.get(i);
-                    obj.Update();
-                }
-            }
-    
-            public void Render(Graphics g) {
-                for(int i = 0; i < objects.size(); i++) {
-                    leaf obj = objects.get(i);
-                    obj.Render(g);
-                }
-            }
+    public void Update() {
+        for(int var1 = 0; var1 < objects.size(); ++var1) {
+            gameObject var2 = (gameObject)objects.get(var1);
+            var2.Update();
+        }
 
-    public void listLeafs ()
-    {
-        int i =-1;
-        System.out.print("leafList content: ");
-        for(leaf b : objects)
+    }
+
+    public void Render(Graphics var1) {
+        for(int var2 = 0; var2 < objects.size(); ++var2) {
+            gameObject var3 = (gameObject)objects.get(var2);
+            var3.Render(var1);
+        }
+
+    }
+
+
+    //Add a bug
+    //also try: bugList.objects.add(bug);
+    public void addLeaf(gameObject var1) {
+        objects.add(var1);
+    }
+
+    //top of list
+    //also try bugList.objects.get(i);
+    public void topLeaf(){objects.get(0);}
+
+
+    //list type of object
+    /*
+    public String bugName(){
+        bug top = objects.get(0);
+        if (top instanceof ant) {
+            ant a = (ant)top;
+            String n = a.getName();
+        }
+        return n;
+    }*/
+
+
+    //display all bugs to terminal
+    public void listLeaves(){
+
+        System.out.print("food content");
+        for(int i = 0; i < objects.size(); i++)
         {
-            i=i+1;
-            System.out.print(objects.get(i).getName()+",");
+            System.out.print(objects.get(i));
         }
         System.out.print("\n");
     }
-    public leaf getTop(){
-                return objects.get(0);
-    }
 
-    public int getAmount(){
-        int count =0;
-        for(leaf l : objects){
-            count++;
-        }
-        return count;
-    }
 }
