@@ -8,7 +8,7 @@ public class game extends Canvas implements Runnable {
     private Thread thread;
 
     public game() {
-        new window(680,320,"Bug World 1",this);//shop+upgrades = 100x2+width = 24x20 = 480+200=680 & height = 16x20=320
+        new window(1360,640,"Bug World 1",this);//shop+upgrades = 100x2+width = 24x20 = 480+200=680 & height = 16x20=320
     }
 
     public void run() {
