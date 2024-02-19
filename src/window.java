@@ -7,12 +7,20 @@ public class window {
         JFrame frame = new JFrame(title);
 
         JButton antButton = new JButton("Ant purchase");
-        Dimension buttonA = new Dimension(125, 100);
+        JButton beetleButton = new JButton("Beetle purchase");
+
+        JLabel shopName = new JLabel("Insect Shop: ");
+
+        Dimension buttonA = new Dimension(150, 100);
         antButton.setPreferredSize(buttonA);
+        beetleButton.setPreferredSize(buttonA);
 
         JPanel leftPanel = new JPanel();
-        leftPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Top, Left, Bottom, Right padding
+        leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
+        //leftPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Top, Left, Bottom, Right padding
+        leftPanel.add(shopName);
         leftPanel.add(antButton);
+        leftPanel.add(beetleButton);
 
         frame.setLayout(new BorderLayout());
         frame.setPreferredSize(new Dimension(width,height));
