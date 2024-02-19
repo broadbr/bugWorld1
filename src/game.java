@@ -9,6 +9,7 @@ public class game extends Canvas implements Runnable {
 
     public game() {
         new window(1360,640,"Bug World 1",this);//shop+upgrades = 100x2+width = 24x20 = 480+200=680 & height = 16x20=320
+        start();
     }
 
     public void run() {
@@ -39,7 +40,7 @@ public class game extends Canvas implements Runnable {
 	}
     public void start() {
         isRunning = true;
-        thread = new Thread();
+        thread = new Thread(this);
         thread.start();
     }
     public void stop() {
@@ -65,11 +66,8 @@ public class game extends Canvas implements Runnable {
         Graphics g = buff.getDrawGraphics();
         
         g.setColor(Color.green);
-        g.fillRect(0,0,680,320);
+        g.fillRect(0,0,1360,640);
 
-        g.clearRect(9,20,50,50);
-        g.drawString("Shop",10,10);
-        g.drawString("Update",590,10);
 
         g.dispose();
         buff.show();
