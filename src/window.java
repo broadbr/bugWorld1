@@ -16,10 +16,13 @@ public class window {
         beetleButton.setPreferredSize(buttonA);
 
         JPanel leftPanel = new JPanel();
+        leftPanel.setBackground(Color.GRAY);
         leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
         //leftPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Top, Left, Bottom, Right padding
         leftPanel.add(shopName);
+        leftPanel.add(Box.createRigidArea(new Dimension(0, 30)));
         leftPanel.add(antButton);
+        leftPanel.add(Box.createRigidArea(new Dimension(0, 10)));
         leftPanel.add(beetleButton);
 
         frame.setLayout(new BorderLayout());
