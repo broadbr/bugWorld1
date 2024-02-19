@@ -53,10 +53,10 @@ public class leafList {
     //display all bugs to terminal
     public void listLeaves(){
 
-        System.out.print("food content");
+        System.out.print("\nfood content: ");
         for(int i = 0; i < objects.size(); i++)
         {
-            System.out.print(objects.get(i));
+            System.out.print(objects.get(i).getName());
         }
         System.out.print("\n");
     }

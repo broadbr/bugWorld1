@@ -53,10 +53,10 @@ public class bugList {
     //display all bugs to terminal
     public void listBugs(){
 
-        System.out.print("bug content");
+        System.out.print("\nbug content: ");
         for(int i = 0; i < objects.size(); i++)
         {
-            System.out.print(objects.get(i));
+            System.out.print(objects.get(i).getName());
         }
         System.out.print("\n");
     }

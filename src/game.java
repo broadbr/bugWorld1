@@ -94,7 +94,7 @@ public class game extends Canvas implements Runnable {
         leafList.addLeaf(l);
         leafList.listLeaves();
         String name2= "";
-        name = leafList.objects.get(0).getName();
+        name2 = leafList.objects.get(0).getName();
         System.out.print("type of food: " + name2);
         
 
