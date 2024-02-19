@@ -34,7 +34,7 @@ public class berry extends gameObject implements food{
     public void damageObject(int var1) {
         this.health -= var1;
         if (this.health <= 0) {
-            leafList.objects.remove(this);
+            foodList.objects.remove(this);
         }
 
     }

@@ -76,7 +76,7 @@ public class game extends Canvas implements Runnable {
         
         new game();
         bugList bugList = new bugList();
-        leafList leafList = new leafList();
+        foodList foodList = new foodList();
 
 
         //testing insects
@@ -89,10 +89,10 @@ public class game extends Canvas implements Runnable {
 
         //testing food
         gameObject l = new leaf();
-        leafList.addLeaf(l);
-        leafList.listLeaves();
+        foodList.addLeaf(l);
+        foodList.listLeaves();
         String name2= "";
-        name2 = leafList.objects.get(0).getName();
+        name2 = foodList.objects.get(0).getName();
         System.out.print("type of food: " + name2);
         
 
