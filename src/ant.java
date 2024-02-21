@@ -11,8 +11,10 @@ public class ant extends gameObject implements ally {
 
 
     //
-    public ant(){
-    };
+    public ant() {
+    }
+
+    ;
 
     public ant(int x, int y) {
         super.setX(x);
@@ -28,6 +30,7 @@ public class ant extends gameObject implements ally {
         var1.setColor(Color.black);
         var1.fillRect(280, 280, 20, 20);
     }
+
     public Rectangle getBounds() {
         return null;
     }
@@ -43,49 +46,44 @@ public class ant extends gameObject implements ally {
     }
 
     //Get/Set
-        @Override
-        public String getName() {
-            return "ant";
+    @Override
+    public String getName() {
+        return "ant";
+    }
+
+    @Override
+    public int getDamage() {
+        return 1;
+    }
+
+    @Override
+    public int getPrice() {
+        return 1;
+    }
+
+    @Override
+    public int getHealth() {
+        return this.health;
+    }
+
+    public boolean move(gameObject bug, gameObject leaf) {
+        int leafX = leaf.getX();
+        int leafY = leaf.getY();
+        int bugX = bug.getX();
+        int bugY = bug.getY();
+        if (leafX > bugX) {
+            bugX++;
+        } else if (leafX < bugX) {
+            bugX--;
+        }
+        if (leafY > bugY) {
+            bugY++;
+        } else if (leafY < bugY) {
+            bugY--;
         }
 
-        @Override
-        public int getDamage() {
-            return 1;
-        }
+    }
 
-        @Override
-        public int getPrice() {
-            return 1;
-        }
-
-        @Override
-        public int getHealth() {
-            return this.health;
-        }
-
-        public boolean move(gameObject bug, gameObject leaf){
-            int leafX = leaf.getX();
-            int leafY = leaf.getY();
-            int bugX = bug.getX();
-            int bugY = bug.getY();
-            if(leafX > bugX)
-            {
-                bugX ++;
-            }
-            else if(leafX < bugX)
-            {
-                bugX--;
-            }
-            if(leafY > bugY)
-            {
-                bugY++;
-            }
-            else if(leafY < bugY)
-            {
-                bugY--;
-            }
-
-        }
 
 
 }
