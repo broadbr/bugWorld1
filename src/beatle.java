@@ -64,8 +64,9 @@ public class beatle extends gameObject implements ally {
             return this.health;
     }
 
-    public void move(gameObject bug, gameObject leaf){
+    public boolean move(gameObject bug, gameObject leaf){
         //
+        return false;
     }
 
 }

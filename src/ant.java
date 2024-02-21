@@ -63,8 +63,28 @@ public class ant extends gameObject implements ally {
             return this.health;
         }
 
-        public void move(gameObject bug, gameObject leaf){
-            //
+        public boolean move(gameObject bug, gameObject leaf){
+            int leafX = leaf.getX();
+            int leafY = leaf.getY();
+            int bugX = bug.getX();
+            int bugY = bug.getY();
+            if(leafX > bugX)
+            {
+                bugX ++;
+            }
+            else if(leafX < bugX)
+            {
+                bugX--;
+            }
+            if(leafY > bugY)
+            {
+                bugY++;
+            }
+            else if(leafY < bugY)
+            {
+                bugY--;
+            }
+
         }
 
 
