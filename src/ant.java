@@ -63,6 +63,8 @@ public class ant extends gameObject implements ally {
             return this.health;
         }
 
+        public void setDamage(int damage) {this.damage=damage;}
+
         public boolean move(gameObject bug, gameObject leaf){
             int leafX = leaf.getX();
             int leafY = leaf.getY();

@@ -3,9 +3,9 @@ import java.awt.*;
     public abstract class gameObject
     {
 
-        protected String name = "bug";
+        protected String name = "";
 
-        protected int damage;
+        protected int damage = 1;
         protected int price;
         protected int health;
 
@@ -66,6 +66,8 @@ import java.awt.*;
         public int getHealth() {
             return this.health;
         }
+
+        public void setDamage(int damage) {this.damage=damage;}
 
 
     }
