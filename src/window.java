@@ -1,10 +1,15 @@
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
 public class window {
     public window(int width, int height, String title, game game) {
         JFrame frame = new JFrame(title);
+
+        ant a = new ant();
+        beatle b = new beatle();
 
         JButton antButton = new JButton("Ant purchase");
         JButton beetleButton = new JButton("Beetle purchase");
@@ -39,6 +44,23 @@ public class window {
         rightPanel.add(beetleUpgrade);
         rightPanel.add(Box.createRigidArea(new Dimension(0, 390)));
         rightPanel.add(levelUp);
+
+
+        antButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                bugList.objects.add(a);
+                System.out.println("Ant has been purchased");
+            }
+        });
+
+        beetleButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                bugList.objects.add(b);
+                System.out.println("Beetle has been purchased");
+            }
+        });
 
 
         frame.setLayout(new BorderLayout());
