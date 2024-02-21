@@ -9,13 +9,18 @@ import javax.swing.JFrame;
 
 public class game extends Canvas implements Runnable {
     
-    private int bank =1; //eventual track account here
+    private int bank =1;
     private boolean isRunning = false;
     private Thread thread;
+    private bugList bugList;
+    private foodList foodList;
 
     public game() {
         new window(1360,640,"Bug World 1",this);//shop+upgrades = 100x2+width = 24x20 = 480+200=680 & height = 16x20=320
         start();
+
+        bugList = new bugList();
+        foodList = new foodList();
     }
 
     public void run() {
@@ -37,7 +42,7 @@ public class game extends Canvas implements Runnable {
 				frames++;
 				delta--;
 				if(System.currentTimeMillis() - time >= 1000) {
-					System.out.println("fps:" + frames);
+					//System.out.println("fps:" + frames);
 					time += 1000;
 					frames = 0;
 				}
@@ -59,7 +64,7 @@ public class game extends Canvas implements Runnable {
         }
     }
     public void update() {
-
+        bugList.Update();
     }
     public void render() {
         BufferStrategy buff = this.getBufferStrategy();
@@ -69,11 +74,15 @@ public class game extends Canvas implements Runnable {
             return; 
         }
         
+        Image image = Toolkit.getDefaultToolkit().getImage("src/assets/csNewAsset.png");
         Graphics g = buff.getDrawGraphics();
-        
-        g.setColor(Color.green);
-        g.fillRect(0,0,1360,640);
+        ////////////////////////////////////
 
+        g.drawImage(image,150,100,null);
+
+        /////////////////////////////////////
+        bugList.Render(g);
+        foodList.Render(g);
 
         g.dispose();
         buff.show();
