@@ -2,10 +2,10 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class leafList {
+public class foodList {
     public static List<gameObject> objects = new ArrayList();
 
-    public leafList() {
+    public foodList() {
     }
 
 
