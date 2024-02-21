@@ -101,7 +101,7 @@ public class game extends Canvas implements Runnable {
         name2 = foodList.objects.get(0).getName();
         System.out.print("type of food: " + name2);
 
-
+/*
         //trying to load image
         Image image = Toolkit.getDefaultToolkit().getImage("jetbrains://idea/navigate/reference?project=bugWorld1&path=assets/csAsset.png");
 
@@ -111,7 +111,7 @@ public class game extends Canvas implements Runnable {
         frame.pack();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
-        
+  */
 
 
     }
