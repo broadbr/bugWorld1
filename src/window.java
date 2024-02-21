@@ -11,13 +11,14 @@ public class window {
         //local variables defined
         ant a = new ant();
         beatle b = new beatle();
+        upgrades upgrades = new upgrades();
 
 
         //buttons created
         JButton antButton = new JButton("Ant purchase");
         JButton beetleButton = new JButton("Beetle purchase");
-        JButton antUpgrade = new JButton("Upgrade Ant");
-        JButton beetleUpgrade = new JButton("Upgrade Beetle");
+        JButton attackUpgrade = new JButton("Upgrade Damage");
+        JButton healthUpgrade = new JButton("Upgrade Beetle");
         JButton levelUp = new JButton("Level Up");
 
 
@@ -31,7 +32,7 @@ public class window {
         Dimension buttonA = new Dimension(150, 100);
         antButton.setPreferredSize(buttonA);
         beetleButton.setPreferredSize(buttonA);
-        antUpgrade.setPreferredSize(buttonA);
+        attackUpgrade.setPreferredSize(buttonA);
 
 
         //shop display to left of page
@@ -51,9 +52,9 @@ public class window {
         rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
         rightPanel.add(upgradeName);
         rightPanel.add(Box.createRigidArea(new Dimension(0, 30)));
-        rightPanel.add(antUpgrade);
+        rightPanel.add(attackUpgrade);
         rightPanel.add(Box.createRigidArea(new Dimension(0, 10)));
-        rightPanel.add(beetleUpgrade);
+        rightPanel.add(healthUpgrade);
         rightPanel.add(Box.createRigidArea(new Dimension(0, 390)));
         rightPanel.add(levelUp);
 
@@ -73,6 +74,14 @@ public class window {
             public void actionPerformed(ActionEvent e) {
                 bugList.objects.add(b);
                 System.out.println("Beetle has been purchased");
+            }
+        });
+
+        attackUpgrade.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                upgrades.increaseDamage();
+                System.out.println("Bug damage increased");
             }
         });
 
