@@ -2,12 +2,15 @@ import java.awt.*;
 
 //game object that have ally behaviour
 public class ant extends gameObject implements ally {
+    foodList fl = new foodList();
 
     protected String name = "ant";
 
     protected int damage = 1;
     protected int price = 1;
     protected int health = 1;
+
+    protected boolean onLeaf = false;
 
 
     //
@@ -22,6 +25,10 @@ public class ant extends gameObject implements ally {
 
     //Graphics
     public void Update() {
+        if(!onLeaf)
+        {
+            //move(this , fl.getLeafList());
+        }
     }
 
     public void Render(Graphics var1) {
@@ -65,7 +72,7 @@ public class ant extends gameObject implements ally {
 
         public void setDamage(int damage) {this.damage=damage;}
 
-        public boolean move(gameObject bug, gameObject leaf){
+        public void move(gameObject bug, gameObject leaf){
             int leafX = leaf.getX();
             int leafY = leaf.getY();
             int bugX = bug.getX();
@@ -86,6 +93,15 @@ public class ant extends gameObject implements ally {
             {
                 bugY--;
             }
+            System.out.println("Ant cords:(" + bugX + "," + bugY + ") Leaf cords:(" + leafX + "," + leafY + ")");
+            if(leafX == bugX && leafY == bugY)
+            {
+                onLeaf = true;
+            }
+            else{
+                onLeaf = false;
+            }
+
 
         }
 

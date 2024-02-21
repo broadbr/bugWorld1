@@ -65,9 +65,9 @@ public class beatle extends gameObject implements ally {
     }
     public void setDamage(int damage) {this.damage=damage;}
 
-    public boolean move(gameObject bug, gameObject leaf){
+    public void move(gameObject bug, gameObject leaf){
         //
-        return false;
+
     }
 
 }

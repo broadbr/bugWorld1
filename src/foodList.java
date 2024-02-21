@@ -60,5 +60,9 @@ public class foodList {
         }
         System.out.print("\n");
     }
+    public  List getLeafList()
+    {
+        return objects;
+    }
 
 }
