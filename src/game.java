@@ -66,6 +66,7 @@ public class game extends Canvas implements Runnable {
     public void update() {
         bugList.Update();
     }
+
     public void render() {
         BufferStrategy buff = this.getBufferStrategy();
         
