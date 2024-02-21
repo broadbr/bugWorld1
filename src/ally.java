@@ -1,3 +1,3 @@
 public interface ally {
-    public abstract void move(gameObject bug, gameObject leaf);
+    public abstract boolean move(gameObject bug, gameObject leaf);
 }
