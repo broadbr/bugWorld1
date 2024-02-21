@@ -13,6 +13,7 @@ public class window {
         beatle b = new beatle();
         upgrades upgrades = new upgrades();
         stage1 stage1 = new stage1();
+        bank bank = new bank();
 
 
         //buttons created
@@ -27,7 +28,7 @@ public class window {
         //text titles created
         JLabel shopName = new JLabel("Insect Shop: ");
         JLabel upgradeName = new JLabel("Upgrades: ");
-        JLabel shopText = new JLabel("Money: ");
+        JLabel shopText = new JLabel("Money: " + bank.getAccount());
 
 
         //button size declared
@@ -53,6 +54,7 @@ public class window {
         tempLeaf.setPreferredSize(buttonA);
         leftPanel.add(Box.createRigidArea(new Dimension(0, 200)));
         leftPanel.add(tempLeaf);
+        leftPanel.add(shopText);
 
         tempLeaf.addActionListener(new ActionListener() {
             @Override
