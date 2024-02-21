@@ -11,10 +11,25 @@ public class stage1 {
     public void makeFood()
 
     {
-        // tree location
+        // tree location(s)
         int tree1X = 60;
         int tree1Y = 60;
+        //int tree2X = 120;
+        //int tree2X = 180;
 
+
+        //choose a tree
+        /*
+        int r = ThreadLocalRandom.current().nextInt(1, 2+1);
+        if(r ==1){
+            currTreeX = tree1X;
+            currTreeY = tree1Y
+        }
+        else{
+            currTreeX = tree2X;
+            currTreeY = tree2X;
+        }
+        */
 
         //selects random type of food
         int randNum = ThreadLocalRandom.current().nextInt(1, 2 + 1);//(min,max)
