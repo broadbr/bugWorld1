@@ -12,14 +12,16 @@ public class window {
         ant a = new ant();
         beatle b = new beatle();
         upgrades upgrades = new upgrades();
+        stage1 stage1 = new stage1();
 
 
         //buttons created
         JButton antButton = new JButton("Ant purchase");
         JButton beetleButton = new JButton("Beetle purchase");
         JButton attackUpgrade = new JButton("Upgrade Damage");
-        JButton healthUpgrade = new JButton("Upgrade Beetle");
+        JButton healthUpgrade = new JButton("Upgrade Health");
         JButton levelUp = new JButton("Level Up");
+
 
 
         //text titles created
@@ -45,6 +47,19 @@ public class window {
         leftPanel.add(Box.createRigidArea(new Dimension(0, 10)));
         leftPanel.add(beetleButton);
 
+
+        //temp game testing
+        JButton tempLeaf = new JButton("Spawn Leaf");
+        tempLeaf.setPreferredSize(buttonA);
+        leftPanel.add(Box.createRigidArea(new Dimension(0, 200)));
+        leftPanel.add(tempLeaf);
+
+        tempLeaf.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                stage1.makeFood();
+            }
+        });
 
         //upgrade display to right of page
         JPanel rightPanel = new JPanel();
