@@ -83,7 +83,11 @@ public class game extends Canvas implements Runnable {
         new game();
         bugList bugList = new bugList();
         foodList foodList = new foodList();
+        stage1 stage1 = new stage1();
 
+
+
+        stage1.makeFood();
 
         //testing insects
         gameObject b = new ant();
@@ -101,17 +105,10 @@ public class game extends Canvas implements Runnable {
         name2 = foodList.objects.get(0).getName();
         System.out.print("type of food: " + name2);
 
-/*
-        //trying to load image
-        Image image = Toolkit.getDefaultToolkit().getImage("jetbrains://idea/navigate/reference?project=bugWorld1&path=assets/csAsset.png");
 
-        JFrame frame = new JFrame("Image Canvas");
-        imageMaker canvas = new imageMaker(image);
-        frame.add(canvas);
-        frame.pack();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
-  */
+
+
+        
 
 
     }
