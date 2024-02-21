@@ -24,6 +24,7 @@ public class window {
         //text titles created
         JLabel shopName = new JLabel("Insect Shop: ");
         JLabel upgradeName = new JLabel("Upgrades: ");
+        JLabel shopText = new JLabel("Money: ");
 
 
         //button size declared
