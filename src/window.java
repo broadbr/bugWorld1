@@ -8,23 +8,32 @@ public class window {
     public window(int width, int height, String title, game game) {
         JFrame frame = new JFrame(title);
 
+        //local variables defined
         ant a = new ant();
         beatle b = new beatle();
 
+
+        //buttons created
         JButton antButton = new JButton("Ant purchase");
         JButton beetleButton = new JButton("Beetle purchase");
         JButton antUpgrade = new JButton("Upgrade Ant");
         JButton beetleUpgrade = new JButton("Upgrade Beetle");
         JButton levelUp = new JButton("Level Up");
 
+
+        //text titles created
         JLabel shopName = new JLabel("Insect Shop: ");
         JLabel upgradeName = new JLabel("Upgrades: ");
 
+
+        //button size declared
         Dimension buttonA = new Dimension(150, 100);
         antButton.setPreferredSize(buttonA);
         beetleButton.setPreferredSize(buttonA);
         antUpgrade.setPreferredSize(buttonA);
 
+
+        //shop display to left of page
         JPanel leftPanel = new JPanel();
         leftPanel.setBackground(Color.GRAY);
         leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
@@ -34,6 +43,8 @@ public class window {
         leftPanel.add(Box.createRigidArea(new Dimension(0, 10)));
         leftPanel.add(beetleButton);
 
+
+        //upgrade display to right of page
         JPanel rightPanel = new JPanel();
         rightPanel.setBackground(Color.GRAY);
         rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
@@ -46,6 +57,8 @@ public class window {
         rightPanel.add(levelUp);
 
 
+
+        //button functionality
         antButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -63,6 +76,8 @@ public class window {
         });
 
 
+
+        //window created, objects added to window
         frame.setLayout(new BorderLayout());
         frame.setPreferredSize(new Dimension(width,height));
         frame.setMaximumSize(new Dimension (width,height));
