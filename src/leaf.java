@@ -23,7 +23,7 @@ public class leaf extends gameObject implements food{
 
     public void Render(Graphics var1) {
         var1.setColor(Color.MAGENTA);
-        var1.fillRect(280, 280, 20, 20);
+        var1.fillRect(x, y, 20, 20);
     }
     public Rectangle getBounds() {
         return null;

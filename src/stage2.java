@@ -1,11 +1,11 @@
 //import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
-    // used for first stage
-    //will spawn each leaf in a radius around a theoretical tree
+// used for first stage
+//will spawn each leaf in a radius around a theoretical tree
 
-    //call every n seconds to make food
-public class stage1 {
+//call every n seconds to make food
+public class stage2 {
 
 
     public void makeFood()
@@ -16,16 +16,22 @@ public class stage1 {
         int tree1Y = 140;
         int tree2X = 620;
         int tree2Y = 230;
+        int tree3X = 000;
+        int tree3Y = 000;
 
 
         //choose a tree
 
         int currTreeX =0;
         int currTreeY;
-        int r = ThreadLocalRandom.current().nextInt(1, 2+1);
+        int r = ThreadLocalRandom.current().nextInt(1, 3+1);
         if(r ==1){
             currTreeX = tree1X;
             currTreeY = tree1Y;
+        }
+        else if(r == 3){
+            currTreeX = tree3X;
+            currTreeY = tree3Y;
         }
         else{
             currTreeX = tree2X;
@@ -70,8 +76,8 @@ public class stage1 {
             }
             //if !ovelaping spawn food in random location
             if(!overlap){
-            berry l = new berry(x, y);//creates new leaf
-            foodList.objects.add(l);//adds it to list
+                berry l = new berry(x, y);//creates new leaf
+                foodList.objects.add(l);//adds it to list
             }
         }
     }
