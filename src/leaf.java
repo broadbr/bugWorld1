@@ -6,6 +6,7 @@ public class leaf extends gameObject implements food{
     protected String name = "leaf";
     protected int value = 1;
     protected int health = 1;
+    Image image = Toolkit.getDefaultToolkit().getImage("src/assets/leaf.png");
 
     //
     public leaf(){
@@ -22,8 +23,8 @@ public class leaf extends gameObject implements food{
     }
 
     public void Render(Graphics var1) {
-        var1.setColor(Color.MAGENTA);
-        var1.fillRect(x, y, 20, 20);
+        var1.drawImage(image,x,y,null);
+       // var1.fillRect(x, y, 20, 20);
     }
     public Rectangle getBounds() {
         return null;
