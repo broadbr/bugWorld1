@@ -60,6 +60,10 @@ public class window {
         tempLeaf.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+
+
+                /*
                 boolean runStage = true;
                 try {
                     while (runStage) {
@@ -68,7 +72,9 @@ public class window {
 
                     }
                 } catch (InterruptedException ex){}
+                */
             }
+
         });
 
         //upgrade display to right of page
