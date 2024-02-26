@@ -100,6 +100,7 @@ public class game extends Canvas implements Runnable {
         stage1.makeFood();
 
         //testing insects
+        /*
         gameObject b = new ant();
         bugList.addBug(b);
         bugList.listBugs();
@@ -114,7 +115,7 @@ public class game extends Canvas implements Runnable {
         String name2= "";
         name2 = foodList.objects.get(0).getName();
         System.out.print("type of food: " + name2);
-
+        */
 
 
 
