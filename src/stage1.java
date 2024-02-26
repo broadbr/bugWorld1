@@ -12,10 +12,10 @@ public class stage1 {
 
     {
         // tree location(s)
-        int tree1X = 220;
+        int tree1X = 230;
         int tree1Y = 140;
         int tree2X = 620;
-        int tree2Y = 230;
+        int tree2Y = 250;
 
 
         //choose a tree
@@ -38,8 +38,8 @@ public class stage1 {
 
 
         // creates random location within 6 units of tree
-        int x = ThreadLocalRandom.current().nextInt(currTreeX, 150 + currTreeX);
-        int y = ThreadLocalRandom.current().nextInt(currTreeY, 150 + currTreeY);
+        int x = ThreadLocalRandom.current().nextInt(currTreeX, 175 + currTreeX);
+        int y = ThreadLocalRandom.current().nextInt(currTreeY, 175 + currTreeY);
 
         //if #==1 create leaf, otherwise create other food
         if (randNum == 1) {
