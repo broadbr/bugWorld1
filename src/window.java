@@ -51,9 +51,6 @@ public class window {
 
 
         //temp game testing
-
-        //boolean runStage = false;
-
         JButton tempLeaf = new JButton("Spawn Leaf");
         tempLeaf.setPreferredSize(buttonA);
         leftPanel.add(Box.createRigidArea(new Dimension(0, 200)));
@@ -92,24 +89,44 @@ public class window {
         antButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                bugList.objects.add(a);
-                System.out.println("Ant has been purchased");
+                if(bank.getAccount() >= a.getPrice()) {
+                    bugList.objects.add(a);
+                    bank.setSpend(a.getPrice());
+                    System.out.println("\nAnt has been purchased");
+                }
+                else{System.out.println("\nNot enough money for ant!");}
             }
         });
 
         beetleButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                bugList.objects.add(b);
-                System.out.println("Beetle has been purchased");
+                if(bank.getAccount() >= b.getPrice()) {
+                    bugList.objects.add(b);
+                    bank.setSpend(b.getPrice());
+                    System.out.println("\nBeetle has been purchased");
+                }
+                else{System.out.println("\nNot enough money for beetle!");}
             }
         });
 
         attackUpgrade.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                upgrades.increaseDamage();
-                System.out.println("Bug damage increased");
+                if(bank.getAccount() >= upgrades.getPrice()) {
+                    upgrades.increaseDamage();
+                    System.out.println("Bug damage increased");
+                    bank.setSpend(upgrades.getPrice());
+                }
+                else{System.out.println("\nNot enough money for beetle!");}
+            }
+
+        });
+
+        levelUp.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
             }
         });
 

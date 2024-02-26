@@ -1,5 +1,7 @@
 public class upgrades {
 
+    protected int price = 100;
+
    public void increaseDamage(){
 
         for(int i = 0; i < bugList.objects.size(); i++) {
@@ -14,4 +16,5 @@ public class upgrades {
         }
     }
 
+    public int getPrice() {return price;}
 }
