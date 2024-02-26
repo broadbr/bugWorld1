@@ -3,7 +3,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class foodList {
+    //leaf firstLeaf = new leaf(100,100);
     public static List<gameObject> objects = new ArrayList();
+
 
     public foodList() {
     }
@@ -60,9 +62,16 @@ public class foodList {
         }
         System.out.print("\n");
     }
-    public  List getLeafList()
+    public  gameObject getLeafList()
     {
-        return objects;
+        if(objects.get(0) != null)
+        {
+            return objects.get(0);
+        }
+        else
+        {
+            return null;
+        }
     }
 
 }
