@@ -3,7 +3,7 @@ import java.awt.*;
 //game object that have ally behaviour
 public class ant extends gameObject implements ally {
     foodList fl = new foodList();
-
+    Image image = Toolkit.getDefaultToolkit().getImage("src/assets/Ants1.png");
     protected String name = "ant";
 
     protected int damage = 1;
@@ -32,8 +32,8 @@ public class ant extends gameObject implements ally {
     }
 
     public void Render(Graphics var1) {
-        var1.setColor(Color.black);
-        var1.fillRect(280, 280, 20, 20);
+        var1.drawImage(image,x,y,null);
+        //var1.fillRect(x, y, 20, 20);
     }
     public Rectangle getBounds() {
         return null;
