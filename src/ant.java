@@ -2,7 +2,15 @@ import java.awt.*;
 
 //game object that have ally behaviour
 public class ant extends gameObject implements ally {
-    foodList fl = new foodList();
+    //foodList fl = new foodList();
+
+    //gameObject leaf = fl.getLeafList();
+    leaf newLeaf = new leaf(100,100);
+    int bugX , bugY;
+    int leafX , leafY;
+
+    protected boolean lockOnLeaf = false;
+
     Image image = Toolkit.getDefaultToolkit().getImage("src/assets/Ants1.png");
     protected String name = "ant";
 
@@ -25,10 +33,10 @@ public class ant extends gameObject implements ally {
 
     //Graphics
     public void Update() {
-        if(!onLeaf)
-        {
-            //move(this , fl.getLeafList());
-        }
+        //if(!onLeaf)
+        //{
+            move(this , newLeaf);
+        //}
     }
 
     public void Render(Graphics var1) {
@@ -73,18 +81,22 @@ public class ant extends gameObject implements ally {
         public void setDamage(int damage) {this.damage=damage;}
 
         public void move(gameObject bug, gameObject leaf){
-            int leafX = leaf.getX();
-            int leafY = leaf.getY();
-            int bugX = bug.getX();
-            int bugY = bug.getY();
+            if(!lockOnLeaf) {
+                leafX = leaf.getX();
+                leafY = leaf.getY();
+                bugX = bug.getX();
+                bugY = bug.getY();
+                lockOnLeaf = true;
+            }
             if(leafX > bugX)
             {
-                bugX ++;
+                bugX++;
             }
             else if(leafX < bugX)
             {
                 bugX--;
             }
+
             if(leafY > bugY)
             {
                 bugY++;
@@ -97,6 +109,10 @@ public class ant extends gameObject implements ally {
             if(leafX == bugX && leafY == bugY)
             {
                 onLeaf = true;
+                lockOnLeaf = false;
+                System.out.println("WE FOUND A LEAF AND GOT IT");
+                bug.setX(bugX);
+                bug.setY(bugY);
             }
             else{
                 onLeaf = false;
