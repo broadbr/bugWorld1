@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.Thread;
 
 import javax.swing.*;
 
@@ -50,6 +51,9 @@ public class window {
 
 
         //temp game testing
+
+        //boolean runStage = false;
+
         JButton tempLeaf = new JButton("Spawn Leaf");
         tempLeaf.setPreferredSize(buttonA);
         leftPanel.add(Box.createRigidArea(new Dimension(0, 200)));
@@ -59,7 +63,14 @@ public class window {
         tempLeaf.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                stage1.makeFood();
+                boolean runStage = true;
+                try {
+                    while (runStage) {
+                        Thread.sleep(1000);
+                        stage1.makeFood();
+
+                    }
+                } catch (InterruptedException ex){}
             }
         });
 
