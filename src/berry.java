@@ -24,7 +24,7 @@ public class berry extends gameObject implements food{
     }
 
     public void Render(Graphics var1) {
-        var1.drawImage(image,x,y,null);
+        var1.drawImage(image,(int)x,(int)y,null);
        // vr1.fillRect(x, y, 20, 20);
     }
     public Rectangle getBounds() {
