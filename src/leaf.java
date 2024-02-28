@@ -6,7 +6,7 @@ public class leaf extends gameObject implements food{
     protected String name = "leaf";
     protected int value = 1;
     protected int health = 1;
-    Image image = Toolkit.getDefaultToolkit().getImage("src/assets/leaf.png");
+    Image image = Toolkit.getDefaultToolkit().getImage("src/assets/REDgrass.png");
 
     //
     public leaf(){

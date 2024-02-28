@@ -14,6 +14,8 @@ public class game extends Canvas implements Runnable {
     private Thread thread;
     private bugList bugList;
     private foodList foodList;
+    private stage1 stage1;
+    private stage2 stage2;
 
     public game() {
         new window(1360,640,"Bug World 1",this);//shop+upgrades = 100x2+width = 24x20 = 480+200=680 & height = 16x20=320
@@ -21,6 +23,7 @@ public class game extends Canvas implements Runnable {
 
         bugList = new bugList();
         foodList = new foodList();
+        stage2 = new stage2();
     }
 
     public void run() {
@@ -65,6 +68,8 @@ public class game extends Canvas implements Runnable {
     }
     public void update() {
         bugList.Update();
+        foodList.Update();
+        stage2.makeFood();
     }
 
     public void render() {
@@ -75,11 +80,23 @@ public class game extends Canvas implements Runnable {
             return; 
         }
         
-        Image image = Toolkit.getDefaultToolkit().getImage("src/assets/csNewAsset.png");
+        // load stage2
+        Image image = Toolkit.getDefaultToolkit().getImage("src/assets/csStage2.png");
         Graphics g = buff.getDrawGraphics();
+        g.drawImage(image,-70,0,null); // loads stage 2
         ////////////////////////////////////
 
-        g.drawImage(image,150,100,null);
+        //load stage1
+        //Image image = Toolkit.getDefaultToolkit().getImage("src/assets/csNewAsset.png");
+        //Graphics g = buff.getDrawGraphics();
+        //g.drawImage(image,150,100,null); // loads stage 1
+
+
+        // Draw portal
+        Image image2 = Toolkit.getDefaultToolkit().getImage("src/assets/portal.png");
+        Graphics g2 = buff.getDrawGraphics();
+        g2.drawImage(image2,500,290,null); //
+
 
         /////////////////////////////////////
         bugList.Render(g);
