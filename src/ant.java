@@ -6,12 +6,12 @@ public class ant extends gameObject implements ally {
 
     //gameObject leaf = fl.getLeafList();
     leaf newLeaf = new leaf(100,100);
-    int bugX , bugY;
-    int leafX , leafY;
+    private int bugX , bugY;
+    private int leafX , leafY;
 
-    protected boolean canMove = true;
-    protected int canMovei = 0;
-    protected boolean lockOnLeaf = false;
+    private boolean canMove = true;
+    private int canMovei = 0;
+    private boolean lockOnLeaf = false;
 
     Image image = Toolkit.getDefaultToolkit().getImage("src/assets/AntSmall.png");
     protected String name = "ant";
@@ -35,10 +35,10 @@ public class ant extends gameObject implements ally {
 
     //Graphics
     public void Update() {
-        if(!onLeaf && canMove)
-        {
+        //if(!onLeaf)
+        //{
             move(this , newLeaf);
-        }
+        //}
     }
 
     public void Render(Graphics var1) {
@@ -86,7 +86,7 @@ public class ant extends gameObject implements ally {
             if(canMovei != 0)
             {
                 canMovei++;
-                if(canMovei == 10)
+                if(canMovei >= 10)
                 {
                     canMovei = 0;
                 }
@@ -129,6 +129,7 @@ public class ant extends gameObject implements ally {
             else{
                 onLeaf = false;
             }
+            canMovei++;
 
 
         }
