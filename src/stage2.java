@@ -17,7 +17,7 @@ public class stage2 {
         int tree3X = 100;
         int tree3Y = 280;
         int tree4X = 420;
-        int tree4Y = 390;
+        int tree4Y = 380;
 
 
         //odds of spawning

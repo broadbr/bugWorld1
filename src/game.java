@@ -16,6 +16,7 @@ public class game extends Canvas implements Runnable {
     private foodList foodList;
     private stage1 stage1;
     private stage2 stage2;
+    public int activeStage =1;
 
     public game() {
         new window(1360,640,"Bug World 1",this);//shop+upgrades = 100x2+width = 24x20 = 480+200=680 & height = 16x20=320
@@ -23,8 +24,10 @@ public class game extends Canvas implements Runnable {
 
         bugList = new bugList();
         foodList = new foodList();
+        stage1 = new stage1();
         stage2 = new stage2();
     }
+
 
     public void run() {
 		long lastime = System.nanoTime();
@@ -66,10 +69,21 @@ public class game extends Canvas implements Runnable {
             e.printStackTrace();
         }
     }
+
     public void update() {
         bugList.Update();
         foodList.Update();
-        stage2.makeFood();
+
+
+
+        //select active stage
+        if(activeStage==1) {
+            stage1.makeFood();// runs stage 1
+        }
+        if(activeStage==2){
+            stage2.makeFood();// runs stage 2
+        }
+
     }
 
     public void render() {
@@ -81,15 +95,15 @@ public class game extends Canvas implements Runnable {
         }
         
         // load stage2
-        Image image = Toolkit.getDefaultToolkit().getImage("src/assets/csStage2.png");
-        Graphics g = buff.getDrawGraphics();
-        g.drawImage(image,-70,0,null); // loads stage 2
+        //Image image = Toolkit.getDefaultToolkit().getImage("src/assets/csStage2.png");
+        //Graphics g = buff.getDrawGraphics();
+        //g.drawImage(image,-70,0,null); // loads stage 2
         ////////////////////////////////////
 
         //load stage1
-        //Image image = Toolkit.getDefaultToolkit().getImage("src/assets/csNewAsset.png");
-        //Graphics g = buff.getDrawGraphics();
-        //g.drawImage(image,150,100,null); // loads stage 1
+        Image image = Toolkit.getDefaultToolkit().getImage("src/assets/csNewAsset.png");
+        Graphics g = buff.getDrawGraphics();
+        g.drawImage(image,150,100,null); // loads stage 1
 
 
         // Draw portal

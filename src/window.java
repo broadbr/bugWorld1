@@ -6,6 +6,11 @@ import java.lang.Thread;
 import javax.swing.*;
 
 public class window {
+
+    public int activeStage = 1;
+    public window(){
+
+    }
     public window(int width, int height, String title, game game) {
         JFrame frame = new JFrame(title);
 
@@ -132,7 +137,7 @@ public class window {
         levelUp.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                game.activeStage++;
             }
         });
 
@@ -152,5 +157,8 @@ public class window {
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
+    }
+    public int getActiveStage(){
+        return activeStage;
     }
 }
