@@ -43,7 +43,7 @@ public class window {
         JPanel leftPanel = new JPanel();
         leftPanel.setBackground(Color.GRAY);
         leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
-        leftPanel.setPreferredSize(new Dimension(150, 2000));
+        //leftPanel.setPreferredSize(new Dimension(150, 2000));
         leftPanel.add(shopName);
         leftPanel.add(Box.createRigidArea(new Dimension(0, 30)));
         leftPanel.add(antButton);
@@ -82,7 +82,7 @@ public class window {
         JPanel rightPanel = new JPanel();
         rightPanel.setBackground(Color.GRAY);
         rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
-        rightPanel.setPreferredSize(new Dimension(150, 2000));
+        //rightPanel.setPreferredSize(new Dimension(150, 2000));
         rightPanel.add(upgradeName);
         rightPanel.add(Box.createRigidArea(new Dimension(0, 30)));
         rightPanel.add(attackUpgrade);
