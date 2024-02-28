@@ -18,8 +18,8 @@ public class window {
 
 
         //buttons created
-        JButton antButton = new JButton("Ant purchase");
-        JButton beetleButton = new JButton("Beetle purchase");
+        JButton antButton = new JButton("Ant: " + a.getPrice() + "$");
+        JButton beetleButton = new JButton("Beetle: " + b.getPrice() + "$");
         JButton attackUpgrade = new JButton("Upgrade Damage");
         JButton healthUpgrade = new JButton("Upgrade Health");
         JButton levelUp = new JButton("Level Up");
@@ -29,7 +29,7 @@ public class window {
         //text titles created
         JLabel shopName = new JLabel("Insect Shop: ");
         JLabel upgradeName = new JLabel("Upgrades: ");
-        JLabel shopText = new JLabel("Money: " + bank.getAccount());
+        JLabel shopText = new JLabel("Money: " + bank.getAccount() + "$");
 
 
         //button size declared
