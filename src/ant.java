@@ -11,7 +11,7 @@ public class ant extends gameObject implements ally {
 
     protected boolean lockOnLeaf = false;
 
-    Image image = Toolkit.getDefaultToolkit().getImage("src/assets/Ants1.png");
+    Image image = Toolkit.getDefaultToolkit().getImage("src/assets/AntSmall.png");
     protected String name = "ant";
 
     protected int damage = 1;
