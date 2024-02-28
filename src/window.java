@@ -53,10 +53,13 @@ public class window {
 
         //temp game testing
         JButton tempLeaf = new JButton("Spawn Leaf");
+        JButton moneyInc = new JButton("Money +1");
         tempLeaf.setPreferredSize(buttonA);
-        leftPanel.add(Box.createRigidArea(new Dimension(0, 200)));
+        moneyInc.setPreferredSize(buttonA);
+        leftPanel.add(Box.createRigidArea(new Dimension(0, 100)));
         leftPanel.add(tempLeaf);
         leftPanel.add(shopText);
+        leftPanel.add(moneyInc);
 
         tempLeaf.addActionListener(new ActionListener() {
             @Override
@@ -78,7 +81,15 @@ public class window {
 
         });
 
-        //upgrade display to right of page
+        moneyInc.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                bank.setEarnt(1);
+                System.out.println(bank.getAccount());
+            }
+        });
+
+        ///upgrade display to right of page///
         JPanel rightPanel = new JPanel();
         rightPanel.setBackground(Color.GRAY);
         rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
@@ -93,13 +104,14 @@ public class window {
 
 
 
-        //button functionality
+        ///button functionality///
         antButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(bank.getAccount() >= a.getPrice()) {
                     bugList.objects.add(a);
                     bank.setSpend(a.getPrice());
+                    System.out.println(bank.getAccount());
                     System.out.println("\nAnt has been purchased");
                 }
                 else{System.out.println("\nNot enough money for ant!");}
