@@ -9,6 +9,11 @@ public class beatle extends gameObject implements ally {
     protected int health = 2;
 
 
+
+
+
+    Image image = Toolkit.getDefaultToolkit().getImage("src/assets/beetleSmall.png");
+
     //
     public beatle() {
         }
