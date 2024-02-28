@@ -6,10 +6,12 @@ public class ant extends gameObject implements ally {
 
     //gameObject leaf = fl.getLeafList();
     leaf newLeaf = new leaf(100,100);
-    int bugX , bugY;
-    int leafX , leafY;
+    private int bugX , bugY;
+    private int leafX , leafY;
 
-    protected boolean lockOnLeaf = false;
+    private boolean canMove = true;
+    private int canMovei = 0;
+    private boolean lockOnLeaf = false;
 
     Image image = Toolkit.getDefaultToolkit().getImage("src/assets/AntSmall.png");
     protected String name = "ant";
@@ -23,6 +25,8 @@ public class ant extends gameObject implements ally {
 
     //
     public ant(){
+        super.setX(500);
+        super.setY(300);
     };
 
     public ant(int x, int y) {
@@ -40,7 +44,7 @@ public class ant extends gameObject implements ally {
     }
 
     public void Render(Graphics var1) {
-        var1.drawImage(image,x,y,null);
+        var1.drawImage(image,(int)x,(int)y,null);
         //var1.fillRect(x, y, 20, 20);
     }
     public Rectangle getBounds() {
@@ -81,12 +85,22 @@ public class ant extends gameObject implements ally {
         public void setDamage(int damage) {this.damage=damage;}
 
         public void move(gameObject bug, gameObject leaf){
+            if(canMovei != 0)
+            {
+                canMovei++;
+                if(canMovei >= 10)
+                {
+                    canMovei = 0;
+                }
+                return;
+            }
             if(!lockOnLeaf) {
                 leafX = leaf.getX();
                 leafY = leaf.getY();
                 bugX = bug.getX();
                 bugY = bug.getY();
                 lockOnLeaf = true;
+                return;
             }
             if(leafX > bugX)
             {
@@ -117,6 +131,7 @@ public class ant extends gameObject implements ally {
             else{
                 onLeaf = false;
             }
+            canMovei++;
 
 
         }
