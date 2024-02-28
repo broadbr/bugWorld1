@@ -30,6 +30,7 @@ public class window {
         JLabel shopName = new JLabel("Insect Shop: ");
         JLabel upgradeName = new JLabel("Upgrades: ");
         JLabel shopText = new JLabel("Money: " + bank.getAccount() + "$");
+        shopText.setText("Money: " + bank.getAccount() + "$");
 
 
         //button size declared
@@ -85,6 +86,7 @@ public class window {
             @Override
             public void actionPerformed(ActionEvent e) {
                 bank.setEarnt(1);
+                shopText.setText("Money: " + bank.getAccount() + "$");
                 System.out.println(bank.getAccount());
             }
         });
@@ -113,6 +115,7 @@ public class window {
                     bank.setSpend(a.getPrice());
                     System.out.println(bank.getAccount());
                     System.out.println("\nAnt has been purchased");
+                    shopText.setText("Money: " + bank.getAccount() + "$");
                 }
                 else{System.out.println("\nNot enough money for ant!");}
             }
@@ -125,6 +128,7 @@ public class window {
                     bugList.objects.add(b);
                     bank.setSpend(b.getPrice());
                     System.out.println("\nBeetle has been purchased");
+                    shopText.setText("Money: " + bank.getAccount() + "$");
                 }
                 else{System.out.println("\nNot enough money for beetle!");}
             }
