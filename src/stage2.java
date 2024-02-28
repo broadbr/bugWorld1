@@ -8,76 +8,83 @@ import java.util.concurrent.ThreadLocalRandom;
 public class stage2 {
 
 
-    public void makeFood()
-
-    {
+    public void makeFood() {
         // tree location(s)
-        int tree1X = 220;
-        int tree1Y = 140;
-        int tree2X = 620;
-        int tree2Y = 230;
-        int tree3X = 000;
-        int tree3Y = 000;
+        int tree1X = 400;
+        int tree1Y = 40;
+        int tree2X = 770;
+        int tree2Y = 130;
+        int tree3X = 100;
+        int tree3Y = 280;
+        int tree4X = 420;
+        int tree4Y = 390;
 
 
-        //choose a tree
+        //odds of spawning
+        int k = ThreadLocalRandom.current().nextInt(1, 20 + 1);
 
-        int currTreeX =0;
-        int currTreeY;
-        int r = ThreadLocalRandom.current().nextInt(1, 3+1);
-        if(r ==1){
-            currTreeX = tree1X;
-            currTreeY = tree1Y;
-        }
-        else if(r == 3){
-            currTreeX = tree3X;
-            currTreeY = tree3Y;
-        }
-        else{
-            currTreeX = tree2X;
-            currTreeY = tree2Y;
-        }
+        if (k == 1) {
 
 
-        //selects random type of food
-        int randNum = ThreadLocalRandom.current().nextInt(1, 2 + 1);//(min,max)
+            //choose a tree
+
+            int currTreeX = 0;
+            int currTreeY;
+            int r = ThreadLocalRandom.current().nextInt(1, 4 + 1);
+            if (r == 1) {
+                currTreeX = tree1X;
+                currTreeY = tree1Y;
+            } else if (r == 3) {
+                currTreeX = tree3X;
+                currTreeY = tree3Y;
+            } else if (r == 4) {
+                currTreeX = tree4X;
+                currTreeY = tree4Y;
+            } else {
+                currTreeX = tree2X;
+                currTreeY = tree2Y;
+            }
 
 
-        // creates random location within 6 units of tree
-        int x = ThreadLocalRandom.current().nextInt(currTreeX, 150 + currTreeX);
-        int y = ThreadLocalRandom.current().nextInt(currTreeY, 150 + currTreeY);
+            //selects random type of food
+            int randNum = ThreadLocalRandom.current().nextInt(1, 2 + 1);//(min,max)
 
-        //if #==1 create leaf, otherwise create other food
-        if (randNum == 1) {
 
-            //check existing food locations
-            int i = 0;
-            boolean overlap = false;
-            for(gameObject g: foodList.objects){
-                if (x == foodList.objects.get(i).getX() && y == foodList.objects.get(i).getY()){
-                    overlap = true;
+            // creates random location within 6 units of tree
+            int x = ThreadLocalRandom.current().nextInt(currTreeX, 200 + currTreeX);
+            int y = ThreadLocalRandom.current().nextInt(currTreeY, 200 + currTreeY);
+
+            //if #==1 create leaf, otherwise create other food
+            if (randNum == 1) {
+
+                //check existing food locations
+                int i = 0;
+                boolean overlap = false;
+                for (gameObject g : foodList.objects) {
+                    if (x == foodList.objects.get(i).getX() && y == foodList.objects.get(i).getY()) {
+                        overlap = true;
+                    }
                 }
-            }
-            //if !ovelaping spawn food in random location
-            if(!overlap){
-                leaf l = new leaf(x, y);//creates new leaf
-                foodList.objects.add(l);//adds it to list
-            }
-        }
-        else {
-
-            //check existing food locations
-            int i = 0;
-            boolean overlap = false;
-            for(gameObject g: foodList.objects){
-                if(x == foodList.objects.get(i).getX() && y == foodList.objects.get(i).getY()){
-                    overlap = true;
+                //if !ovelaping spawn food in random location
+                if (!overlap) {
+                    leaf l = new leaf(x, y);//creates new leaf
+                    foodList.objects.add(l);//adds it to list
                 }
-            }
-            //if !ovelaping spawn food in random location
-            if(!overlap){
-                berry l = new berry(x, y);//creates new leaf
-                foodList.objects.add(l);//adds it to list
+            } else {
+
+                //check existing food locations
+                int i = 0;
+                boolean overlap = false;
+                for (gameObject g : foodList.objects) {
+                    if (x == foodList.objects.get(i).getX() && y == foodList.objects.get(i).getY()) {
+                        overlap = true;
+                    }
+                }
+                //if !ovelaping spawn food in random location
+                if (!overlap) {
+                    berry l = new berry(x, y);//creates new leaf
+                    foodList.objects.add(l);//adds it to list
+                }
             }
         }
     }
