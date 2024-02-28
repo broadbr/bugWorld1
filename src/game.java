@@ -96,20 +96,23 @@ public class game extends Canvas implements Runnable {
         
         // load stage2
         //Image image = Toolkit.getDefaultToolkit().getImage("src/assets/csStage2.png");
-        //Graphics g = buff.getDrawGraphics();
+        Graphics g = buff.getDrawGraphics();
         //g.drawImage(image,-70,0,null); // loads stage 2
         ////////////////////////////////////
 
-        //load stage1
-        Image image = Toolkit.getDefaultToolkit().getImage("src/assets/csNewAsset.png");
-        Graphics g = buff.getDrawGraphics();
-        g.drawImage(image,150,100,null); // loads stage 1
-
+            //load stage1
+        if(activeStage == 1) {
+            Image image = Toolkit.getDefaultToolkit().getImage("src/assets/csNewAsset.png");
+            g.drawImage(image,150,100,null); // loads stage 1
+        }
+        if(activeStage == 2) {
+            Image image = Toolkit.getDefaultToolkit().getImage("src/assets/csStage2.png");
+            g.drawImage(image,-70,0,null); // loads stage 
+        }
 
         // Draw portal
         Image image2 = Toolkit.getDefaultToolkit().getImage("src/assets/portal.png");
-        Graphics g2 = buff.getDrawGraphics();
-        g2.drawImage(image2,500,290,null); //
+        g.drawImage(image2,500,290,null); //
 
 
         /////////////////////////////////////
