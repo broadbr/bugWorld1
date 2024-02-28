@@ -6,6 +6,7 @@ public class berry extends gameObject implements food{
     protected String name = "berry";
     protected int value = 2;
     protected int health = 3;
+    Image image = Toolkit.getDefaultToolkit().getImage("src/assets/cherry.png");
 
     //
     public berry(){
@@ -19,11 +20,12 @@ public class berry extends gameObject implements food{
 
     //Graphics
     public void Update() {
+        
     }
 
     public void Render(Graphics var1) {
-        var1.setColor(Color.black);
-        var1.fillRect(280, 280, 20, 20);
+        var1.drawImage(image,x,y,null);
+       // vr1.fillRect(x, y, 20, 20);
     }
     public Rectangle getBounds() {
         return null;
