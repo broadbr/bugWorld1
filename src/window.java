@@ -18,8 +18,8 @@ public class window {
 
 
         //buttons created
-        JButton antButton = new JButton("Ant purchase");
-        JButton beetleButton = new JButton("Beetle purchase");
+        JButton antButton = new JButton("Ant: " + a.getPrice() + "$");
+        JButton beetleButton = new JButton("Beetle: " + b.getPrice() + "$");
         JButton attackUpgrade = new JButton("Upgrade Damage");
         JButton healthUpgrade = new JButton("Upgrade Health");
         JButton levelUp = new JButton("Level Up");
@@ -29,7 +29,7 @@ public class window {
         //text titles created
         JLabel shopName = new JLabel("Insect Shop: ");
         JLabel upgradeName = new JLabel("Upgrades: ");
-        JLabel shopText = new JLabel("Money: " + bank.getAccount());
+        JLabel shopText = new JLabel("Money: " + bank.getAccount() + "$");
 
 
         //button size declared
@@ -43,6 +43,7 @@ public class window {
         JPanel leftPanel = new JPanel();
         leftPanel.setBackground(Color.GRAY);
         leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
+        //leftPanel.setPreferredSize(new Dimension(150, 2000));
         leftPanel.add(shopName);
         leftPanel.add(Box.createRigidArea(new Dimension(0, 30)));
         leftPanel.add(antButton);
@@ -52,10 +53,13 @@ public class window {
 
         //temp game testing
         JButton tempLeaf = new JButton("Spawn Leaf");
+        JButton moneyInc = new JButton("Money +1");
         tempLeaf.setPreferredSize(buttonA);
-        leftPanel.add(Box.createRigidArea(new Dimension(0, 200)));
+        moneyInc.setPreferredSize(buttonA);
+        leftPanel.add(Box.createRigidArea(new Dimension(0, 100)));
         leftPanel.add(tempLeaf);
         leftPanel.add(shopText);
+        leftPanel.add(moneyInc);
 
         tempLeaf.addActionListener(new ActionListener() {
             @Override
@@ -77,10 +81,19 @@ public class window {
 
         });
 
-        //upgrade display to right of page
+        moneyInc.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                bank.setEarnt(1);
+                System.out.println(bank.getAccount());
+            }
+        });
+
+        ///upgrade display to right of page///
         JPanel rightPanel = new JPanel();
         rightPanel.setBackground(Color.GRAY);
         rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
+        //rightPanel.setPreferredSize(new Dimension(150, 2000));
         rightPanel.add(upgradeName);
         rightPanel.add(Box.createRigidArea(new Dimension(0, 30)));
         rightPanel.add(attackUpgrade);
@@ -91,13 +104,14 @@ public class window {
 
 
 
-        //button functionality
+        ///button functionality///
         antButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(bank.getAccount() >= a.getPrice()) {
                     bugList.objects.add(a);
                     bank.setSpend(a.getPrice());
+                    System.out.println(bank.getAccount());
                     System.out.println("\nAnt has been purchased");
                 }
                 else{System.out.println("\nNot enough money for ant!");}

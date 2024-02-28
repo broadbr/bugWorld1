@@ -22,8 +22,10 @@ public class beatle extends gameObject implements ally {
 
     //
     public beatle() {
+            super.setX(500);
+            super.setY(300);
         }
-        ;
+        
     public beatle( int x, int y){
             super.setX(x);
             super.setY(y);
@@ -36,8 +38,8 @@ public class beatle extends gameObject implements ally {
     }
 
     public void Render(Graphics var1) {
-        var1.setColor(Color.black);
-        var1.fillRect(280, 280, 20, 20);
+        var1.drawImage(image,x,y,null);
+        //var1.fillRect(x, y, 20, 20);
     }
     public Rectangle getBounds() {
         return null;
