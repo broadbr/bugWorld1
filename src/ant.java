@@ -25,6 +25,8 @@ public class ant extends gameObject implements ally {
 
     //
     public ant(){
+        super.setX(500);
+        super.setY(300);
     };
 
     public ant(int x, int y) {
