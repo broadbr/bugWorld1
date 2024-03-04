@@ -90,7 +90,7 @@ public class window {
         moneyInc.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                bank.setEarnt(1);
+                bank.setEarnt(100000);
                 shopText.setText("Money: " + bank.getAccount() + "$");
                 System.out.println(bank.getAccount());
             }
