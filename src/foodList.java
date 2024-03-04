@@ -62,16 +62,13 @@ public class foodList {
         }
         System.out.print("\n");
     }
-    public  gameObject getLeafList()
+    public gameObject getLeafList(int index)
     {
-        if(objects.get(0) != null)
-        {
-            return objects.get(0);
-        }
-        else
-        {
-            return null;
-        }
+        return objects.get(index);
+    }
+    public int getSize()
+    {
+        return objects.size();
     }
 
 }

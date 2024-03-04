@@ -9,7 +9,7 @@ import javax.swing.JFrame;
 
 public class game extends Canvas implements Runnable {
     
-    private int bank =1;
+    private int bank = 1;
     private boolean isRunning = false;
     private Thread thread;
     private bugList bugList;
