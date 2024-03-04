@@ -72,7 +72,7 @@ public class foodList {
     }
     public void destroy(gameObject g){
         objects.remove(g);
-        //bank.setEarnt(g.getValue());
+        bank.bank.setEarnt(g.getValue());
         
     }
 
