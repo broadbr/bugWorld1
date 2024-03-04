@@ -4,7 +4,7 @@ import java.awt.*;
 public class ant extends gameObject implements ally {
     foodList fl = new foodList();
 
-    leaf newLeaf = new leaf(100,100);
+    leaf newLeaf = new leaf(200,100);
     private int bugX , bugY;
     private int leafX , leafY;
 
@@ -37,11 +37,9 @@ public class ant extends gameObject implements ally {
 
     //Graphics
     public void Update() {
-        
-        
         if(!onLeaf)
         {
-          move(this , newLeaf);
+          move(this , findNearestLeaf());
         }
         else if(onLeaf)
         {
@@ -95,19 +93,13 @@ public class ant extends gameObject implements ally {
         public gameObject findNearestLeaf()
         {
             gameObject leaf = fl.getLeafList(0);
-            return null;
+            leafX = leaf.getX();
+            leafY = leaf.getY();
+            return leaf;
         }
 
         public void move(gameObject bug, gameObject leaf){
-            if(canMovei != 0)
-            {
-                canMovei++;
-                if(canMovei >= 10)
-                {
-                    canMovei = 0;
-                }
-                return;
-            }
+
             if(!lockOnLeaf) {
                 leafX = leaf.getX();
                 leafY = leaf.getY();
@@ -118,26 +110,26 @@ public class ant extends gameObject implements ally {
             }
             if(leafX > bugX)
             {   
-                bugX+=4;
+                bugX++;
                 //x = bugX++;
                 bug.setX(bugX);
             }
             else if(leafX < bugX)
             {
-                bugX-=4;
+                bugX--;
                 //x = bugX++;
                 bug.setX(bugX);
             }
 
             if(leafY > bugY)
             {
-               bugY+=4;
+               bugY++;
                //y = bugY++;
                bug.setY(bugY);
             }
             else if(leafY < bugY)
             {
-               bugY-=4;
+               bugY--;
                //y = bugY++;
                 bug.setY(bugY);
             }
