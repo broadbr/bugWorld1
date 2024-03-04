@@ -65,7 +65,7 @@ public class window {
         leftPanel.add(Box.createRigidArea(new Dimension(0, 100)));
         //leftPanel.add(tempLeaf);
         leftPanel.add(shopText);
-        //leftPanel.add(moneyInc);
+        leftPanel.add(moneyInc);
 
         tempLeaf.addActionListener(new ActionListener() {
             @Override
