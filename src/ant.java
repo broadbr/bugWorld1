@@ -26,7 +26,7 @@ public class ant extends gameObject implements ally {
     //
     public ant(){
         super.setX(500);
-        super.setY(300);
+        super.setY(20);
     };
 
     public ant(int x, int y) {
@@ -37,15 +37,18 @@ public class ant extends gameObject implements ally {
 
     //Graphics
     public void Update() {
+        
+        
         //if(!onLeaf)
         //{
-            move(this , newLeaf);
+          move(this , newLeaf);
         //}
+    
     }
 
     public void Render(Graphics var1) {
         var1.drawImage(image,(int)x,(int)y,null);
-        //var1.fillRect(x, y, 20, 20);
+       // var1.fillRect(x, y, 20, 20);
     }
     public Rectangle getBounds() {
         return null;
@@ -103,21 +106,29 @@ public class ant extends gameObject implements ally {
                 return;
             }
             if(leafX > bugX)
-            {
-                bugX++;
+            {   
+                bugX+=4;
+                //x = bugX++;
+                bug.setX(bugX);
             }
             else if(leafX < bugX)
             {
-                bugX--;
+                bugX-=4;
+                //x = bugX++;
+                bug.setX(bugX);
             }
 
             if(leafY > bugY)
             {
-                bugY++;
+               bugY+=4;
+               //y = bugY++;
+               bug.setY(bugX);
             }
             else if(leafY < bugY)
             {
-                bugY--;
+               bugY-=4;
+               //y = bugY++;
+                bug.setY(bugX);
             }
             System.out.println("Ant cords:(" + bugX + "," + bugY + ") Leaf cords:(" + leafX + "," + leafY + ")");
             if(leafX == bugX && leafY == bugY)
