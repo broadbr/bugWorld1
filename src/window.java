@@ -156,6 +156,7 @@ public class window {
             @Override
             public void actionPerformed(ActionEvent e) {
                 upgrades.healBugs();
+
             }
         });
 
