@@ -123,13 +123,13 @@ public class ant extends gameObject implements ally {
             {
                bugY+=4;
                //y = bugY++;
-               bug.setY(bugX);
+               bug.setY(bugY);
             }
             else if(leafY < bugY)
             {
                bugY-=4;
                //y = bugY++;
-                bug.setY(bugX);
+                bug.setY(bugY);
             }
             System.out.println("Ant cords:(" + bugX + "," + bugY + ") Leaf cords:(" + leafX + "," + leafY + ")");
             if(leafX == bugX && leafY == bugY)
