@@ -39,7 +39,7 @@ public class ant extends gameObject implements ally {
     public void Update() {
         if(!onLeaf)
         {
-          move(this , findNearestLeaf());
+          move(this , findNearestLeaf(this));
         }
         else if(onLeaf)
         {
@@ -90,13 +90,47 @@ public class ant extends gameObject implements ally {
         public void setDamage(int damage) {this.damage=damage;}
         public void setHealth(int health) {this.health=health;}
 
-        public gameObject findNearestLeaf()
+        public gameObject findNearestLeaf(gameObject ant)
         {
-            //for(int i = 0; i<=)
-            gameObject leaf = fl.getLeafList(0);
-            leafX = leaf.getX();
-            leafY = leaf.getY();
-            return leaf;
+            int nearestLeaf = 0;
+            int x , y;
+            int differenceX , differenceY , thisTotDifference;
+            int totDifference = 0;
+            gameObject leaf;
+            for(int i = 0; i<fl.getSize();i++)
+            {
+                leaf = fl.getLeafList(i);
+                x = leaf.getX();
+                y = leaf.getY();
+                if(x > ant.getX())
+                {
+                    differenceX = x - ant.getX();
+                }
+                else
+                {
+                    differenceX = ant.getX() - x;
+                }
+                if(y > ant.getY())
+                {
+                    differenceY = y - ant.getY();
+                }
+                else
+                {
+                    differenceY = ant.getY() - y;
+                }
+                thisTotDifference = differenceY + differenceX;
+                if(totDifference > thisTotDifference || i == 0)
+                {
+                    totDifference = thisTotDifference;
+                    nearestLeaf = i;
+                }
+
+
+            }
+            gameObject closestLeaf = fl.getLeafList(nearestLeaf);
+            leafX = closestLeaf.getX();
+            leafY = closestLeaf.getY();
+            return closestLeaf;
         }
 
         public void move(gameObject bug, gameObject leaf){
