@@ -122,7 +122,10 @@ public class window {
                     System.out.println("\nAnt has been purchased");
                     shopText.setText("Money: " + bank.getAccount() + "$");
                 }
-                else{System.out.println("\nNot enough money for ant!");}
+                else{
+                    //antButton.setText("Ant: X");
+                    System.out.println("\nNot enough money for ant!");
+                }
             }
         });
 
