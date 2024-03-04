@@ -92,6 +92,7 @@ public class ant extends gameObject implements ally {
 
         public gameObject findNearestLeaf()
         {
+            //for(int i = 0; i<=)
             gameObject leaf = fl.getLeafList(0);
             leafX = leaf.getX();
             leafY = leaf.getY();
