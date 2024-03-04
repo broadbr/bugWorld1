@@ -116,6 +116,7 @@ public class window {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(bank.getAccount() >= a.getPrice()) {
+                    ant a = new ant();
                     bugList.objects.add(a);
                     bank.setSpend(a.getPrice());
                     System.out.println(bank.getAccount());
@@ -130,6 +131,7 @@ public class window {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(bank.getAccount() >= b.getPrice()) {
+                    beatle b = new beatle();
                     bugList.objects.add(b);
                     bank.setSpend(b.getPrice());
                     System.out.println("\nBeetle has been purchased");

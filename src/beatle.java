@@ -1,7 +1,7 @@
 import java.awt.*;
 public class beatle extends gameObject implements ally {
 
-
+    foodList fl = new foodList();
     protected String name = "beatle";
 
     protected int damage = 2;
@@ -35,6 +35,7 @@ public class beatle extends gameObject implements ally {
 
     //Graphics
     public void Update() {
+        move(this, findNearestLeaf(this));
     }
 
     public void Render(Graphics var1) {
@@ -45,6 +46,48 @@ public class beatle extends gameObject implements ally {
         return null;
     }
 
+    public gameObject findNearestLeaf(gameObject ant)
+        {
+            int nearestLeaf = 0;
+            int x , y;
+            int differenceX , differenceY , thisTotDifference;
+            int totDifference = 0;
+            gameObject leaf;
+            for(int i = 0; i<fl.getSize();i++)
+            {
+                leaf = fl.getLeafList(i);
+                x = leaf.getX();
+                y = leaf.getY();
+                if(x > ant.getX())
+                {
+                    differenceX = x - ant.getX();
+                }
+                else
+                {
+                    differenceX = ant.getX() - x;
+                }
+                if(y > ant.getY())
+                {
+                    differenceY = y - ant.getY();
+                }
+                else
+                {
+                    differenceY = ant.getY() - y;
+                }
+                thisTotDifference = differenceY + differenceX;
+                if(totDifference > thisTotDifference || i == 0)
+                {
+                    totDifference = thisTotDifference;
+                    nearestLeaf = i;
+                }
+
+
+            }
+            gameObject closestLeaf = fl.getLeafList(nearestLeaf);
+            leafX = closestLeaf.getX();
+            leafY = closestLeaf.getY();
+            return closestLeaf;
+        }
 
 
 
@@ -101,19 +144,23 @@ public class beatle extends gameObject implements ally {
         if(leafX > bugX)
         {
             bugX++;
+            bug.setX(bugX);
         }
         else if(leafX < bugX)
         {
             bugX--;
+            bug.setX(bugX);
         }
 
         if(leafY > bugY)
         {
             bugY++;
+            bug.setY(bugY);
         }
         else if(leafY < bugY)
         {
             bugY--;
+            bug.setY(bugY);
         }
         System.out.println("Ant cords:(" + bugX + "," + bugY + ") Leaf cords:(" + leafX + "," + leafY + ")");
         if(leafX == bugX && leafY == bugY)
