@@ -26,7 +26,7 @@ public class window {
         JButton antButton = new JButton("Ant: " + a.getPrice() + "$");
         JButton beetleButton = new JButton("Beetle: " + b.getPrice() + "$");
         JButton attackUpgrade = new JButton("Upgrade Damage");
-        JButton healthUpgrade = new JButton("Upgrade Health");
+        JButton healUpgrade = new JButton("Heal");
         JButton levelUp = new JButton("Level Up");
 
 
@@ -63,9 +63,9 @@ public class window {
         tempLeaf.setPreferredSize(buttonA);
         moneyInc.setPreferredSize(buttonA);
         leftPanel.add(Box.createRigidArea(new Dimension(0, 100)));
-        leftPanel.add(tempLeaf);
+        //leftPanel.add(tempLeaf);
         leftPanel.add(shopText);
-        leftPanel.add(moneyInc);
+        //leftPanel.add(moneyInc);
 
         tempLeaf.addActionListener(new ActionListener() {
             @Override
@@ -105,7 +105,7 @@ public class window {
         rightPanel.add(Box.createRigidArea(new Dimension(0, 30)));
         rightPanel.add(attackUpgrade);
         rightPanel.add(Box.createRigidArea(new Dimension(0, 10)));
-        rightPanel.add(healthUpgrade);
+        rightPanel.add(healUpgrade);
         rightPanel.add(Box.createRigidArea(new Dimension(0, 390)));
         rightPanel.add(levelUp);
 
@@ -150,6 +150,13 @@ public class window {
                 else{System.out.println("\nNot enough money for beetle!");}
             }
 
+        });
+
+        healUpgrade.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                upgrades.healBugs();
+            }
         });
 
         levelUp.addActionListener(new ActionListener() {
