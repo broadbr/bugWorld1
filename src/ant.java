@@ -3,7 +3,7 @@ import java.awt.*;
 //game object that have ally behaviour
 public class ant extends gameObject implements ally {
     foodList fl = new foodList();
-
+    bank bank = new bank();
     leaf newLeaf = new leaf(200,100);
     private int bugX , bugY;
     private int leafX , leafY;
@@ -43,7 +43,7 @@ public class ant extends gameObject implements ally {
         }
         else if(onLeaf)
         {
-
+           // findNearestLeaf(this).remove();
         }
     
     }
@@ -168,15 +168,17 @@ public class ant extends gameObject implements ally {
                //y = bugY++;
                 bug.setY(bugY);
             }
-            System.out.println("Ant cords:(" + bugX + "," + bugY + ") Leaf cords:(" + leafX + "," + leafY + ")");
+            //System.out.println("Ant cords:(" + bugX + "," + bugY + ") Leaf cords:(" + leafX + "," + leafY + ")");
             if(leafX == bugX && leafY == bugY)
             {
                 onLeaf = true;
                 lockOnLeaf = false;
-                System.out.println("WE FOUND A LEAF AND GOT IT");
+                //System.out.println("WE FOUND A LEAF AND GOT IT");
+                fl.destroy(leaf);
                 bug.setX(bugX);
                 bug.setY(bugY);
                 justPickedLeaf = true;
+                
             }
             else{
                 onLeaf = false;

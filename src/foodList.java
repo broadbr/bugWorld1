@@ -5,7 +5,7 @@ import java.util.List;
 public class foodList {
     //leaf firstLeaf = new leaf(100,100);
     public static List<gameObject> objects = new ArrayList();
-
+    
 
     public foodList() {
     }
@@ -69,6 +69,11 @@ public class foodList {
     public int getSize()
     {
         return objects.size();
+    }
+    public void destroy(gameObject g){
+        objects.remove(g);
+        //bank.setEarnt(g.getValue());
+        
     }
 
 }
