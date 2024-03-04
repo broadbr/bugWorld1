@@ -2,7 +2,7 @@ public class bank {
 
 
     //code from Colin
-    private int account;
+    private int account=3;
 
     public bank() {
     }
