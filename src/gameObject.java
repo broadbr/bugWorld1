@@ -63,6 +63,8 @@ import java.awt.*;
             return this.price;
         }
 
+        public void setHealth(int health){this.health=health;}
+
         public int getHealth() {
             return this.health;
         }

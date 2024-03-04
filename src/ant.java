@@ -86,6 +86,7 @@ public class ant extends gameObject implements ally {
         }
 
         public void setDamage(int damage) {this.damage=damage;}
+        public void setHealth(int health) {this.health=health;}
 
         public void move(gameObject bug, gameObject leaf){
             if(canMovei != 0)
