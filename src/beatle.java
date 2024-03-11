@@ -2,6 +2,7 @@ import java.awt.*;
 public class beatle extends gameObject implements ally {
 
     foodList fl = new foodList();
+    getNearest closeLeaf = new getNearest();
     protected String name = "beatle";
 
     protected int damage = 2;
@@ -13,7 +14,7 @@ public class beatle extends gameObject implements ally {
     private int bugX, bugY;
     private boolean lockOnLeaf = false;
     private boolean onLeaf = false;
-
+    private gameObject closestFood;
 
 
 
@@ -35,7 +36,8 @@ public class beatle extends gameObject implements ally {
 
     //Graphics
     public void Update() {
-        move(this, findNearestLeaf(this));
+        closestFood = closeLeaf.findNearestEnemy(this);
+        move(this,closestFood);
     }
 
     public void Render(Graphics var1) {
@@ -45,50 +47,6 @@ public class beatle extends gameObject implements ally {
     public Rectangle getBounds() {
         return null;
     }
-
-    public gameObject findNearestLeaf(gameObject ant)
-        {
-            int nearestLeaf = 0;
-            int x , y;
-            int differenceX , differenceY , thisTotDifference;
-            int totDifference = 0;
-            gameObject leaf;
-            for(int i = 0; i<fl.getSize();i++)
-            {
-                leaf = fl.getLeafList(i);
-                x = leaf.getX();
-                y = leaf.getY();
-                if(x > ant.getX())
-                {
-                    differenceX = x - ant.getX();
-                }
-                else
-                {
-                    differenceX = ant.getX() - x;
-                }
-                if(y > ant.getY())
-                {
-                    differenceY = y - ant.getY();
-                }
-                else
-                {
-                    differenceY = ant.getY() - y;
-                }
-                thisTotDifference = differenceY + differenceX;
-                if(totDifference > thisTotDifference || i == 0)
-                {
-                    totDifference = thisTotDifference;
-                    nearestLeaf = i;
-                }
-
-
-            }
-            gameObject closestLeaf = fl.getLeafList(nearestLeaf);
-            leafX = closestLeaf.getX();
-            leafY = closestLeaf.getY();
-            return closestLeaf;
-        }
-
 
 
 

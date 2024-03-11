@@ -17,15 +17,22 @@ public class game extends Canvas implements Runnable {
     private stage1 stage1;
     private stage2 stage2;
     public int activeStage =1;
+    public enemyList enemyList;
+    public bank b;
+    
+    
 
     public game() {
         new window(1360,640,"Bug World 1",this);//shop+upgrades = 100x2+width = 24x20 = 480+200=680 & height = 16x20=320
         start();
 
+        enemyList = new enemyList();
         bugList = new bugList();
         foodList = new foodList();
         stage1 = new stage1();
         stage2 = new stage2();
+        spider spider = new spider();
+        enemyList.addBug(spider);
     }
 
 
@@ -48,7 +55,6 @@ public class game extends Canvas implements Runnable {
 				frames++;
 				delta--;
 				if(System.currentTimeMillis() - time >= 1000) {
-					//System.out.println("fps:" + frames);
 					time += 1000;
 					frames = 0;
 				}
@@ -71,8 +77,12 @@ public class game extends Canvas implements Runnable {
     }
 
     public void update() {
+        
+
+
         bugList.Update();
         foodList.Update();
+        enemyList.Update();
 
 
 
@@ -116,6 +126,7 @@ public class game extends Canvas implements Runnable {
 
 
         /////////////////////////////////////
+        enemyList.Render(g);
         bugList.Render(g);
         foodList.Render(g);
 
@@ -125,6 +136,9 @@ public class game extends Canvas implements Runnable {
     public static void main(String[] args) {
         
         new game();
+
+        
+        //////Testing///
         bugList bugList = new bugList();
         foodList foodList = new foodList();
         stage1 stage1 = new stage1();
