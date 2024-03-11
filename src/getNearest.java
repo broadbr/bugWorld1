@@ -1,6 +1,8 @@
 public class getNearest {
     
     private foodList fl = new foodList();
+    private bugList bl;
+    private enemyList el = new enemyList();
     
     //find nearest leaf when given gameObject
     public gameObject findNearestFood(gameObject ant)
@@ -41,53 +43,50 @@ public class getNearest {
 
             }
             gameObject closestLeaf = fl.getLeafList(nearestLeaf);
-            //leafX = closestLeaf.getX();
-            //leafY = closestLeaf.getY();
             return closestLeaf;
         }
-    public gameObject findNearestBug(gameObject ant)
+    public gameObject findNearestBug(gameObject enemy)
     {
-        int nearestLeaf = 0;
+        int nearestBug = 0;
         int x , y;
         int differenceX , differenceY , thisTotDifference;
         int totDifference = 0;
-        gameObject leaf;
-        for(int i = 0; i<fl.getSize();i++)
+        gameObject bug;
+        for(int i = 0; i<bl.getSize();i++)
         {
-            leaf = fl.getLeafList(i);
-            x = leaf.getX();
-            y = leaf.getY();
-            if(x > ant.getX())
+            bug = bl.getBugList(i);
+            x = bug.getX();
+            y = bug.getY();
+            if(x > enemy.getX())
             {
-                differenceX = x - ant.getX();
+                differenceX = x - enemy.getX();
             }
             else
             {
-                differenceX = ant.getX() - x;
+                differenceX = enemy.getX() - x;
             }
-            if(y > ant.getY())
+            if(y > enemy.getY())
             {
-                differenceY = y - ant.getY();
+                differenceY = y - enemy.getY();
             }
             else
             {
-                differenceY = ant.getY() - y;
+                differenceY = enemy.getY() - y;
             }
             thisTotDifference = differenceY + differenceX;
             if(totDifference > thisTotDifference || i == 0)
             {
                 totDifference = thisTotDifference;
-                nearestLeaf = i;
+                nearestBug = i;
             }
 
 
         }
-        gameObject closestLeaf = fl.getLeafList(nearestLeaf);
-        //leafX = closestLeaf.getX();
-        //leafY = closestLeaf.getY();
-        return closestLeaf;
+        gameObject closestBug = bl.getBugList(nearestBug);
+        return closestBug;
     }
-    
+
+    /** 
     public gameObject findNearestEnemy(gameObject ant)
     {
         int nearestLeaf = 0;
@@ -130,6 +129,7 @@ public class getNearest {
         //leafY = closestLeaf.getY();
         return closestLeaf;
     }
+    */
 
 
 }

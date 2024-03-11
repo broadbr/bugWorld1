@@ -19,7 +19,7 @@ public class game extends Canvas implements Runnable {
     public int activeStage =1;
     public enemyList enemyList;
     public bank b;
-    
+    private boolean isSpider = false;
     
 
     public game() {
@@ -31,8 +31,6 @@ public class game extends Canvas implements Runnable {
         foodList = new foodList();
         stage1 = new stage1();
         stage2 = new stage2();
-        spider spider = new spider();
-        enemyList.addBug(spider);
     }
 
 
@@ -78,13 +76,18 @@ public class game extends Canvas implements Runnable {
 
     public void update() {
         
-
-
         bugList.Update();
         foodList.Update();
         enemyList.Update();
 
 
+        //spawn spider
+        /*
+        if(bugList.getSize()>10 && !isSpider) {
+            spider spider = new spider();
+            enemyList.addBug(spider);
+        }
+        */
 
         //select active stage
         if(activeStage==1) {
@@ -123,6 +126,7 @@ public class game extends Canvas implements Runnable {
         // Draw portal
         Image image2 = Toolkit.getDefaultToolkit().getImage("src/assets/portal.png");
         g.drawImage(image2,500,290,null); //
+
 
 
         /////////////////////////////////////

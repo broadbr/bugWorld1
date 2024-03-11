@@ -36,8 +36,10 @@ public class beatle extends gameObject implements ally {
 
     //Graphics
     public void Update() {
-        closestFood = closeLeaf.findNearestEnemy(this);
-        move(this,closestFood);
+        if(fl.getSize()>0) {
+            closestFood = closeLeaf.findNearestFood(this);
+            move(this,closestFood);
+        }
     }
 
     public void Render(Graphics var1) {

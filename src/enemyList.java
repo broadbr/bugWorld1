@@ -2,10 +2,10 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class bugList {
+public class enemyList {
     public static List<gameObject> objects = new ArrayList();
 
-    public bugList() {
+    public enemyList() {
     }
 
 
@@ -37,14 +37,9 @@ public class bugList {
     //also try bugList.objects.get(i);
     public void topBug(){objects.get(0);}
 
-    //get bug at index i
-    public gameObject getBugList(int i) {
+    //return a enemy of list at index i
+    public gameObject getEnemyList(int i) {
         return objects.get(i);
-    }
-
-    //returns size of arraylist
-    public int getSize() {
-        return objects.size();
     }
 
     //display all bugs to terminal
@@ -56,6 +51,11 @@ public class bugList {
             System.out.print(objects.get(i).getName());
         }
         System.out.print("\n");
+    }
+
+    //returns size of arraylist
+    public int getSize() {
+        return objects.size();
     }
 
 

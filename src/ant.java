@@ -40,8 +40,10 @@ public class ant extends gameObject implements ally {
     //Graphics
     public void Update() {
         //gets nearest leaf
-        closestFood = closeLeaf.findNearestFood(this);
-        move(this , closestFood);
+        if(fl.getSize()>0){
+            closestFood = closeLeaf.findNearestFood(this);
+            move(this , closestFood);
+        }
     }
 
     public void Render(Graphics var1) {
@@ -123,12 +125,11 @@ public class ant extends gameObject implements ally {
             //y = bugY++;
                 bug.setY(bugY);
             }
-            //System.out.println("Ant cords:(" + bugX + "," + bugY + ") Leaf cords:(" + leafX + "," + leafY + ")");
+
             if(leafX == bugX && leafY == bugY)
             {
                 onLeaf = true;
                 lockOnLeaf = false;
-                //System.out.println("WE FOUND A LEAF AND GOT IT");
                 fl.destroy(leaf);
                 bug.setX(bugX);
                 bug.setY(bugY);
