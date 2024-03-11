@@ -102,8 +102,8 @@ public class game extends Canvas implements Runnable {
 
             //load stage1
         if(activeStage == 1) {
-            Image image = Toolkit.getDefaultToolkit().getImage("src/assets/csNewAsset.png");
-            g.drawImage(image,150,100,null); // loads stage 1
+            Image image = Toolkit.getDefaultToolkit().getImage("src/assets/Stage1AssetTemp.png");
+            g.drawImage(image,-70,0,null); // loads stage 1
         }
         if(activeStage == 2) {
             Image image = Toolkit.getDefaultToolkit().getImage("src/assets/csStage2.png");

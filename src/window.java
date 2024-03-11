@@ -27,6 +27,7 @@ public class window {
         JButton attackUpgrade = new JButton("Upgrade Damage");
         JButton healUpgrade = new JButton("Heal");
         JButton levelUp = new JButton("Level Up");
+        JButton antDelete = new JButton("X");
 
 
 
@@ -39,10 +40,18 @@ public class window {
 
         //button size declared
         Dimension buttonA = new Dimension(150, 100);
+        Dimension panelNest = new Dimension(190, 110);
+        Dimension deleteButton = new Dimension(50, 30);
         antButton.setPreferredSize(buttonA);
         beetleButton.setPreferredSize(buttonA);
         attackUpgrade.setPreferredSize(buttonA);
+        antDelete.setPreferredSize(deleteButton);
 
+
+        JPanel antPanel = new JPanel();
+        antPanel.setPreferredSize(panelNest);
+        antPanel.add(antButton);
+        antPanel.add(antDelete);
 
         //shop display to left of page
         JPanel leftPanel = new JPanel();
@@ -51,7 +60,9 @@ public class window {
         //leftPanel.setPreferredSize(new Dimension(150, 2000));
         leftPanel.add(shopName);
         leftPanel.add(Box.createRigidArea(new Dimension(0, 30)));
-        leftPanel.add(antButton);
+        //leftPanel.add(antButton);
+        leftPanel.add(antPanel);
+
         leftPanel.add(Box.createRigidArea(new Dimension(0, 10)));
         leftPanel.add(beetleButton);
 
@@ -178,7 +189,7 @@ public class window {
         frame.setPreferredSize(new Dimension(width,height));
         frame.setMaximumSize(new Dimension (width,height));
         frame.setMinimumSize(new Dimension (width,height));
-        
+
         frame.add(game);
         frame.add(leftPanel, BorderLayout.WEST);
         frame.add(rightPanel, BorderLayout.EAST);
