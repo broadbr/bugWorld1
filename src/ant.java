@@ -3,7 +3,7 @@ import java.awt.*;
 //game object that have ally behaviour
 public class ant extends gameObject implements ally {
     foodList fl = new foodList();
-
+    bank bank = new bank();
     leaf newLeaf = new leaf(200,100);
     private int bugX , bugY;
     private int leafX , leafY;
@@ -37,15 +37,8 @@ public class ant extends gameObject implements ally {
 
     //Graphics
     public void Update() {
-        if(!onLeaf)
-        {
-          move(this , findNearestLeaf());
-        }
-        else if(onLeaf)
-        {
-
-        }
-    
+        
+        move(this , findNearestLeaf(this));
     }
 
     public void Render(Graphics var1) {
@@ -90,17 +83,51 @@ public class ant extends gameObject implements ally {
         public void setDamage(int damage) {this.damage=damage;}
         public void setHealth(int health) {this.health=health;}
 
-        public gameObject findNearestLeaf()
+        public gameObject findNearestLeaf(gameObject ant)
         {
-            //for(int i = 0; i<=)
-            gameObject leaf = fl.getLeafList(0);
-            leafX = leaf.getX();
-            leafY = leaf.getY();
-            return leaf;
+            int nearestLeaf = 0;
+            int x , y;
+            int differenceX , differenceY , thisTotDifference;
+            int totDifference = 0;
+            gameObject leaf;
+            for(int i = 0; i<fl.getSize();i++)
+            {
+                leaf = fl.getLeafList(i);
+                x = leaf.getX();
+                y = leaf.getY();
+                if(x > ant.getX())
+                {
+                    differenceX = x - ant.getX();
+                }
+                else
+                {
+                    differenceX = ant.getX() - x;
+                }
+                if(y > ant.getY())
+                {
+                    differenceY = y - ant.getY();
+                }
+                else
+                {
+                    differenceY = ant.getY() - y;
+                }
+                thisTotDifference = differenceY + differenceX;
+                if(totDifference > thisTotDifference || i == 0)
+                {
+                    totDifference = thisTotDifference;
+                    nearestLeaf = i;
+                }
+
+
+            }
+            gameObject closestLeaf = fl.getLeafList(nearestLeaf);
+            leafX = closestLeaf.getX();
+            leafY = closestLeaf.getY();
+            return closestLeaf;
         }
 
         public void move(gameObject bug, gameObject leaf){
-
+           
             if(!lockOnLeaf) {
                 leafX = leaf.getX();
                 leafY = leaf.getY();
@@ -124,31 +151,33 @@ public class ant extends gameObject implements ally {
 
             if(leafY > bugY)
             {
-               bugY++;
-               //y = bugY++;
-               bug.setY(bugY);
+            bugY++;
+            //y = bugY++;
+            bug.setY(bugY);
             }
             else if(leafY < bugY)
             {
-               bugY--;
-               //y = bugY++;
+            bugY--;
+            //y = bugY++;
                 bug.setY(bugY);
             }
-            System.out.println("Ant cords:(" + bugX + "," + bugY + ") Leaf cords:(" + leafX + "," + leafY + ")");
+            //System.out.println("Ant cords:(" + bugX + "," + bugY + ") Leaf cords:(" + leafX + "," + leafY + ")");
             if(leafX == bugX && leafY == bugY)
             {
                 onLeaf = true;
                 lockOnLeaf = false;
-                System.out.println("WE FOUND A LEAF AND GOT IT");
+                //System.out.println("WE FOUND A LEAF AND GOT IT");
+                fl.destroy(leaf);
                 bug.setX(bugX);
                 bug.setY(bugY);
                 justPickedLeaf = true;
+                
             }
             else{
                 onLeaf = false;
             }
             canMovei++;
-
+ 
 
         }
 

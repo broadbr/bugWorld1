@@ -19,7 +19,6 @@ public class window {
         beatle b = new beatle();
         upgrades upgrades = new upgrades();
         stage1 stage1 = new stage1();
-        bank bank = new bank();
 
 
         //buttons created
@@ -34,8 +33,8 @@ public class window {
         //text titles created
         JLabel shopName = new JLabel("Insect Shop: ");
         JLabel upgradeName = new JLabel("Upgrades: ");
-        JLabel shopText = new JLabel("Money: " + bank.getAccount() + "$");
-        shopText.setText("Money: " + bank.getAccount() + "$");
+        JLabel shopText = new JLabel("Money: " + bank.bank.getAccount() + "$");
+        shopText.setText("Money: " + bank.bank.getAccount() + "$");
 
 
         //button size declared
@@ -65,7 +64,7 @@ public class window {
         leftPanel.add(Box.createRigidArea(new Dimension(0, 100)));
         //leftPanel.add(tempLeaf);
         leftPanel.add(shopText);
-        //leftPanel.add(moneyInc);
+        leftPanel.add(moneyInc);
 
         tempLeaf.addActionListener(new ActionListener() {
             @Override
@@ -90,9 +89,9 @@ public class window {
         moneyInc.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                bank.setEarnt(1);
-                shopText.setText("Money: " + bank.getAccount() + "$");
-                System.out.println(bank.getAccount());
+                bank.bank.setEarnt(100000);
+                shopText.setText("Money: " + bank.bank.getAccount() + "$");
+                System.out.println(bank.bank.getAccount());
             }
         });
 
@@ -111,29 +110,31 @@ public class window {
 
 
 
-        ///button functionality///
+        //button functionality///
         antButton.addActionListener(new ActionListener() {
-            @Override
+          @Override
             public void actionPerformed(ActionEvent e) {
-                if(bank.getAccount() >= a.getPrice()) {
+                if(bank.bank.getAccount() >= a.getPrice()) {
+                    ant a = new ant();
                     bugList.objects.add(a);
-                    bank.setSpend(a.getPrice());
-                    System.out.println(bank.getAccount());
+                    bank.bank.setSpend(a.getPrice());
+                    System.out.println(bank.bank.getAccount());
                     System.out.println("\nAnt has been purchased");
-                    shopText.setText("Money: " + bank.getAccount() + "$");
+                    shopText.setText("Money: " + bank.bank.getAccount() + "$");
                 }
                 else{System.out.println("\nNot enough money for ant!");}
             }
-        });
+       });
 
         beetleButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(bank.getAccount() >= b.getPrice()) {
+                if(bank.bank.getAccount() >= b.getPrice()) {
+                    beatle b = new beatle();
                     bugList.objects.add(b);
-                    bank.setSpend(b.getPrice());
+                    bank.bank.setSpend(b.getPrice());
                     System.out.println("\nBeetle has been purchased");
-                    shopText.setText("Money: " + bank.getAccount() + "$");
+                    shopText.setText("Money: " + bank.bank.getAccount() + "$");
                 }
                 else{System.out.println("\nNot enough money for beetle!");}
             }
@@ -142,10 +143,10 @@ public class window {
         attackUpgrade.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(bank.getAccount() >= upgrades.getPrice()) {
+                if(bank.bank.getAccount() >= upgrades.getPrice()) {
                     upgrades.increaseDamage();
                     System.out.println("Bug damage increased");
-                    bank.setSpend(upgrades.getPrice());
+                    bank.bank.setSpend(upgrades.getPrice());
                 }
                 else{System.out.println("\nNot enough money for beetle!");}
             }
