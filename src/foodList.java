@@ -70,9 +70,9 @@ public class foodList {
     {
         return objects.size();
     }
-    public void destroy(gameObject g){
-        objects.remove(g);
-        bank.bank.setEarnt(g.getValue());
+    public void destroy(gameObject food){
+        objects.remove(food);
+        bank.bank.setEarnt(food.getValue());
         
     }
 

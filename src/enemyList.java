@@ -58,5 +58,11 @@ public class enemyList {
         return objects.size();
     }
 
+    //destroy a bug
+    public void destroy(gameObject enemy){
+        objects.remove(enemy);
+        //special/prestige/score increase here for killing enemy
+    }   
+
 
 }

@@ -58,5 +58,10 @@ public class bugList {
         System.out.print("\n");
     }
 
+    //destroy a bug
+    public void destroy(gameObject bug){
+        objects.remove(bug);
+    }   
+
 
 }

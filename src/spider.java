@@ -15,8 +15,6 @@ public class spider extends gameObject implements enemy {
     private int bugY , bugX, enemyX, enemyY;
     private boolean lockOnBug = false;
     private boolean onLeaf = false;
-    private getNearest nearBug = new getNearest();
-    private gameObject nearestBug;
     private bugList bl;
 
     public spider() {
@@ -33,10 +31,7 @@ public class spider extends gameObject implements enemy {
     @Override
     public void Update() {
         
-        if(bl.getSize()>0) {
-            nearestBug = nearBug.findNearestBug(this);
-            move(this, nearestBug);
-        }
+        move(this, findNearestBug(this));
     }
 
     @Override
@@ -71,6 +66,49 @@ public class spider extends gameObject implements enemy {
     public void setDamage(int damage) {this.damage=damage;}
 
     public void setHealth(int health){this.health=health;}
+
+    public gameObject findNearestBug(gameObject spider)
+        {
+            int nearestBug = 0;
+            int x , y;
+            int differenceX , differenceY , thisTotDifference;
+            int totDifference = 0;
+            gameObject bug;
+            for(int i = 0; i<bl.getSize();i++)
+            {
+                bug = bl.getBugList(i);
+                x = bug.getX();
+                y = bug.getY();
+                if(x > spider.getX())
+                {
+                    differenceX = x - bug.getX();
+                }
+                else
+                {
+                    differenceX = bug.getX() - x;
+                }
+                if(y > bug.getY())
+                {
+                    differenceY = y - bug.getY();
+                }
+                else
+                {
+                    differenceY = bug.getY() - y;
+                }
+                thisTotDifference = differenceY + differenceX;
+                if(totDifference > thisTotDifference || i == 0)
+                {
+                    totDifference = thisTotDifference;
+                    nearestBug = i;
+                }
+
+
+            }
+            gameObject closestBug = bl.getBugList(nearestBug);
+            bugX = closestBug.getX();
+            bugY = closestBug.getY();
+            return closestBug;
+        }
 
     @Override
     public void move(gameObject enemy, gameObject bug) {
