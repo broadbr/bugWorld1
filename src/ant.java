@@ -3,7 +3,7 @@ import java.awt.*;
 //game object that have ally behaviour
 public class ant extends gameObject implements ally {
     foodList fl = new foodList();
-
+    bank bank = new bank();
     leaf newLeaf = new leaf(200,100);
     private int bugX , bugY;
     private int leafX , leafY;
@@ -37,15 +37,8 @@ public class ant extends gameObject implements ally {
 
     //Graphics
     public void Update() {
-        if(!onLeaf)
-        {
-          move(this , findNearestLeaf(this));
-        }
-        else if(onLeaf)
-        {
-
-        }
-    
+        
+        move(this , findNearestLeaf(this));
     }
 
     public void Render(Graphics var1) {
@@ -134,7 +127,7 @@ public class ant extends gameObject implements ally {
         }
 
         public void move(gameObject bug, gameObject leaf){
-
+           
             if(!lockOnLeaf) {
                 leafX = leaf.getX();
                 leafY = leaf.getY();
@@ -158,31 +151,33 @@ public class ant extends gameObject implements ally {
 
             if(leafY > bugY)
             {
-               bugY++;
-               //y = bugY++;
-               bug.setY(bugY);
+            bugY++;
+            //y = bugY++;
+            bug.setY(bugY);
             }
             else if(leafY < bugY)
             {
-               bugY--;
-               //y = bugY++;
+            bugY--;
+            //y = bugY++;
                 bug.setY(bugY);
             }
-            System.out.println("Ant cords:(" + bugX + "," + bugY + ") Leaf cords:(" + leafX + "," + leafY + ")");
+            //System.out.println("Ant cords:(" + bugX + "," + bugY + ") Leaf cords:(" + leafX + "," + leafY + ")");
             if(leafX == bugX && leafY == bugY)
             {
                 onLeaf = true;
                 lockOnLeaf = false;
-                System.out.println("WE FOUND A LEAF AND GOT IT");
+                //System.out.println("WE FOUND A LEAF AND GOT IT");
+                fl.destroy(leaf);
                 bug.setX(bugX);
                 bug.setY(bugY);
                 justPickedLeaf = true;
+                
             }
             else{
                 onLeaf = false;
             }
             canMovei++;
-
+ 
 
         }
 
