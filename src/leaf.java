@@ -5,7 +5,7 @@ public class leaf extends gameObject implements food{
 
     protected String name = "leaf";
     protected int value = 1;
-    protected int health = 1;
+    protected int health = 10;
     Image image = Toolkit.getDefaultToolkit().getImage("src/assets/REDgrass.png");
 
     //
@@ -31,11 +31,12 @@ public class leaf extends gameObject implements food{
     }
 
 
-    //Kill bug
+    //Kill leaf
     public void damageObject(int var1) {
         this.health -= var1;
         if (this.health <= 0) {
             foodList.objects.remove(this);
+            bank.bank.setEarnt(value);
         }
 
     }

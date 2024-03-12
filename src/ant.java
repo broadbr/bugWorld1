@@ -5,6 +5,7 @@ public class ant extends gameObject implements ally {
     foodList fl = new foodList();
     bank bank = new bank();
     leaf newLeaf = new leaf(200,100);
+    enemyList el = new enemyList();
     private int bugX , bugY;
     private int leafX , leafY;
 
@@ -16,9 +17,11 @@ public class ant extends gameObject implements ally {
     Image image = Toolkit.getDefaultToolkit().getImage("src/assets/AntSmall.png");
     protected String name = "ant";
 
+
+    ///Stats
     protected int damage = 1;
     protected int price = 1;
-    protected int health = 1;
+    protected int health = 10;
 
     protected boolean onLeaf = false;
 
@@ -37,8 +40,13 @@ public class ant extends gameObject implements ally {
 
     //Graphics
     public void Update() {
-        
-        move(this , findNearestLeaf(this));
+
+        if(el.getSize()==0) {
+            move(this , findNearestLeaf(this));
+        }
+        else {
+            move(this , el.topBug());
+        }
     }
 
     public void Render(Graphics var1) {
@@ -167,7 +175,7 @@ public class ant extends gameObject implements ally {
                 onLeaf = true;
                 lockOnLeaf = false;
                 //System.out.println("WE FOUND A LEAF AND GOT IT");
-                fl.destroy(leaf);
+                leaf.damageObject(damage);
                 bug.setX(bugX);
                 bug.setY(bugY);
                 justPickedLeaf = true;

@@ -35,7 +35,7 @@ public class enemyList {
 
     //top of list
     //also try bugList.objects.get(i);
-    public void topBug(){objects.get(0);}
+    public gameObject topBug(){return objects.get(0);}
 
     //return a enemy of list at index i
     public gameObject getEnemyList(int i) {

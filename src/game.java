@@ -19,7 +19,7 @@ public class game extends Canvas implements Runnable {
     public int activeStage =1;
     public enemyList enemyList;
     public bank b;
-    private boolean isSpider = false;
+    public static boolean isSpider = false;
     
 
     public game() {
@@ -84,7 +84,7 @@ public class game extends Canvas implements Runnable {
 
         //spawn spider
         
-        if(bugList.getSize()>10 && !isSpider) {
+        if(bugList.getSize()>10 && enemyList.getSize()==0) {
             spider spider = new spider();
             enemyList.addBug(spider);
         }

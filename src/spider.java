@@ -8,7 +8,7 @@ public class spider extends gameObject implements enemy {
     protected String name = "spider";
     protected int health = 10;
     //Other
-    
+    private enemyList el = new enemyList();
 
     //move vars
     private int canMovei = 0;
@@ -36,8 +36,10 @@ public class spider extends gameObject implements enemy {
 
     @Override
     public void Render(Graphics var1) {
-        var1.setColor(Color.BLACK);
+        
         var1.fillRect(x, y, 20, 20);
+        var1.setColor(Color.BLACK);
+        
         
     }
 
@@ -66,6 +68,14 @@ public class spider extends gameObject implements enemy {
     public void setDamage(int damage) {this.damage=damage;}
 
     public void setHealth(int health){this.health=health;}
+    @Override
+    public void damageObject(int var1) {
+       this.health -= var1;
+       if(health==0) {
+           el.objects.remove(this);
+       }
+        
+    }
 
     public gameObject findNearestBug(gameObject spider)
         {
@@ -110,6 +120,7 @@ public class spider extends gameObject implements enemy {
             bugY = closestBug.getY();
             return closestBug;
         }
+        
 
     @Override
     public void move(gameObject enemy, gameObject bug) {
@@ -153,7 +164,7 @@ public class spider extends gameObject implements enemy {
         {
             onLeaf = true;
             lockOnBug = false;
-            bl.destroy(bug);
+            bug.damageObject(damage);
             bug.setX(enemyX);
             bug.setY(enemyY);
             
@@ -164,4 +175,6 @@ public class spider extends gameObject implements enemy {
         canMovei++;   
         
     }
+
+    
 }
