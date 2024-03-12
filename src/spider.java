@@ -15,7 +15,7 @@ public class spider extends gameObject implements enemy {
     private int bugY , bugX, enemyX, enemyY;
     private boolean lockOnBug = false;
     private boolean onLeaf = false;
-    private bugList bl;
+    private bugList bl = new bugList();
 
     public spider() {
         super.setX(100);
@@ -74,6 +74,7 @@ public class spider extends gameObject implements enemy {
             int differenceX , differenceY , thisTotDifference;
             int totDifference = 0;
             gameObject bug;
+            
             for(int i = 0; i<bl.getSize();i++)
             {
                 bug = bl.getBugList(i);
@@ -81,19 +82,19 @@ public class spider extends gameObject implements enemy {
                 y = bug.getY();
                 if(x > spider.getX())
                 {
-                    differenceX = x - bug.getX();
+                    differenceX = x - spider.getX();
                 }
                 else
                 {
-                    differenceX = bug.getX() - x;
+                    differenceX = spider.getX() - x;
                 }
                 if(y > bug.getY())
                 {
-                    differenceY = y - bug.getY();
+                    differenceY = y - spider.getY();
                 }
                 else
                 {
-                    differenceY = bug.getY() - y;
+                    differenceY = spider.getY() - y;
                 }
                 thisTotDifference = differenceY + differenceX;
                 if(totDifference > thisTotDifference || i == 0)
@@ -122,37 +123,37 @@ public class spider extends gameObject implements enemy {
             lockOnBug = true;
             return;
         }
-        if(enemyX > enemyX)
+        if(bugX > enemyX)
         {   
             enemyX++;
             //x = enemyX++;
-            bug.setX(enemyX);
+            enemy.setX(enemyX);
         }
         else if(bugX < enemyX)
         {
             enemyX--;
             //x = enemyX++;
-            bug.setX(enemyX);
+            enemy.setX(enemyX);
         }
 
         if(bugY > enemyY)
         {
-        enemyY++;
-        //y = enemyY++;
-        bug.setY(enemyY);
+            enemyY++;
+            //y = enemyY++;
+            enemy.setY(enemyY);
         }
         else if(bugY < enemyY)
         {
-        enemyY--;
-        //y = enemyY++;
-            bug.setY(enemyY);
+            enemyY--;
+            //y = enemyY++;
+            enemy.setY(enemyY);
         }
         //System.out.println("Ant cords:(" + enemyX + "," + enemyY + ") Leaf cords:(" + bugX + "," + bugY + ")");
         if(bugX == enemyX && bugY == enemyY)
         {
             onLeaf = true;
             lockOnBug = false;
-            //bl.destroy();
+            bl.destroy(bug);
             bug.setX(enemyX);
             bug.setY(enemyY);
             

@@ -76,9 +76,10 @@ public class game extends Canvas implements Runnable {
 
     public void update() {
         
+        enemyList.Update();
         bugList.Update();
         foodList.Update();
-        enemyList.Update();
+        
 
 
         //spawn spider
