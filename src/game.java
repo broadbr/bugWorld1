@@ -84,9 +84,13 @@ public class game extends Canvas implements Runnable {
 
         //spawn spider
         
-        if(bugList.getSize()>10 && enemyList.getSize()==0) {
+        if(bugList.getSize()>=10 && enemyList.getSize()==0) {
             spider spider = new spider();
             enemyList.addBug(spider);
+        }
+        if(bugList.getSize()>=11 && enemyList.getSize()==1) {
+            hornet hornet = new hornet();
+            enemyList.addBug(hornet);
         }
 
         //select active stage
