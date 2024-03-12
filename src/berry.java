@@ -2,10 +2,9 @@ import java.awt.*;
 
 public class berry extends gameObject implements food{
 
-
     protected String name = "berry";
     protected int value = 2;
-    protected int health = 3;
+    protected int health = 30;
     Image image = Toolkit.getDefaultToolkit().getImage("src/assets/cherry.png");
 
     //
@@ -37,6 +36,7 @@ public class berry extends gameObject implements food{
         this.health -= var1;
         if (this.health <= 0) {
             foodList.objects.remove(this);
+            bank.bank.setEarnt(value);
         }
 
     }

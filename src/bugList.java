@@ -37,18 +37,15 @@ public class bugList {
     //also try bugList.objects.get(i);
     public void topBug(){objects.get(0);}
 
+    //get bug at index i
+    public gameObject getBugList(int i) {
+        return objects.get(i);
+    }
 
-    //list type of object
-    /*
-    public String bugName(){
-        bug top = objects.get(0);
-        if (top instanceof ant) {
-            ant a = (ant)top;
-            String n = a.getName();
-        }
-        return n;
-    }*/
-
+    //returns size of arraylist
+    public int getSize() {
+        return objects.size();
+    }
 
     //display all bugs to terminal
     public void listBugs(){
@@ -60,6 +57,11 @@ public class bugList {
         }
         System.out.print("\n");
     }
+
+    //destroy a bug
+    public void destroy(gameObject bug){
+        objects.remove(bug);
+    }   
 
 
 }

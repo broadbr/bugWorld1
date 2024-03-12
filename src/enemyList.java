@@ -2,12 +2,10 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class foodList {
-    //leaf firstLeaf = new leaf(100,100);
+public class enemyList {
     public static List<gameObject> objects = new ArrayList();
-    
 
-    public foodList() {
+    public enemyList() {
     }
 
 
@@ -31,49 +29,40 @@ public class foodList {
 
     //Add a bug
     //also try: bugList.objects.add(bug);
-    public void addLeaf(gameObject var1) {
+    public void addBug(gameObject var1) {
         objects.add(var1);
     }
 
     //top of list
     //also try bugList.objects.get(i);
-    public void topLeaf(){objects.get(0);}
+    public gameObject topBug(){return objects.get(0);}
 
-
-    //list type of object
-    /*
-    public String bugName(){
-        bug top = objects.get(0);
-        if (top instanceof ant) {
-            ant a = (ant)top;
-            String n = a.getName();
-        }
-        return n;
-    }*/
-
+    //return a enemy of list at index i
+    public gameObject getEnemyList(int i) {
+        return objects.get(i);
+    }
 
     //display all bugs to terminal
-    public void listLeaves(){
+    public void listBugs(){
 
-        System.out.print("\nfood content: ");
+        System.out.print("\nbug content: ");
         for(int i = 0; i < objects.size(); i++)
         {
             System.out.print(objects.get(i).getName());
         }
         System.out.print("\n");
     }
-    public gameObject getLeafList(int index)
-    {
-        return objects.get(index);
-    }
-    public int getSize()
-    {
+
+    //returns size of arraylist
+    public int getSize() {
         return objects.size();
     }
-    public void destroy(gameObject food){
-        objects.remove(food);
-        bank.bank.setEarnt(food.getValue());
-        
-    }
+
+    //destroy a bug
+    public void destroy(gameObject enemy){
+        objects.remove(enemy);
+        //special/prestige/score increase here for killing enemy
+    }   
+
 
 }

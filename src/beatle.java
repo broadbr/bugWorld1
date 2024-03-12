@@ -3,11 +3,14 @@ public class beatle extends gameObject implements ally {
 
     foodList fl = new foodList();
     protected String name = "beatle";
-
+    //STATS
     protected int damage = 2;
     protected int price = 3;
-    protected int health = 2;
+    protected int health = 20;
+    //OTHER
+    private enemyList el = new enemyList();
 
+    //MOVES
     private int canMovei = 0;
     private int leafX , leafY;
     private int bugX, bugY;
@@ -35,7 +38,12 @@ public class beatle extends gameObject implements ally {
 
     //Graphics
     public void Update() {
-        move(this, findNearestLeaf(this));
+        if(el.getSize()==0) {
+            move(this , findNearestLeaf(this));
+        }
+        else {
+            move(this , el.topBug());
+        }
     }
 
     public void Render(Graphics var1) {
@@ -167,7 +175,7 @@ public class beatle extends gameObject implements ally {
         {
             onLeaf = true;
             lockOnLeaf = false;
-            fl.destroy(leaf);
+            leaf.damageObject(damage);
             //System.out.println("WE FOUND A LEAF AND GOT IT");
             bug.setX(bugX);
             bug.setY(bugY);

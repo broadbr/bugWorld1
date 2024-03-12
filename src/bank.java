@@ -3,12 +3,21 @@ public class bank {
 
     //code from Colin
     private int account=3;
+    private int score = 0;
 
     public static bank bank = new bank(); 
 
 
     public int getAccount() {
         return this.account;
+    }
+    
+    public String getStringScore() {
+        return String.valueOf(this.score);
+    }
+    
+    public int getIntScore() {
+        return this.score;
     }
 
     public void setSpend(int withdrawal) {
@@ -17,6 +26,7 @@ public class bank {
 
     public void setEarnt(int pay) {
         this.account += pay;
+        this.score += pay;
     }
 }
 
