@@ -75,14 +75,11 @@ public class window {
         leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
         //leftPanel.setLayout(new BorderLayout());
         //leftPanel.setPreferredSize(new Dimension(150, 2000));
-        //leftPanel.add(shopName);
         leftPanel.add(shopName);
         leftPanel.add(bugNester);
-        //leftPanel.add(leftInner2);
         leftPanel.add(Box.createRigidArea(new Dimension(0, 400)));
-        //leftPanel.add(antButton);
         //leftPanel.add(Box.createRigidArea(new Dimension(0, 10)));
-        //leftPanel.add(beetleButton);
+
 
 
         //temp game testing
