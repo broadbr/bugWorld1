@@ -4,7 +4,7 @@ import java.awt.Rectangle;
 
 public class spider extends gameObject implements enemy {
     //Stats
-    protected int damage = 5;
+    protected int damage = 3;
     protected String name = "spider";
     protected int health = 10;
     //Other
@@ -14,7 +14,7 @@ public class spider extends gameObject implements enemy {
     private int canMovei = 0;
     private int bugY , bugX, enemyX, enemyY;
     private boolean lockOnBug = false;
-    private boolean onLeaf = false;
+    private boolean onenemy = false;
     private bugList bl = new bugList();
 
     public spider() {
@@ -30,8 +30,17 @@ public class spider extends gameObject implements enemy {
 
     @Override
     public void Update() {
-        
-        move(this, findNearestBug(this));
+        try {
+            move(this, findNearestBug(this));
+        }
+        catch(NullPointerException e) {
+            if(bank.bank.getAccount()==0) System.out.println("GAME OVER");
+            else {
+                System.out.println("But another bug!!!");
+            }
+        }
+    
+
     }
 
     @Override
@@ -71,7 +80,7 @@ public class spider extends gameObject implements enemy {
     @Override
     public void damageObject(int var1) {
        this.health -= var1;
-       if(health==0) {
+       if(health<=0) {
            el.objects.remove(this);
        }
         
@@ -159,10 +168,10 @@ public class spider extends gameObject implements enemy {
             //y = enemyY++;
             enemy.setY(enemyY);
         }
-        //System.out.println("Ant cords:(" + enemyX + "," + enemyY + ") Leaf cords:(" + bugX + "," + bugY + ")");
-        if(bugX == enemyX && bugY == enemyY)
+        //System.out.println("Ant cords:(" + enemyX + "," + enemyY + ") enemy cords:(" + bugX + "," + bugY + ")");
+        if((enemyX >= bugX-5 && enemyX <= bugX+5) && (enemyY >= bugY-5 && enemyY <= bugY+5))
         {
-            onLeaf = true;
+            onenemy = true;
             lockOnBug = false;
             bug.damageObject(damage);
             bug.setX(enemyX);
@@ -170,9 +179,11 @@ public class spider extends gameObject implements enemy {
             
         }
         else{
-            onLeaf = false;
+            onenemy = false;
         }
         canMovei++;   
+
+        System.out.println(health);
         
     }
 
