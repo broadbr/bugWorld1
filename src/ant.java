@@ -3,6 +3,7 @@ import java.awt.*;
 //game object that have ally behaviour
 public class ant extends gameObject implements ally {
     foodList fl = new foodList();
+    private boolean[] bugGotten;
     bank bank = new bank();
     leaf newLeaf = new leaf(200,100);
     private int bugX , bugY;
@@ -37,6 +38,8 @@ public class ant extends gameObject implements ally {
 
     //Graphics
     public void Update() {
+
+        arrUpdate();
         
         move(this , findNearestLeaf(this));
     }
@@ -178,6 +181,15 @@ public class ant extends gameObject implements ally {
             }
             canMovei++;
  
+
+        }
+
+        public void arrUpdate()
+        {
+            int size = fl.getSize();
+            boolean bugGotten[] = new boolean[size];
+            return;
+
 
         }
 
