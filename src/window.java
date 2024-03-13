@@ -39,8 +39,7 @@ public class window {
 
 
         //button size declared
-        Dimension buttonA = new Dimension(150, 100);
-        Dimension panelNest = new Dimension(190, 110);
+        Dimension buttonA = new Dimension(120, 30);
         Dimension deleteButton = new Dimension(50, 30);
         antButton.setPreferredSize(buttonA);
         beetleButton.setPreferredSize(buttonA);
@@ -48,23 +47,11 @@ public class window {
         antDelete.setPreferredSize(deleteButton);
 
 
-        JPanel antPanel = new JPanel();
-        antPanel.setPreferredSize(panelNest);
+        /*JPanel antPanel = new JPanel();
+        antPanel.setLayout(new FlowLayout());
         antPanel.add(antButton);
-        antPanel.add(antDelete);
+        antPanel.add(antDelete);*/
 
-        //shop display to left of page
-        JPanel leftPanel = new JPanel();
-        leftPanel.setBackground(Color.GRAY);
-        leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
-        //leftPanel.setPreferredSize(new Dimension(150, 2000));
-        leftPanel.add(shopName);
-        leftPanel.add(Box.createRigidArea(new Dimension(0, 30)));
-        //leftPanel.add(antButton);
-        leftPanel.add(antPanel);
-
-        leftPanel.add(Box.createRigidArea(new Dimension(0, 10)));
-        leftPanel.add(beetleButton);
 
 
         //temp game testing
@@ -72,10 +59,10 @@ public class window {
         JButton moneyInc = new JButton("Money +1");
         tempLeaf.setPreferredSize(buttonA);
         moneyInc.setPreferredSize(buttonA);
-        leftPanel.add(Box.createRigidArea(new Dimension(0, 100)));
+        //leftPanel.add(Box.createRigidArea(new Dimension(0, 100)));
         //leftPanel.add(tempLeaf);
-        leftPanel.add(shopText);
-        leftPanel.add(moneyInc);
+        //leftPanel.add(shopText);
+        //leftPanel.add(moneyInc);
 
         tempLeaf.addActionListener(new ActionListener() {
             @Override
