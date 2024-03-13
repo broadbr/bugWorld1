@@ -28,6 +28,7 @@ public class window {
         JButton healUpgrade = new JButton("Heal");
         JButton levelUp = new JButton("Level Up");
         JButton antDelete = new JButton("X");
+        JButton beetleDelete = new JButton("X");
 
 
 
@@ -45,13 +46,43 @@ public class window {
         beetleButton.setPreferredSize(buttonA);
         attackUpgrade.setPreferredSize(buttonA);
         antDelete.setPreferredSize(deleteButton);
+        beetleDelete.setPreferredSize(deleteButton);
+
+        JPanel bugNester = new JPanel(new GridLayout(2,1));
+
+        JPanel leftInner1 = new JPanel(new GridLayout(1,2));
+        //leftInner1.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
+        //leftInner1.setPreferredSize(new Dimension(200,50));
+        leftInner1.add(antButton);
+        leftInner1.add(antDelete);
 
 
-        /*JPanel antPanel = new JPanel();
-        antPanel.setLayout(new FlowLayout());
-        antPanel.add(antButton);
-        antPanel.add(antDelete);*/
+        JPanel leftInner2 = new JPanel(new GridLayout(1,2));
+        //leftInner2.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
 
+        leftInner2.add(beetleButton);
+        leftInner2.add(beetleDelete);
+
+        bugNester.add(leftInner1);
+        bugNester.add(leftInner2);
+
+
+        ////shop display to left of page////
+        JPanel leftPanel = new JPanel();
+        leftPanel.setBackground(Color.GRAY);
+        //leftPanel.setLayout(new GridLayout(2, 2, 5, 5));
+        //leftPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
+        leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
+        //leftPanel.setLayout(new BorderLayout());
+        //leftPanel.setPreferredSize(new Dimension(150, 2000));
+        //leftPanel.add(shopName);
+        leftPanel.add(shopName);
+        leftPanel.add(bugNester);
+        //leftPanel.add(leftInner2);
+        leftPanel.add(Box.createRigidArea(new Dimension(0, 400)));
+        //leftPanel.add(antButton);
+        //leftPanel.add(Box.createRigidArea(new Dimension(0, 10)));
+        //leftPanel.add(beetleButton);
 
 
         //temp game testing
@@ -62,7 +93,7 @@ public class window {
         //leftPanel.add(Box.createRigidArea(new Dimension(0, 100)));
         //leftPanel.add(tempLeaf);
         //leftPanel.add(shopText);
-        //leftPanel.add(moneyInc);
+        leftPanel.add(moneyInc);
 
         tempLeaf.addActionListener(new ActionListener() {
             @Override
