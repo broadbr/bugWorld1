@@ -7,7 +7,7 @@ import javax.swing.*;
 
 public class window {
 
-    public int activeStage = 1;
+    public int activeStage = 0;
     public window(){
 
     }
