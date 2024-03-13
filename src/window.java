@@ -49,17 +49,16 @@ public class window {
         beetleDelete.setPreferredSize(deleteButton);
 
         JPanel bugNester = new JPanel(new GridLayout(2,1));
+        bugNester.setLayout(new BoxLayout(bugNester, BoxLayout.Y_AXIS));
 
-        JPanel leftInner1 = new JPanel(new GridLayout(1,2));
-        //leftInner1.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
-        //leftInner1.setPreferredSize(new Dimension(200,50));
+        JPanel leftInner1 = new JPanel();
+        leftInner1.setLayout(new BoxLayout(leftInner1, BoxLayout.X_AXIS));
         leftInner1.add(antButton);
         leftInner1.add(antDelete);
 
 
-        JPanel leftInner2 = new JPanel(new GridLayout(1,2));
-        //leftInner2.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
-
+        JPanel leftInner2 = new JPanel();
+        leftInner2.setLayout(new BoxLayout(leftInner2, BoxLayout.X_AXIS));
         leftInner2.add(beetleButton);
         leftInner2.add(beetleDelete);
 
@@ -74,10 +73,10 @@ public class window {
         //leftPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
         leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
         //leftPanel.setLayout(new BorderLayout());
-        //leftPanel.setPreferredSize(new Dimension(150, 2000));
+        leftPanel.setPreferredSize(new Dimension(125, 2000));
         leftPanel.add(shopName);
         leftPanel.add(bugNester);
-        leftPanel.add(Box.createRigidArea(new Dimension(0, 400)));
+        leftPanel.add(Box.createRigidArea(new Dimension(0, 500)));
         //leftPanel.add(Box.createRigidArea(new Dimension(0, 10)));
 
 
@@ -125,7 +124,7 @@ public class window {
         JPanel rightPanel = new JPanel();
         rightPanel.setBackground(Color.GRAY);
         rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
-        //rightPanel.setPreferredSize(new Dimension(150, 2000));
+        rightPanel.setPreferredSize(new Dimension(100, 2000));
         rightPanel.add(upgradeName);
         rightPanel.add(Box.createRigidArea(new Dimension(0, 30)));
         rightPanel.add(attackUpgrade);
