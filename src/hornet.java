@@ -2,11 +2,11 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-public class spider extends gameObject implements enemy {
+public class hornet extends gameObject implements enemy {
     //Stats
-    protected int damage = 3;
-    protected String name = "spider";
-    protected int health = 10;
+    protected int damage = 20;
+    protected String name = "hornet";
+    protected int health = 1;
     //Other
     private enemyList el = new enemyList();
 
@@ -14,15 +14,15 @@ public class spider extends gameObject implements enemy {
     private int canMovei = 0;
     private int bugY , bugX, enemyX, enemyY;
     private boolean lockOnBug = false;
-    private boolean onenemy = false;
+    private boolean onLeaf = false;
     private bugList bl = new bugList();
 
-    public spider() {
+    public hornet() {
         super.setX(100);
         super.setY(100);
     }
 
-    public spider(int x, int y) {
+    public hornet(int x, int y) {
         super.setX(x);
         super.setY(y);
     }
@@ -30,24 +30,15 @@ public class spider extends gameObject implements enemy {
 
     @Override
     public void Update() {
-        try {
-            move(this, findNearestBug(this));
-        }
-        catch(NullPointerException e) {
-            if(bank.bank.getAccount()==0) System.out.println("GAME OVER");
-            else {
-                System.out.println("But another bug!!!");
-            }
-        }
-    
-
+        
+        move(this, findNearestBug(this));
     }
 
     @Override
     public void Render(Graphics var1) {
         
         var1.fillRect(x, y, 20, 20);
-        var1.setColor(Color.BLACK);
+        var1.setColor(Color.YELLOW);
         
         
     }
@@ -80,13 +71,13 @@ public class spider extends gameObject implements enemy {
     @Override
     public void damageObject(int var1) {
        this.health -= var1;
-       if(health<=0) {
+       if(health==0) {
            el.objects.remove(this);
        }
         
     }
 
-    public gameObject findNearestBug(gameObject spider)
+    public gameObject findNearestBug(gameObject hornet)
         {
             int nearestBug = 0;
             int x , y;
@@ -99,21 +90,21 @@ public class spider extends gameObject implements enemy {
                 bug = bl.getBugList(i);
                 x = bug.getX();
                 y = bug.getY();
-                if(x > spider.getX())
+                if(x > hornet.getX())
                 {
-                    differenceX = x - spider.getX();
+                    differenceX = x - hornet.getX();
                 }
                 else
                 {
-                    differenceX = spider.getX() - x;
+                    differenceX = hornet.getX() - x;
                 }
                 if(y > bug.getY())
                 {
-                    differenceY = y - spider.getY();
+                    differenceY = y - hornet.getY();
                 }
                 else
                 {
-                    differenceY = spider.getY() - y;
+                    differenceY = hornet.getY() - y;
                 }
                 thisTotDifference = differenceY + differenceX;
                 if(totDifference > thisTotDifference || i == 0)
@@ -168,10 +159,10 @@ public class spider extends gameObject implements enemy {
             //y = enemyY++;
             enemy.setY(enemyY);
         }
-        //System.out.println("Ant cords:(" + enemyX + "," + enemyY + ") enemy cords:(" + bugX + "," + bugY + ")");
-        if((enemyX >= bugX-5 && enemyX <= bugX+5) && (enemyY >= bugY-5 && enemyY <= bugY+5))
+        //System.out.println("Ant cords:(" + enemyX + "," + enemyY + ") Leaf cords:(" + bugX + "," + bugY + ")");
+        if(bugX == enemyX && bugY == enemyY)
         {
-            onenemy = true;
+            onLeaf = true;
             lockOnBug = false;
             bug.damageObject(damage);
             bug.setX(enemyX);
@@ -179,11 +170,9 @@ public class spider extends gameObject implements enemy {
             
         }
         else{
-            onenemy = false;
+            onLeaf = false;
         }
         canMovei++;   
-
-        System.out.println(health);
         
     }
 

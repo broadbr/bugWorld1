@@ -1,9 +1,7 @@
 public class bank {
 
-
-    //code from Colin
     private int account=3;
-    private int score = 0;
+    private int score = 1;
 
     public static bank bank = new bank(); 
 
@@ -26,7 +24,10 @@ public class bank {
 
     public void setEarnt(int pay) {
         this.account += pay;
-        this.score += pay;
+        this.score += 1;
+    }
+    public void setScore(int plus) {
+        this.score +=1;
     }
 }
 

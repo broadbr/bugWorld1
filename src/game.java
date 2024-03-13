@@ -9,7 +9,6 @@ import javax.swing.JFrame;
 
 public class game extends Canvas implements Runnable {
     
-    private int bank = 1;
     private boolean isRunning = false;
     private Thread thread;
     private bugList bugList;
@@ -18,8 +17,6 @@ public class game extends Canvas implements Runnable {
     private stage2 stage2;
     public int activeStage =1;
     public enemyList enemyList;
-    public bank b;
-    public static boolean isSpider = false;
     
 
     public game() {
@@ -84,10 +81,18 @@ public class game extends Canvas implements Runnable {
 
         //spawn spider
         
-        if(bugList.getSize()>10 && enemyList.getSize()==0) {
+        if(bank.bank.getIntScore()%10 ==0) {
             spider spider = new spider();
             enemyList.addBug(spider);
+            bank.bank.setScore(1);
         }
+        /*
+        if(bank.bank.getIntScore()%15 ==0 && isSpider) {
+            hornet hornet = new hornet();
+            enemyList.addBug(hornet);
+            isSpider = false;
+        }
+        */
 
         //select active stage
         if(activeStage==1) {

@@ -1,14 +1,15 @@
 import java.awt.*;
 public class beatle extends gameObject implements ally {
 
-    foodList fl = new foodList();
-    protected String name = "beatle";
     //STATS
-    protected int damage = 2;
+    protected String name = "beatle";
+    protected int damage = 4;
     protected int price = 3;
     protected int health = 20;
+
     //OTHER
     private enemyList el = new enemyList();
+    private foodList fl = new foodList();
 
     //MOVES
     private int canMovei = 0;
@@ -16,10 +17,6 @@ public class beatle extends gameObject implements ally {
     private int bugX, bugY;
     private boolean lockOnLeaf = false;
     private boolean onLeaf = false;
-
-
-
-
 
     Image image = Toolkit.getDefaultToolkit().getImage("src/assets/beetleSmall.png");
 
@@ -33,8 +30,6 @@ public class beatle extends gameObject implements ally {
             super.setX(x);
             super.setY(y);
         }
-
-
 
     //Graphics
     public void Update() {
@@ -98,8 +93,6 @@ public class beatle extends gameObject implements ally {
         }
 
 
-
-
     //Kill bug
     public void damageObject ( int var1){
         this.health -= var1;
@@ -113,15 +106,15 @@ public class beatle extends gameObject implements ally {
     //Get/Set
     @Override
     public String getName () {
-        return "beatle";
+        return this.name;
     }
     @Override
         public int getDamage () {
-            return 2;
+            return this.damage;
     }
     @Override
     public int getPrice () {
-        return 3;
+        return this.price;
     }
     @Override
         public int getHealth () {

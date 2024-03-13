@@ -4,7 +4,7 @@ public class berry extends gameObject implements food{
 
     protected String name = "berry";
     protected int value = 2;
-    protected int health = 30;
+    protected int health = 50;
     Image image = Toolkit.getDefaultToolkit().getImage("src/assets/cherry.png");
 
     //
