@@ -40,7 +40,7 @@ public class ant extends gameObject implements ally {
     public void Update() {
 
 
-            move(this , findNearestLeaf(this,1),el.getSize());
+            move(this , findNearestLeaf(this,1));
     }
 
     public void Render(Graphics var1) {
@@ -163,7 +163,7 @@ public class ant extends gameObject implements ally {
             return closestLeaf;
         }
 
-        public void move(gameObject bug, gameObject leaf, int ){
+        public void move(gameObject bug, gameObject leaf){
            
             if(!lockOnLeaf) {
                 leafX = leaf.getX();
