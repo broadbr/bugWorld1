@@ -12,6 +12,9 @@ public class window {
     public static JPanel leftPanel = new JPanel();
     public static JPanel rightPanel = new JPanel();
 
+    public static JPanel middlePanel = new JPanel();
+
+
     public window(){
 
     }
@@ -35,6 +38,7 @@ public class window {
             JButton levelUp = new JButton("Level Up");
             JButton antDelete = new JButton("X");
             JButton beetleDelete = new JButton("X");
+            JButton startButton = new JButton("Start");
 
 
             //text titles created
@@ -52,6 +56,7 @@ public class window {
             attackUpgrade.setPreferredSize(buttonA);
             antDelete.setPreferredSize(deleteButton);
             beetleDelete.setPreferredSize(deleteButton);
+            startButton.setPreferredSize(buttonA);
 
             JPanel bugNester = new JPanel(new GridLayout(2, 1));
 
@@ -71,9 +76,13 @@ public class window {
             bugNester.add(leftInner1);
             bugNester.add(leftInner2);
 
+            ///start menu display///
+            middlePanel.setBackground(Color.GRAY);
+            middlePanel.setLayout(new BoxLayout(middlePanel, BoxLayout.Y_AXIS));
+            middlePanel.add(startButton);
+
 
             ////shop display to left of page////
-
             leftPanel.setBackground(Color.GRAY);
             //leftPanel.setLayout(new GridLayout(2, 2, 5, 5));
             //leftPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
@@ -96,25 +105,6 @@ public class window {
             leftPanel.add(shopText);
             leftPanel.add(moneyInc);
 
-            tempLeaf.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-
-
-
-                /*
-                boolean runStage = true;
-                try {
-                    while (runStage) {
-                        Thread.sleep(1000);
-                        stage1.makeFood();
-
-                    }
-                } catch (InterruptedException ex){}
-                */
-                }
-
-            });
 
             moneyInc.addActionListener(new ActionListener() {
                 @Override
@@ -202,6 +192,15 @@ public class window {
                 }
             });
 
+            startButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                game.activeStage++;
+            }
+            });
+
+
+
 
             //window created, objects added to window
             frame.setLayout(new BorderLayout());
@@ -212,6 +211,7 @@ public class window {
             frame.add(game);
             frame.add(leftPanel, BorderLayout.WEST);
             frame.add(rightPanel, BorderLayout.EAST);
+            frame.add(middlePanel, BorderLayout.NORTH);
             frame.setResizable(true);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setLocationRelativeTo(null);
@@ -225,11 +225,13 @@ public class window {
 
     public static void menuToggle(){
         leftPanel.setVisible(false);
+        middlePanel.setVisible(true);
         rightPanel.setVisible(false);
     }
 
     public static void menuToggleOn(){
         leftPanel.setVisible(true);
+        middlePanel.setVisible(false);
         rightPanel.setVisible(true);
     }
 
