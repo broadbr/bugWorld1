@@ -23,10 +23,16 @@ public class game extends Canvas implements Runnable {
         new window(1360, 640, "Bug World 1", this);//shop+upgrades = 100x2+width = 24x20 = 480+200=680 & height = 16x20=320
         start();
 
+        new menuWindow(640, 320,"menu",this);
+
+
+
         bugList = new bugList();
         foodList = new foodList();
         stage1 = new stage1();
         stage2 = new stage2();
+
+
     }
 
 
@@ -84,6 +90,7 @@ public class game extends Canvas implements Runnable {
         if (activeStage == 3 || activeStage ==4) {
             stage2.makeFood();// runs stage 2
         }
+
         /* Cycle 2
 
 
@@ -118,11 +125,17 @@ public class game extends Canvas implements Runnable {
 
         if (activeStage == 0) {
             Image image = Toolkit.getDefaultToolkit().getImage("src/assets/menuAsset.png");
-            g.drawImage(image, -70, 0, null); // loads menu png
+            g.drawImage(image, 0, 0, null); // loads menu png
+            window.menuToggle();
+            menuWindow.menuToggleOn();
+
+
         }
         if (activeStage == 1) {
             Image image1 = Toolkit.getDefaultToolkit().getImage("src/assets/stage1Asset.png");
             g.drawImage(image1, -70, 0, null); // loads stage 1 L1
+            window.menuToggleOn();
+            menuWindow.menuToggle();
         }
 
             if (activeStage == 2) {
