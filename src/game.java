@@ -20,15 +20,22 @@ public class game extends Canvas implements Runnable {
     private enemyList enemyList;
     
 
+
     public game() {
-        new window(1360,640,"Bug World 1",this);//shop+upgrades = 100x2+width = 24x20 = 480+200=680 & height = 16x20=320
+        new window(1360, 640, "Bug World 1", this);//shop+upgrades = 100x2+width = 24x20 = 480+200=680 & height = 16x20=320
         start();
 
         enemyList = new enemyList();
+        new menuWindow(640, 320,"menu",this);
+
+
+
         bugList = new bugList();
         foodList = new foodList();
         stage1 = new stage1();
         stage2 = new stage2();
+
+
     }
 
 
@@ -62,12 +69,12 @@ public class game extends Canvas implements Runnable {
         thread = new Thread(this);
         thread.start();
     }
+
     public void stop() {
         isRunning = false;
-        try{
+        try {
             thread.join();
-        }
-        catch (InterruptedException e) {
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
@@ -78,15 +85,15 @@ public class game extends Canvas implements Runnable {
         bugList.Update();
         foodList.Update();
         
-
-
-        //spawn spider
-        
         if(bank.bank.getIntScore()%10 ==0) {
             spider spider = new spider();
             enemyList.addBug(spider);
             bank.bank.setScore(1);
         }
+
+        //spawn spider
+        
+        
         /*
         if(bank.bank.getIntScore()%15 ==0 && isSpider) {
             hornet hornet = new hornet();
@@ -96,68 +103,103 @@ public class game extends Canvas implements Runnable {
         */
 
         //select active stage
+        if (activeStage == 1 || activeStage ==2) {
+            stage1.makeFood();// runs stage 1
+        }
+        if (activeStage == 3 || activeStage ==4) {
+            stage2.makeFood();// runs stage 2
+        }
+
+        
+        /* Cycle 2
+
+
         if(activeStage==1) {
             stage1.makeFood();// runs stage 1
         }
-        if(activeStage==2){
+        if(activeStage==2) {
+            stage1.makeFood2();// run S 1 L 2
+        }
+        if(activeStage==3){
             stage2.makeFood();// runs stage 2
         }
+        if(activeStage==4){
+            stage2.makeFood2();// run S2 L2
+        }
+
+
+        */
 
     }
 
     public void render() {
         BufferStrategy buff = this.getBufferStrategy();
-        
-        if(buff == null) { 
+
+        if (buff == null) {
             this.createBufferStrategy(3);
-            return; 
+            return;
         }
-        
-        // load stage2
-        //Image image = Toolkit.getDefaultToolkit().getImage("src/assets/csStage2.png");
+
         Graphics g = buff.getDrawGraphics();
-        //g.drawImage(image,-70,0,null); // loads stage 2
-        ////////////////////////////////////
+        //load stage
 
-            //load stage1
-        if(activeStage == 1) {
-            Image image = Toolkit.getDefaultToolkit().getImage("src/assets/csNewAsset.png");
-            g.drawImage(image,150,100,null); // loads stage 1
+        if (activeStage == 0) {
+            Image image = Toolkit.getDefaultToolkit().getImage("src/assets/menuAsset.png");
+            g.drawImage(image, 0, 0, null); // loads menu png
+            window.menuToggle();
+            //menuWindow.menuToggleOn();
+
+
         }
-        if(activeStage == 2) {
-            Image image = Toolkit.getDefaultToolkit().getImage("src/assets/csStage2.png");
-            g.drawImage(image,-70,0,null); // loads stage 
+        if (activeStage == 1) {
+            Image image1 = Toolkit.getDefaultToolkit().getImage("src/assets/stage1Asset.png");
+            g.drawImage(image1, -70, 0, null); // loads stage 1 L1
+            window.menuToggleOn();
+            //menuWindow.menuToggle();
         }
 
-        // Draw portal
-        Image image2 = Toolkit.getDefaultToolkit().getImage("src/assets/portal.png");
-        g.drawImage(image2,500,290,null); //
+            if (activeStage == 2) {
+                Image image2 = Toolkit.getDefaultToolkit().getImage("src/assets/Stage1Asset2.png");//asset2
+                g.drawImage(image2, -70, 0, null);  // loads stage 1 L2
+            }
+
+            if (activeStage == 3) {
+                Image image3 = Toolkit.getDefaultToolkit().getImage("src/assets/Stage2Asset.png");
+                g.drawImage(image3, -70, 0, null); // loads stage 2 L1
+            }
+
+                if (activeStage == 4) {
+                    Image image4 = Toolkit.getDefaultToolkit().getImage("src/assets/Stage2Asset2.png");//asses2
+                    g.drawImage(image4, -70, 0, null); // loads stage 2 L2
+                }
 
 
-
-        /////////////////////////////////////
-        enemyList.Render(g);
-        bugList.Render(g);
-        foodList.Render(g);
-
-        g.dispose();
-        buff.show();
-    }
-    public static void main(String[] args) {
-        
-        new game();
-
-        
-        //////Testing///
-        bugList bugList = new bugList();
-        foodList foodList = new foodList();
-        stage1 stage1 = new stage1();
+                // Draw portal
+                if (activeStage>0) {
+                    Image image5 = Toolkit.getDefaultToolkit().getImage("src/assets/portal.png");
+                    g.drawImage(image5, 500, 290, null); //
+                }
 
 
+                /////////////////////////////////////
+                enemyList.Render(g);
+                bugList.Render(g);
+                foodList.Render(g);
 
-        stage1.makeFood();
+                g.dispose();
+                buff.show();
+            }
+            public static void main(String[] args){
 
-        //testing insects
+                new game();
+                bugList bugList = new bugList();
+                foodList foodList = new foodList();
+                stage1 stage1 = new stage1();
+
+
+                stage1.makeFood();
+
+                //testing insects
         /*
         gameObject b = new ant();
         bugList.addBug(b);
@@ -176,9 +218,6 @@ public class game extends Canvas implements Runnable {
         */
 
 
+            }
+        }
 
-        
-
-
-    }
-}

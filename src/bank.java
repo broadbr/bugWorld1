@@ -29,5 +29,7 @@ public class bank {
     public void setScore(int plus) {
         this.score +=1;
     }
+
+
 }
 

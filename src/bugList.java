@@ -8,8 +8,6 @@ public class bugList {
     public bugList() {
     }
 
-
-
     public void Update() {
         for(int var1 = 0; var1 < objects.size(); ++var1) {
             gameObject var2 = (gameObject)objects.get(var1);
