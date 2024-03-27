@@ -78,6 +78,7 @@ public class window {
 
             ///start menu display///
             middlePanel.setBackground(Color.GRAY);
+            middlePanel.setPreferredSize(new Dimension(100, 100));
             middlePanel.setLayout(new BoxLayout(middlePanel, BoxLayout.Y_AXIS));
             middlePanel.add(startButton);
 
@@ -211,7 +212,7 @@ public class window {
             frame.add(game);
             frame.add(leftPanel, BorderLayout.WEST);
             frame.add(rightPanel, BorderLayout.EAST);
-            frame.add(middlePanel, BorderLayout.NORTH);
+            frame.add(middlePanel, BorderLayout.CENTER);
             frame.setResizable(true);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setLocationRelativeTo(null);
