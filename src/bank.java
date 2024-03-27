@@ -18,5 +18,7 @@ public class bank {
     public void setEarnt(int pay) {
         this.account += pay;
     }
+
+
 }
 
