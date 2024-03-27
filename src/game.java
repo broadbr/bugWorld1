@@ -127,7 +127,7 @@ public class game extends Canvas implements Runnable {
             Image image = Toolkit.getDefaultToolkit().getImage("src/assets/menuAsset.png");
             g.drawImage(image, 0, 0, null); // loads menu png
             window.menuToggle();
-            menuWindow.menuToggleOn();
+            //menuWindow.menuToggleOn();
 
 
         }
@@ -135,7 +135,7 @@ public class game extends Canvas implements Runnable {
             Image image1 = Toolkit.getDefaultToolkit().getImage("src/assets/stage1Asset.png");
             g.drawImage(image1, -70, 0, null); // loads stage 1 L1
             window.menuToggleOn();
-            menuWindow.menuToggle();
+            //menuWindow.menuToggle();
         }
 
             if (activeStage == 2) {
