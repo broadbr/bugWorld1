@@ -25,15 +25,15 @@ public class menuWindow {
         startButton.setPreferredSize(buttonA);
 
 
-        JPanel leftInner1 = new JPanel(new GridLayout(1, 2));
 
-        leftInner1.add(startButton);
         ////shop display to left of page////
 
-        middlePanel.setBackground(Color.GRAY);
+        //middlePanel.setBackground(Color.GRAY);
 
         middlePanel.setLayout(new BoxLayout(middlePanel, BoxLayout.Y_AXIS));
         //middlePanel.add();
+
+        middlePanel.add(startButton);
 
         middlePanel.add(Box.createRigidArea(new Dimension(0, 500)));
 
