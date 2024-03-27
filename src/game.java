@@ -8,15 +8,16 @@ import java.awt.Toolkit;
 import javax.swing.JFrame;
 
 public class game extends Canvas implements Runnable {
-    
+
+
     private boolean isRunning = false;
     private Thread thread;
     private bugList bugList;
     private foodList foodList;
     private stage1 stage1;
     private stage2 stage2;
-    public int activeStage =1;
-    public enemyList enemyList;
+    public int activeStage = 0;//1
+    private enemyList enemyList;
     
 
     public game() {

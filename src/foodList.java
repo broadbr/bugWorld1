@@ -7,10 +7,9 @@ public class foodList {
     public static List<gameObject> objects = new ArrayList();
     
 
+    
     public foodList() {
     }
-
-
 
     public void Update() {
         for(int var1 = 0; var1 < objects.size(); ++var1) {
@@ -70,6 +69,20 @@ public class foodList {
     {
         return objects.size();
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public void destroy(gameObject food){
         objects.remove(food);
         bank.bank.setEarnt(food.getValue());
