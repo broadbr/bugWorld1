@@ -107,6 +107,9 @@ public class window {
             leftPanel.add(moneyInc);
 
 
+            //centerPane.add(game, JLayeredPane.DEFAULT_LAYER);
+
+
             moneyInc.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -212,7 +215,7 @@ public class window {
             frame.add(game);
             frame.add(leftPanel, BorderLayout.WEST);
             frame.add(rightPanel, BorderLayout.EAST);
-            frame.add(middlePanel, BorderLayout.CENTER);
+            //frame.add(middlePanel, BorderLayout.CENTER);
             frame.setResizable(true);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setLocationRelativeTo(null);
