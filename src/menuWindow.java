@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 public class menuWindow {
 
+
     public int activeStage = 0;
     public static JPanel middlePanel = new JPanel();
 
@@ -13,7 +14,8 @@ public class menuWindow {
 
     public menuWindow(int width, int height, String title, game game) {
 
-        JFrame frame = new JFrame(title);
+        window window = new window();
+        //JFrame frame = new JFrame(title);
         //local variables
         //buttons created
         JButton startButton = new JButton("Start");
@@ -24,10 +26,8 @@ public class menuWindow {
         Dimension deleteButton = new Dimension(50, 30);
         startButton.setPreferredSize(buttonA);
 
+        //JPanel leftInner1 = new JPanel(new GridLayout(1, 2));
 
-        JPanel leftInner1 = new JPanel(new GridLayout(1, 2));
-
-        leftInner1.add(startButton);
         ////shop display to left of page////
 
         middlePanel.setBackground(Color.GRAY);
@@ -44,6 +44,8 @@ public class menuWindow {
             }
         });
     }
+
+        //window.frame.add(middlePanel, BorderLayout.NORTH);
 
         public int getActiveStage () {
             return activeStage;
