@@ -23,7 +23,7 @@ public class game extends Canvas implements Runnable {
         new window(1360, 640, "Bug World 1", this);//shop+upgrades = 100x2+width = 24x20 = 480+200=680 & height = 16x20=320
         start();
 
-        new menuWindow(640, 320,"menu",this);
+        //new menuWindow(640, 320,"menu",this);
 
 
 
@@ -84,12 +84,15 @@ public class game extends Canvas implements Runnable {
 
 
         //select active stage
-        if (activeStage == 1 || activeStage ==2) {
+        if (activeStage == 1) {
             stage1.makeFood();// runs stage 1
         }
-        if (activeStage == 3 || activeStage ==4) {
+        if (activeStage == 2){ stage1.makeFood2();}
+
+        if (activeStage == 3) {
             stage2.makeFood();// runs stage 2
         }
+        if (activeStage == 4){stage2.makeFood2();}
 
         /* Cycle 2
 

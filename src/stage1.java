@@ -78,12 +78,12 @@ public class stage1 {
     }
         public void makeFood2() {
             // tree location(s)
-            int tree1X = 400;
-            int tree1Y = 40;
-            int tree2X = 770;
-            int tree2Y = 130;
-            int tree3X = 100;
-            int tree3Y = 280;
+            int tree1X = 250;
+            int tree1Y = 125;
+            int tree2X = 425;
+            int tree2Y = 350;
+            int tree3X = 600;
+            int tree3Y = 150;
 
 
             //odds of spawning
@@ -115,8 +115,8 @@ public class stage1 {
 
 
                 // creates random location within 6 units of tree
-                int x = ThreadLocalRandom.current().nextInt(currTreeX, 200 + currTreeX);
-                int y = ThreadLocalRandom.current().nextInt(currTreeY, 200 + currTreeY);
+                int x = ThreadLocalRandom.current().nextInt(currTreeX, 175 + currTreeX);
+                int y = ThreadLocalRandom.current().nextInt(currTreeY, 175 + currTreeY);
 
                 //if #==1 create leaf, otherwise create other food
                 if (randNum == 1) {

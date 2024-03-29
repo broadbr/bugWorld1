@@ -8,6 +8,8 @@ import javax.swing.*;
 public class window {
 
     public int activeStage = 0;
+
+    public int bugLimit = 5;
     public JLabel shopText = new JLabel("Money: " + bank.bank.getAccount() + "$");
     public static JPanel leftPanel = new JPanel();
     public static JPanel rightPanel = new JPanel();
@@ -134,7 +136,23 @@ public class window {
             antButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    if (bank.bank.getAccount() >= a.getPrice()) {
+
+                    boolean lim = true;//used to check if limit of bugs was reached
+                    int temp = 0;
+
+                    for(int i = 0; i < bugList.objects.size(); i++)
+                        {
+                            if(bugList.objects.get(i).getName().equals("ant"))
+                            {
+                                temp++;
+                            }
+                            if(temp>=bugLimit){
+                                lim = false;
+                                System.out.println("\n Max number of ants!");
+                            }
+                    }
+
+                    if ((bank.bank.getAccount() >= a.getPrice())&&lim) {
                         ant a = new ant();
                         bugList.objects.add(a);
                         bank.bank.setSpend(a.getPrice());
@@ -152,6 +170,22 @@ public class window {
             beetleButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
+
+                    boolean lim = true;//used to check if limit of bugs was reached
+                    int temp = 0;
+
+                    for(int i = 0; i < bugList.objects.size(); i++)
+                    {
+                        if(bugList.objects.get(i).getName().equals("beatle"))
+                        {
+                            temp++;
+                        }
+                        if(temp>=bugLimit){
+                            lim = false;
+                            System.out.println("\n Max number of beatles!");
+                        }
+                    }
+
                     if (bank.bank.getAccount() >= b.getPrice()) {
                         beatle b = new beatle();
                         bugList.objects.add(b);
