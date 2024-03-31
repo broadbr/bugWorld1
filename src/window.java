@@ -137,6 +137,7 @@ public class window {
                 @Override
                 public void actionPerformed(ActionEvent e) {
 
+                    int tempLimit = ((bugLimit + activeStage)-1);// calculates limit based on stage
                     boolean lim = true;//used to check if limit of bugs was reached
                     int temp = 0;
 
@@ -146,7 +147,7 @@ public class window {
                             {
                                 temp++;
                             }
-                            if(temp>=bugLimit){
+                            if(temp>=tempLimit){
                                 lim = false;
                                 System.out.println("\n Max number of ants!");
                             }
@@ -171,6 +172,7 @@ public class window {
                 @Override
                 public void actionPerformed(ActionEvent e) {
 
+                    int tempLimit = ((bugLimit + activeStage)-1);// calculates limit based on stage
                     boolean lim = true;//used to check if limit of bugs was reached
                     int temp = 0;
 
@@ -180,7 +182,7 @@ public class window {
                         {
                             temp++;
                         }
-                        if(temp>=bugLimit){
+                        if(temp>=tempLimit){
                             lim = false;
                             System.out.println("\n Max number of beatles!");
                         }
