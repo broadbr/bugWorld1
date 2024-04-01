@@ -9,7 +9,7 @@ import javax.swing.JFrame;
 
 public class game extends Canvas implements Runnable {
 
-    private int bank = 1;
+
     private boolean isRunning = false;
     private Thread thread;
     private bugList bugList;
@@ -17,12 +17,15 @@ public class game extends Canvas implements Runnable {
     private stage1 stage1;
     private stage2 stage2;
     public int activeStage = 0;//1
+    private enemyList enemyList;
+    
 
 
     public game() {
         new window(1360, 640, "Bug World 1", this);//shop+upgrades = 100x2+width = 24x20 = 480+200=680 & height = 16x20=320
         start();
 
+        enemyList = new enemyList();
         new menuWindow(640, 320,"menu",this);
 
 
@@ -37,32 +40,30 @@ public class game extends Canvas implements Runnable {
 
 
     public void run() {
-        long lastime = System.nanoTime();
-        double AmountOfTicks = 30;
-        double ns = 1000000000 / AmountOfTicks;
-        double delta = 0;
-        int frames = 0;
-        double time = System.currentTimeMillis();
-
-        while (isRunning == true) {
-            long now = System.nanoTime();
-            delta += (now - lastime) / ns;
-            lastime = now;
-
-            if (delta >= 1) {
-                update();
-                render();
-                frames++;
-                delta--;
-                if (System.currentTimeMillis() - time >= 1000) {
-                    //System.out.println("fps:" + frames);
-                    time += 1000;
-                    frames = 0;
-                }
-            }
-        }
-    }
-
+		long lastime = System.nanoTime();
+		double AmountOfTicks = 30;
+		double ns = 1000000000 / AmountOfTicks;
+		double delta = 0;
+		int frames = 0;
+		double time = System.currentTimeMillis();
+		
+		while(isRunning == true) {
+			long now = System.nanoTime();
+			delta += (now - lastime) / ns;
+			lastime = now;
+			
+			if(delta >= 1) {
+				update();
+				render();
+				frames++;
+				delta--;
+				if(System.currentTimeMillis() - time >= 1000) {
+					time += 1000;
+					frames = 0;
+				}
+			}
+		}
+	}
     public void start() {
         isRunning = true;
         thread = new Thread(this);
@@ -79,24 +80,55 @@ public class game extends Canvas implements Runnable {
     }
 
     public void update() {
+        
+        enemyList.Update();
         bugList.Update();
         foodList.Update();
+        
+        if(bank.bank.getIntScore()%10 ==0) {
+            spider spider = new spider();
+            enemyList.addBug(spider);
+            bank.bank.setScore(1);
+        }
 
+        //spawn spider
+        
+        
+        /*
+        if(bank.bank.getIntScore()%15 ==0 && isSpider) {
+            hornet hornet = new hornet();
+            enemyList.addBug(hornet);
+            isSpider = false;
+        }
+        */
 
         //select active stage
-        if (activeStage == 1 ){
-            stage1.makeFood();
+        if (activeStage == 1 || activeStage ==2) {
+            stage1.makeFood();// runs stage 1
         }
-        if (activeStage ==2) {
-            stage1.makeFood2();// runs stage 1
-        }
-        if (activeStage == 3) {
-            stage2.makeFood2();
-        }
-         if   (activeStage ==4){
-            stage2.makeFood2();// runs stage 2
+        if (activeStage == 3 || activeStage ==4) {
+            stage2.makeFood();// runs stage 2
         }
 
+        
+        /* Cycle 2
+
+
+        if(activeStage==1) {
+            stage1.makeFood();// runs stage 1
+        }
+        if(activeStage==2) {
+            stage1.makeFood2();// run S 1 L 2
+        }
+        if(activeStage==3){
+            stage2.makeFood();// runs stage 2
+        }
+        if(activeStage==4){
+            stage2.makeFood2();// run S2 L2
+        }
+
+
+        */
 
     }
 
@@ -150,6 +182,7 @@ public class game extends Canvas implements Runnable {
 
 
                 /////////////////////////////////////
+                enemyList.Render(g);
                 bugList.Render(g);
                 foodList.Render(g);
 
