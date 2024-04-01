@@ -1,22 +1,22 @@
 import java.awt.*;
 public class beatle extends gameObject implements ally {
 
-    foodList fl = new foodList();
+    //STATS
     protected String name = "beatle";
-
-    protected int damage = 2;
+    protected int damage = 4;
     protected int price = 3;
-    protected int health = 2;
+    protected int health = 20;
 
+    //OTHER
+    private enemyList el = new enemyList();
+    private foodList fl = new foodList();
+
+    //MOVES
     private int canMovei = 0;
     private int leafX , leafY;
     private int bugX, bugY;
     private boolean lockOnLeaf = false;
     private boolean onLeaf = false;
-
-
-
-
 
     Image image = Toolkit.getDefaultToolkit().getImage("src/assets/beetleSmall.png");
 
@@ -31,11 +31,14 @@ public class beatle extends gameObject implements ally {
             super.setY(y);
         }
 
-
-
     //Graphics
     public void Update() {
-        move(this, findNearestLeaf(this));
+        if(el.getSize()==0) {
+            move(this , findNearestLeaf(this));
+        }
+        else {
+            move(this , el.topBug());
+        }
     }
 
     public void Render(Graphics var1) {
@@ -90,8 +93,6 @@ public class beatle extends gameObject implements ally {
         }
 
 
-
-
     //Kill bug
     public void damageObject ( int var1){
         this.health -= var1;
@@ -105,15 +106,15 @@ public class beatle extends gameObject implements ally {
     //Get/Set
     @Override
     public String getName () {
-        return "beatle";
+        return this.name;
     }
     @Override
         public int getDamage () {
-            return 2;
+            return this.damage;
     }
     @Override
     public int getPrice () {
-        return 3;
+        return this.price;
     }
     @Override
         public int getHealth () {
@@ -167,7 +168,7 @@ public class beatle extends gameObject implements ally {
         {
             onLeaf = true;
             lockOnLeaf = false;
-            fl.destroy(leaf);
+            leaf.damageObject(damage);
             //System.out.println("WE FOUND A LEAF AND GOT IT");
             bug.setX(bugX);
             bug.setY(bugY);
