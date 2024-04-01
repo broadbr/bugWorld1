@@ -156,20 +156,16 @@ public class window {
                         }
                         if(temp>=tempLimit){
                             lim=false;
-                            System.out.println("\nMax number of ants!");
                         }
                     }
 
-                    if (bank.bank.getAccount() >= a.getPrice()) {
+                    if ((bank.bank.getAccount() >= a.getPrice())&&lim) {
                         ant a = new ant();
                         bugList.objects.add(a);
                         bank.bank.setSpend(a.getPrice());
                         System.out.println(bank.bank.getAccount());
                         System.out.println("\nAnt has been purchased");
                         shopText.setText("Money: " + bank.bank.getAccount() + "$");
-                    } else {
-                        //antButton.setText("Ant: X");
-                        System.out.println("\nNot enough money for ant!");
                     }
                 }
             });
@@ -192,18 +188,15 @@ public class window {
                         if(temp>=tempLimit)
                             {
                             lim=false;
-                            System.out.println("\nMax number of beetles!");
                         }
                     }
 
-                    if (bank.bank.getAccount() >= b.getPrice()) {
+                    if ((bank.bank.getAccount() >= b.getPrice())&&lim) {
                         beatle b = new beatle();
                         bugList.objects.add(b);
                         bank.bank.setSpend(b.getPrice());
                         System.out.println("\nBeetle has been purchased");
                         shopText.setText("Money: " + bank.bank.getAccount() + "$");
-                    } else {
-                        System.out.println("\nNot enough money for beetle!");
                     }
                 }
             });
@@ -258,6 +251,7 @@ public class window {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     game.activeStage++;
+                    activeStage++;
                 }
             });
 
@@ -265,6 +259,7 @@ public class window {
             @Override
             public void actionPerformed(ActionEvent e) {
                 game.activeStage++;
+                activeStage++;
             }
             });
 
