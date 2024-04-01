@@ -7,6 +7,7 @@ import java.util.concurrent.ThreadLocalRandom;
 //call every n seconds to make food
 public class stage2 {
 
+    public static int control =20;
 
     public void makeFood() {
         // tree location(s)
@@ -21,8 +22,7 @@ public class stage2 {
 
 
         //odds of spawning
-        int k = ThreadLocalRandom.current().nextInt(1, 20 + 1);
-
+        int k = ThreadLocalRandom.current().nextInt(1, control + 1);
         if (k == 1) {
 
 
@@ -103,7 +103,7 @@ public class stage2 {
 
 
         //odds of spawning
-        int k = ThreadLocalRandom.current().nextInt(1, 20 + 1);
+        int k = ThreadLocalRandom.current().nextInt(1, control + 1);
 
         if (k == 1) {
 

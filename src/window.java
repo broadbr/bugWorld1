@@ -9,8 +9,9 @@ public class window {
 
     public int activeStage = 0;
 
-    public int bugLimit = 5;
-    public JLabel shopText = new JLabel("Money: " + bank.bank.getAccount() + "$");
+    public int bugLimit =5;
+
+    public static JLabel shopText = new JLabel("Money: " + bank.bank.getAccount() + "$");
     public static JPanel leftPanel = new JPanel();
     public static JPanel rightPanel = new JPanel();
 
@@ -35,12 +36,14 @@ public class window {
             //buttons created
             JButton antButton = new JButton("Ant: " + a.getPrice() + "$");
             JButton beetleButton = new JButton("Beetle: " + b.getPrice() + "$");
-            JButton attackUpgrade = new JButton("Upgrade Damage");
-            JButton healUpgrade = new JButton("Heal");
+            JButton attackUpgrade = new JButton("10$ Damage+1");
+            JButton healUpgrade = new JButton("10$ Heal Bugs");
             JButton levelUp = new JButton("Level Up");
             JButton antDelete = new JButton("X");
             JButton beetleDelete = new JButton("X");
             JButton startButton = new JButton("Start");
+            JButton rateButton = new JButton("10$ Fast Food");
+            JButton valueButton = new JButton("10$ Food Value +1");
 
 
             //text titles created
@@ -59,6 +62,8 @@ public class window {
             antDelete.setPreferredSize(deleteButton);
             beetleDelete.setPreferredSize(deleteButton);
             startButton.setPreferredSize(buttonA);
+            rateButton.setPreferredSize(buttonA);
+            valueButton.setPreferredSize(buttonA);
 
             JPanel bugNester = new JPanel(new GridLayout(2, 1));
 
@@ -80,7 +85,6 @@ public class window {
 
             ///start menu display///
             middlePanel.setBackground(Color.GRAY);
-            middlePanel.setPreferredSize(new Dimension(100, 100));
             middlePanel.setLayout(new BoxLayout(middlePanel, BoxLayout.Y_AXIS));
             middlePanel.add(startButton);
 
@@ -106,7 +110,7 @@ public class window {
             //leftPanel.add(Box.createRigidArea(new Dimension(0, 100)));
             //leftPanel.add(tempLeaf);
             leftPanel.add(shopText);
-            leftPanel.add(moneyInc);
+            //leftPanel.add(moneyInc);
 
 
             moneyInc.addActionListener(new ActionListener() {
@@ -128,8 +132,13 @@ public class window {
             rightPanel.add(attackUpgrade);
             rightPanel.add(Box.createRigidArea(new Dimension(0, 10)));
             rightPanel.add(healUpgrade);
+            rightPanel.add(Box.createRigidArea(new Dimension(0, 10)));
+            rightPanel.add(rateButton);
+            rightPanel.add(Box.createRigidArea(new Dimension(0, 10)));
+            rightPanel.add(valueButton);
             rightPanel.add(Box.createRigidArea(new Dimension(0, 390)));
             rightPanel.add(levelUp);
+
 
 
             //button functionality///
@@ -137,23 +146,21 @@ public class window {
                 @Override
                 public void actionPerformed(ActionEvent e) {
 
-                    int tempLimit = ((bugLimit + activeStage)-1);// calculates limit based on stage
-                    boolean lim = true;//used to check if limit of bugs was reached
+                    int tempLimit = ((bugLimit + activeStage)-1);//calculates limit based on stage
+                    boolean lim = true; // used to check if limit of bugs was reached
                     int temp = 0;
 
-                    for(int i = 0; i < bugList.objects.size(); i++)
-                        {
-                            if(bugList.objects.get(i).getName().equals("ant"))
-                            {
-                                temp++;
-                            }
-                            if(temp>=tempLimit){
-                                lim = false;
-                                System.out.println("\n Max number of ants!");
-                            }
+                    for(int i = 0; i < bugList.objects.size(); i++){
+                        if(bugList.objects.get(i).getName().equals("ant")){
+                            temp++;
+                        }
+                        if(temp>=tempLimit){
+                            lim=false;
+                            System.out.println("\nMax number of ants!");
+                        }
                     }
 
-                    if ((bank.bank.getAccount() >= a.getPrice())&&lim) {
+                    if (bank.bank.getAccount() >= a.getPrice()) {
                         ant a = new ant();
                         bugList.objects.add(a);
                         bank.bank.setSpend(a.getPrice());
@@ -173,7 +180,7 @@ public class window {
                 public void actionPerformed(ActionEvent e) {
 
                     int tempLimit = ((bugLimit + activeStage)-1);// calculates limit based on stage
-                    boolean lim = true;//used to check if limit of bugs was reached
+                    boolean lim = true; // used to check if limit of bugs was reached
                     int temp = 0;
 
                     for(int i = 0; i < bugList.objects.size(); i++)
@@ -182,9 +189,10 @@ public class window {
                         {
                             temp++;
                         }
-                        if(temp>=tempLimit){
-                            lim = false;
-                            System.out.println("\n Max number of beatles!");
+                        if(temp>=tempLimit)
+                            {
+                            lim=false;
+                            System.out.println("\nMax number of beetles!");
                         }
                     }
 
@@ -217,10 +225,34 @@ public class window {
             healUpgrade.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    upgrades.healBugs();
-
+                    if(bank.getAccount()>10) {
+                        bank.setSpend(10);
+                        upgrades.healBugs();
+                    }
                 }
             });
+
+
+        valueButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(bank.getAccount()>10) {
+                    bank.setSpend(10);
+                    upgrades.incValue();
+                }
+            }
+        });
+        rateButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(bank.getAccount()>10) {
+                    bank.setSpend(10);
+                    upgrades.healBugs();
+                }
+                upgrades.fastFood();
+
+            }
+        });
 
             levelUp.addActionListener(new ActionListener() {
                 @Override
@@ -248,7 +280,7 @@ public class window {
             frame.add(game);
             frame.add(leftPanel, BorderLayout.WEST);
             frame.add(rightPanel, BorderLayout.EAST);
-            frame.add(middlePanel, BorderLayout.CENTER);
+            frame.add(middlePanel, BorderLayout.NORTH);
             frame.setResizable(true);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setLocationRelativeTo(null);
