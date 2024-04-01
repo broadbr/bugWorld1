@@ -84,31 +84,19 @@ public class game extends Canvas implements Runnable {
 
 
         //select active stage
-        if (activeStage == 1 || activeStage ==2) {
-            stage1.makeFood();// runs stage 1
+        if (activeStage == 1 ){
+            stage1.makeFood();
         }
-        if (activeStage == 3 || activeStage ==4) {
-            stage2.makeFood();// runs stage 2
+        if (activeStage ==2) {
+            stage1.makeFood2();// runs stage 1
         }
-
-        /* Cycle 2
-
-
-        if(activeStage==1) {
-            stage1.makeFood();// runs stage 1
+        if (activeStage == 3) {
+            stage2.makeFood2();
         }
-        if(activeStage==2) {
-            stage1.makeFood2();// run S 1 L 2
-        }
-        if(activeStage==3){
-            stage2.makeFood();// runs stage 2
-        }
-        if(activeStage==4){
-            stage2.makeFood2();// run S2 L2
+         if   (activeStage ==4){
+            stage2.makeFood2();// runs stage 2
         }
 
-
-        */
 
     }
 
