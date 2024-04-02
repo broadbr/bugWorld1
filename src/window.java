@@ -1,9 +1,18 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.lang.Thread;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
 
 import javax.swing.*;
+
 
 public class window {
 
@@ -17,6 +26,8 @@ public class window {
 
     public static JPanel middlePanel = new JPanel();
 
+    public static JFrame frame = new JFrame();
+
 
     public window(){
 
@@ -24,7 +35,7 @@ public class window {
     public window(int width, int height, String title, game game) {
 
 
-            JFrame frame = new JFrame(title);
+            //JFrame frame = new JFrame(title);
 
             //local variables defined
             ant a = new ant();
@@ -93,23 +104,26 @@ public class window {
             leftPanel.setBackground(Color.GRAY);
             //leftPanel.setLayout(new GridLayout(2, 2, 5, 5));
             //leftPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
+            leftPanel.add(shopText);
             leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
             //leftPanel.setLayout(new BorderLayout());
             //leftPanel.setPreferredSize(new Dimension(150, 2000));
+
             leftPanel.add(shopName);
             leftPanel.add(bugNester);
+
             leftPanel.add(Box.createRigidArea(new Dimension(0, 500)));
             //leftPanel.add(Box.createRigidArea(new Dimension(0, 10)));
 
 
             //temp game testing
-            JButton tempLeaf = new JButton("Spawn Leaf");
+            //JButton tempLeaf = new JButton("Spawn Leaf");
             JButton moneyInc = new JButton("Money +1");
-            tempLeaf.setPreferredSize(buttonA);
+            //tempLeaf.setPreferredSize(buttonA);
             moneyInc.setPreferredSize(buttonA);
             //leftPanel.add(Box.createRigidArea(new Dimension(0, 100)));
             //leftPanel.add(tempLeaf);
-            leftPanel.add(shopText);
+
             //leftPanel.add(moneyInc);
 
 
@@ -164,9 +178,11 @@ public class window {
                         bugList.objects.add(a);
                         bank.bank.setSpend(a.getPrice());
                         System.out.println(bank.bank.getAccount());
+                        playSound("src/assets/success-1-6297.wav");
                         System.out.println("\nAnt has been purchased");
                         shopText.setText("Money: " + bank.bank.getAccount() + "$");
                     }
+                    else playSound("src/assets/invalid-selection-39351.wav");
                 }
             });
 
@@ -195,9 +211,11 @@ public class window {
                         beatle b = new beatle();
                         bugList.objects.add(b);
                         bank.bank.setSpend(b.getPrice());
+                        playSound("src/assets/success-1-6297.wav");
                         System.out.println("\nBeetle has been purchased");
                         shopText.setText("Money: " + bank.bank.getAccount() + "$");
                     }
+                    else playSound("src/assets/invalid-selection-39351.wav");
                 }
             });
 
@@ -206,9 +224,11 @@ public class window {
                 public void actionPerformed(ActionEvent e) {
                     if (bank.bank.getAccount() >= upgrades.getPrice()) {
                         upgrades.increaseDamage();
+                        playSound("src/assets/success-1-6297.wav");
                         System.out.println("Bug damage increased");
                         bank.bank.setSpend(upgrades.getPrice());
                     } else {
+                        playSound("src/assets/invalid-selection-39351.wav");
                         System.out.println("\nNot enough money for upgrade!");
                     }
                 }
@@ -219,9 +239,11 @@ public class window {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     if(bank.getAccount()>10) {
+                        playSound("\"src/assets/success-1-6297.wav");
                         bank.setSpend(10);
                         upgrades.healBugs();
                     }
+                    else playSound("src/assets/invalid-selection-39351.wav");
                 }
             });
 
@@ -230,19 +252,22 @@ public class window {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(bank.getAccount()>10) {
+                    playSound("\"src/assets/success-1-6297.wav");
                     bank.setSpend(10);
                     upgrades.incValue();
                 }
+                else playSound("src/assets/invalid-selection-39351.wav");
             }
         });
         rateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(bank.getAccount()>10) {
+                    playSound("src/assets/success-1-6297.wav");
                     bank.setSpend(10);
-                    upgrades.healBugs();
+                    upgrades.fastFood();
                 }
-                upgrades.fastFood();
+                else playSound("src/assets/invalid-selection-39351.wav");
 
             }
         });
@@ -250,6 +275,7 @@ public class window {
             levelUp.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
+                    playSound("src/assets/game-level-complete-143022.wav");
                     game.activeStage++;
                     activeStage++;
                 }
@@ -258,6 +284,7 @@ public class window {
             startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                playSound("src/assets/game-level-complete-143022.wav");
                 game.activeStage++;
                 activeStage++;
             }
@@ -282,6 +309,17 @@ public class window {
             frame.setVisible(true);
         }
 
+    private void playSound(String soundFilePath) {
+        try {
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(soundFilePath).getAbsoluteFile());
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            clip.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public int getActiveStage(){
         return activeStage;
@@ -294,6 +332,7 @@ public class window {
     }
 
     public static void menuToggleOn(){
+        frame.setSize(1400,640);
         leftPanel.setVisible(true);
         middlePanel.setVisible(false);
         rightPanel.setVisible(true);

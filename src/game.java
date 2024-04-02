@@ -21,8 +21,8 @@ public class game extends Canvas implements Runnable {
     
 
 
-    public game() {
-        new window(1360, 640, "Bug World 1", this);//shop+upgrades = 100x2+width = 24x20 = 480+200=680 & height = 16x20=320
+    public game() {//
+        new window(1200, 705, "Bug World 1", this);//shop+upgrades = 100x2+width = 24x20 = 480+200=680 & height = 16x20=320
         start();
 
         enemyList = new enemyList();
@@ -137,24 +137,24 @@ public class game extends Canvas implements Runnable {
         }
         if (activeStage == 1) {
             Image image1 = Toolkit.getDefaultToolkit().getImage("src/assets/stage1Asset.png");
-            g.drawImage(image1, -70, 0, null); // loads stage 1 L1
+            g.drawImage(image1, -100, 0, null); // loads stage 1 L1
             window.menuToggleOn();
             //menuWindow.menuToggle();
         }
 
             if (activeStage == 2) {
                 Image image2 = Toolkit.getDefaultToolkit().getImage("src/assets/Stage1Asset2.png");//asset2
-                g.drawImage(image2, -70, 0, null);  // loads stage 1 L2
+                g.drawImage(image2, -100, 0, null);  // loads stage 1 L2
             }
 
             if (activeStage == 3) {
                 Image image3 = Toolkit.getDefaultToolkit().getImage("src/assets/Stage2Asset.png");
-                g.drawImage(image3, -70, 0, null); // loads stage 2 L1
+                g.drawImage(image3, -100, 0, null); // loads stage 2 L1
             }
 
                 if (activeStage == 4) {
                     Image image4 = Toolkit.getDefaultToolkit().getImage("src/assets/Stage2Asset2.png");//asses2
-                    g.drawImage(image4, -70, 0, null); // loads stage 2 L2
+                    g.drawImage(image4, -100, 0, null); // loads stage 2 L2
                 }
 
 
