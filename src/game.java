@@ -86,6 +86,12 @@ public class game extends Canvas implements Runnable {
             bank.bank.setScore(1);
         }
 
+        if(bank.bank.getIntScore()%15 ==0) {
+            hornet hornet = new hornet();
+            enemyList.addBug(hornet);
+            bank.bank.setScore(1);
+        }
+
         window.shopText.setText("Money: " + bank.bank.getAccount() + "$");
 
         //spawn spider

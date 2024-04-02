@@ -1,6 +1,5 @@
 import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Rectangle;
+import java.awt.*;
 
 public class hornet extends gameObject implements enemy {
     //Stats
@@ -9,6 +8,7 @@ public class hornet extends gameObject implements enemy {
     protected int health = 1;
     //Other
     private enemyList el = new enemyList();
+    private Image image = Toolkit.getDefaultToolkit().getImage("src/assets/hornet.png");
 
     //move vars
     private int canMovei = 0;
@@ -37,10 +37,7 @@ public class hornet extends gameObject implements enemy {
     @Override
     public void Render(Graphics var1) {
         
-        var1.fillRect(x, y, 20, 20);
-        var1.setColor(Color.YELLOW);
-        
-        
+        var1.drawImage(image,(int)x,(int)y,null); 
     }
 
     @Override
