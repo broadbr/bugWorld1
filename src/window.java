@@ -11,7 +11,6 @@ public class window {
     public JLabel shopText = new JLabel("Money: " + bank.bank.getAccount() + "$");
     public static JPanel leftPanel = new JPanel();
     public static JPanel rightPanel = new JPanel();
-
     public static JPanel middlePanel = new JPanel();
 
 
@@ -22,6 +21,10 @@ public class window {
 
 
             JFrame frame = new JFrame(title);
+
+            JLayeredPane layeredPane = new JLayeredPane();
+
+            JPanel gamePanel = new JPanel();
 
             //local variables defined
             ant a = new ant();
@@ -107,8 +110,6 @@ public class window {
             leftPanel.add(moneyInc);
 
 
-            //centerPane.add(game, JLayeredPane.DEFAULT_LAYER);
-
 
             moneyInc.addActionListener(new ActionListener() {
                 @Override
@@ -131,6 +132,9 @@ public class window {
             rightPanel.add(healUpgrade);
             rightPanel.add(Box.createRigidArea(new Dimension(0, 390)));
             rightPanel.add(levelUp);
+
+
+            layeredPane.add(game, Integer.valueOf(0));
 
 
             //button functionality///
@@ -215,7 +219,7 @@ public class window {
             frame.add(game);
             frame.add(leftPanel, BorderLayout.WEST);
             frame.add(rightPanel, BorderLayout.EAST);
-            //frame.add(middlePanel, BorderLayout.CENTER);
+            //frame.add(middlePanel, BorderLayout.NORTH);
             frame.setResizable(true);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setLocationRelativeTo(null);
