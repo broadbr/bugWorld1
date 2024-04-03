@@ -1,17 +1,32 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.lang.Thread;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
 
 import javax.swing.*;
+
 
 public class window {
 
     public int activeStage = 0;
-    public JLabel shopText = new JLabel("Money: " + bank.bank.getAccount() + "$");
+
+    public int bugLimit =5;
+
+    public static JLabel shopText = new JLabel("Money: " + bank.bank.getAccount() + "$");
     public static JPanel leftPanel = new JPanel();
     public static JPanel rightPanel = new JPanel();
+
     public static JPanel middlePanel = new JPanel();
+
+    public static JFrame frame = new JFrame();
 
 
     public window(){
@@ -20,11 +35,7 @@ public class window {
     public window(int width, int height, String title, game game) {
 
 
-            JFrame frame = new JFrame(title);
-
-            JLayeredPane layeredPane = new JLayeredPane();
-
-            JPanel gamePanel = new JPanel();
+            //JFrame frame = new JFrame(title);
 
             //local variables defined
             ant a = new ant();
@@ -36,12 +47,14 @@ public class window {
             //buttons created
             JButton antButton = new JButton("Ant: " + a.getPrice() + "$");
             JButton beetleButton = new JButton("Beetle: " + b.getPrice() + "$");
-            JButton attackUpgrade = new JButton("Upgrade Damage");
-            JButton healUpgrade = new JButton("Heal");
+            JButton attackUpgrade = new JButton("10$ Damage+1");
+            JButton healUpgrade = new JButton("10$ Heal Bugs");
             JButton levelUp = new JButton("Level Up");
             JButton antDelete = new JButton("X");
             JButton beetleDelete = new JButton("X");
             JButton startButton = new JButton("Start");
+            JButton rateButton = new JButton("10$ Fast Food");
+            JButton valueButton = new JButton("10$ Food Value +1");
 
 
             //text titles created
@@ -60,6 +73,8 @@ public class window {
             antDelete.setPreferredSize(deleteButton);
             beetleDelete.setPreferredSize(deleteButton);
             startButton.setPreferredSize(buttonA);
+            rateButton.setPreferredSize(buttonA);
+            valueButton.setPreferredSize(buttonA);
 
             JPanel bugNester = new JPanel(new GridLayout(2, 1));
 
@@ -81,7 +96,6 @@ public class window {
 
             ///start menu display///
             middlePanel.setBackground(Color.GRAY);
-            middlePanel.setPreferredSize(new Dimension(100, 100));
             middlePanel.setLayout(new BoxLayout(middlePanel, BoxLayout.Y_AXIS));
             middlePanel.add(startButton);
 
@@ -90,25 +104,27 @@ public class window {
             leftPanel.setBackground(Color.GRAY);
             //leftPanel.setLayout(new GridLayout(2, 2, 5, 5));
             //leftPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
+            leftPanel.add(shopText);
             leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
             //leftPanel.setLayout(new BorderLayout());
             //leftPanel.setPreferredSize(new Dimension(150, 2000));
+
             leftPanel.add(shopName);
             leftPanel.add(bugNester);
+
             leftPanel.add(Box.createRigidArea(new Dimension(0, 500)));
             //leftPanel.add(Box.createRigidArea(new Dimension(0, 10)));
 
 
             //temp game testing
-            JButton tempLeaf = new JButton("Spawn Leaf");
+            //JButton tempLeaf = new JButton("Spawn Leaf");
             JButton moneyInc = new JButton("Money +1");
-            tempLeaf.setPreferredSize(buttonA);
+            //tempLeaf.setPreferredSize(buttonA);
             moneyInc.setPreferredSize(buttonA);
             //leftPanel.add(Box.createRigidArea(new Dimension(0, 100)));
             //leftPanel.add(tempLeaf);
-            leftPanel.add(shopText);
-            leftPanel.add(moneyInc);
 
+            //leftPanel.add(moneyInc);
 
 
             moneyInc.addActionListener(new ActionListener() {
@@ -130,28 +146,43 @@ public class window {
             rightPanel.add(attackUpgrade);
             rightPanel.add(Box.createRigidArea(new Dimension(0, 10)));
             rightPanel.add(healUpgrade);
+            rightPanel.add(Box.createRigidArea(new Dimension(0, 10)));
+            rightPanel.add(rateButton);
+            rightPanel.add(Box.createRigidArea(new Dimension(0, 10)));
+            rightPanel.add(valueButton);
             rightPanel.add(Box.createRigidArea(new Dimension(0, 390)));
             rightPanel.add(levelUp);
 
-
-            layeredPane.add(game, Integer.valueOf(0));
 
 
             //button functionality///
             antButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    if (bank.bank.getAccount() >= a.getPrice()) {
+
+                    int tempLimit = ((bugLimit + activeStage)-1);//calculates limit based on stage
+                    boolean lim = true; // used to check if limit of bugs was reached
+                    int temp = 0;
+
+                    for(int i = 0; i < bugList.objects.size(); i++){
+                        if(bugList.objects.get(i).getName().equals("ant")){
+                            temp++;
+                        }
+                        if(temp>=tempLimit){
+                            lim=false;
+                        }
+                    }
+
+                    if ((bank.bank.getAccount() >= a.getPrice())&&lim) {
                         ant a = new ant();
                         bugList.objects.add(a);
                         bank.bank.setSpend(a.getPrice());
                         System.out.println(bank.bank.getAccount());
+                        playSound("src/assets/success-1-6297.wav");
                         System.out.println("\nAnt has been purchased");
                         shopText.setText("Money: " + bank.bank.getAccount() + "$");
-                    } else {
-                        //antButton.setText("Ant: X");
-                        System.out.println("\nNot enough money for ant!");
                     }
+                    else playSound("src/assets/invalid-selection-39351.wav");
                 }
             });
 
@@ -159,15 +190,32 @@ public class window {
             beetleButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    if (bank.bank.getAccount() >= b.getPrice()) {
+
+                    int tempLimit = ((bugLimit + activeStage)-1);// calculates limit based on stage
+                    boolean lim = true; // used to check if limit of bugs was reached
+                    int temp = 0;
+
+                    for(int i = 0; i < bugList.objects.size(); i++)
+                    {
+                        if(bugList.objects.get(i).getName().equals("beatle"))
+                        {
+                            temp++;
+                        }
+                        if(temp>=tempLimit)
+                            {
+                            lim=false;
+                        }
+                    }
+
+                    if ((bank.bank.getAccount() >= b.getPrice())&&lim) {
                         beatle b = new beatle();
                         bugList.objects.add(b);
                         bank.bank.setSpend(b.getPrice());
+                        playSound("src/assets/success-1-6297.wav");
                         System.out.println("\nBeetle has been purchased");
                         shopText.setText("Money: " + bank.bank.getAccount() + "$");
-                    } else {
-                        System.out.println("\nNot enough money for beetle!");
                     }
+                    else playSound("src/assets/invalid-selection-39351.wav");
                 }
             });
 
@@ -176,9 +224,11 @@ public class window {
                 public void actionPerformed(ActionEvent e) {
                     if (bank.bank.getAccount() >= upgrades.getPrice()) {
                         upgrades.increaseDamage();
+                        playSound("src/assets/success-1-6297.wav");
                         System.out.println("Bug damage increased");
                         bank.bank.setSpend(upgrades.getPrice());
                     } else {
+                        playSound("src/assets/invalid-selection-39351.wav");
                         System.out.println("\nNot enough money for upgrade!");
                     }
                 }
@@ -188,22 +238,55 @@ public class window {
             healUpgrade.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    upgrades.healBugs();
-
+                    if(bank.getAccount()>10) {
+                        playSound("\"src/assets/success-1-6297.wav");
+                        bank.setSpend(10);
+                        upgrades.healBugs();
+                    }
+                    else playSound("src/assets/invalid-selection-39351.wav");
                 }
             });
+
+
+        valueButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(bank.getAccount()>10) {
+                    playSound("\"src/assets/success-1-6297.wav");
+                    bank.setSpend(10);
+                    upgrades.incValue();
+                }
+                else playSound("src/assets/invalid-selection-39351.wav");
+            }
+        });
+        rateButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(bank.getAccount()>10) {
+                    playSound("src/assets/success-1-6297.wav");
+                    bank.setSpend(10);
+                    upgrades.fastFood();
+                }
+                else playSound("src/assets/invalid-selection-39351.wav");
+
+            }
+        });
 
             levelUp.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
+                    playSound("src/assets/game-level-complete-143022.wav");
                     game.activeStage++;
+                    activeStage++;
                 }
             });
 
             startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                playSound("src/assets/game-level-complete-143022.wav");
                 game.activeStage++;
+                activeStage++;
             }
             });
 
@@ -219,12 +302,23 @@ public class window {
             frame.add(game);
             frame.add(leftPanel, BorderLayout.WEST);
             frame.add(rightPanel, BorderLayout.EAST);
-            //frame.add(middlePanel, BorderLayout.NORTH);
+            frame.add(middlePanel, BorderLayout.NORTH);
             frame.setResizable(true);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setLocationRelativeTo(null);
             frame.setVisible(true);
         }
+
+    private void playSound(String soundFilePath) {
+        try {
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(soundFilePath).getAbsoluteFile());
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            clip.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 
     public int getActiveStage(){
@@ -238,6 +332,7 @@ public class window {
     }
 
     public static void menuToggleOn(){
+        frame.setSize(1400,640);
         leftPanel.setVisible(true);
         middlePanel.setVisible(false);
         rightPanel.setVisible(true);

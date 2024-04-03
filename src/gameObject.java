@@ -30,7 +30,7 @@ import java.awt.*;
 
         public abstract Rectangle getBounds();
 
-
+        public abstract void damageObject(int var1);
 
         public int getX() {
             return this.x;

@@ -2,11 +2,13 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class bugList {
+public class enemyList {
     public static List<gameObject> objects = new ArrayList();
 
-    public bugList() {
+    public enemyList() {
     }
+
+
 
     public void Update() {
         for(int var1 = 0; var1 < objects.size(); ++var1) {
@@ -33,16 +35,11 @@ public class bugList {
 
     //top of list
     //also try bugList.objects.get(i);
-    public void topBug(){objects.get(0);}
+    public gameObject topBug(){return objects.get(0);}
 
-    //get bug at index i
-    public gameObject getBugList(int i) {
+    //return a enemy of list at index i
+    public gameObject getEnemyList(int i) {
         return objects.get(i);
-    }
-
-    //returns size of arraylist
-    public int getSize() {
-        return objects.size();
     }
 
     //display all bugs to terminal
@@ -56,9 +53,15 @@ public class bugList {
         System.out.print("\n");
     }
 
+    //returns size of arraylist
+    public int getSize() {
+        return objects.size();
+    }
+
     //destroy a bug
-    public void destroy(gameObject bug){
-        objects.remove(bug);
+    public void destroy(gameObject enemy){
+        objects.remove(enemy);
+        //special/prestige/score increase here for killing enemy
     }   
 
 
