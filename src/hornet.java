@@ -30,7 +30,14 @@ public class hornet extends gameObject implements enemy {
     @Override
     public void Update() {
         
-        move(this, findNearestBug(this));
+        //move(this, findNearestBug(this));
+        
+        if(bl.getSize()!=0 && el.getSize()!=0) {
+            move(this, findNearestBug(this));
+        }
+        else {
+           game.gameOver = true;
+        }
     }
 
     @Override

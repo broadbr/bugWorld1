@@ -39,13 +39,19 @@ public class ant extends gameObject implements ally {
     //Graphics
     public void Update() {
 
+        //move(this , findNearestLeaf(this,1));
 
+        if(el.getSize()==0 && fl.getSize()>0) {
             move(this , findNearestLeaf(this,1));
+        }
+        else if(el.getSize()>0){
+            move(this, findNearestLeaf(this,2));
+        } 
+        else{};
     }
 
     public void Render(Graphics var1) {
         var1.drawImage(image,(int)x,(int)y,null);
-       // var1.fillRect(x, y, 20, 20);
     }
     public Rectangle getBounds() {
         return null;
@@ -157,7 +163,9 @@ public class ant extends gameObject implements ally {
 
                 }
             }
-            gameObject closestLeaf = fl.getLeafList(nearestLeaf);
+            gameObject closestLeaf;
+            if(g==2) { closestLeaf = el.getEnemyList(nearestLeaf);}
+            else{closestLeaf = fl.getLeafList(nearestLeaf);}
             leafX = closestLeaf.getX();
             leafY = closestLeaf.getY();
             return closestLeaf;

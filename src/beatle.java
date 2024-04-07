@@ -33,12 +33,7 @@ public class beatle extends gameObject implements ally {
 
     //Graphics
     public void Update() {
-        if(el.getSize()==0) {
-            move(this , findNearestLeaf(this));
-        }
-        else {
-            move(this , el.topBug());
-        }
+        
     }
 
     public void Render(Graphics var1) {
