@@ -68,6 +68,7 @@ public class hornet extends gameObject implements enemy {
     public void damageObject(int var1) {
        this.health -= var1;
        if(health==0) {
+           bank.a2+=2;
            el.objects.remove(this);
        }
         
@@ -159,6 +160,10 @@ public class hornet extends gameObject implements enemy {
         if(bugX == enemyX && bugY == enemyY)
         {
             onLeaf = true;
+
+            //temp Ryan
+            damageObject(3);
+
             lockOnBug = false;
             bug.damageObject(damage);
             bug.setX(enemyX);

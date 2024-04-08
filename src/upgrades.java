@@ -5,7 +5,7 @@ public class upgrades {
 
     //increases damage of all current insects
    public void increaseDamage(){
-
+    /*
         for(int i = 0; i < bugList.objects.size(); i++) {
 
             try{
@@ -15,7 +15,9 @@ public class upgrades {
                 System.out.print("not issue");
             }
             i++;
-        }
+        }*/
+        ant.damage+=3;
+        beatle.damage+=3;
     }
 
     public void healBugs(){
@@ -35,7 +37,8 @@ public class upgrades {
 
     //used to make food more valluble
     public void incValue(){
-
+       foodList.valueMod++;
+        leaf.valueMod++;
     }
 
     //used to make food spawn more often

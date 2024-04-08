@@ -1,19 +1,17 @@
 import java.awt.*;
 
-public class leaf extends gameObject implements food{
+public class watermelon extends gameObject implements food{
 
-
-    protected String name = "leaf";
-    protected int value = 1;
-    protected int health = 20;
-    public static int valueMod = 0;
-    Image image = Toolkit.getDefaultToolkit().getImage("src/assets/REDgrass.png");
+    protected String name = "watermelon";
+    protected int value = 5;
+    protected int health = 400;
+    Image image = Toolkit.getDefaultToolkit().getImage("src/assets/watermelon.png");
 
     //
-    public leaf(){
+    public watermelon(){
     };
 
-    public leaf(int x, int y) {
+    public watermelon(int x, int y) {
         super.setX(x);
         super.setY(y);
     }
@@ -21,23 +19,24 @@ public class leaf extends gameObject implements food{
 
     //Graphics
     public void Update() {
+        
     }
 
     public void Render(Graphics var1) {
         var1.drawImage(image,(int)x,(int)y,null);
-       // var1.fillRect(x, y, 20, 20);
+       // vr1.fillRect(x, y, 20, 20);
     }
     public Rectangle getBounds() {
         return null;
     }
 
 
-    //Kill leaf
+    //Kill bug
     public void damageObject(int var1) {
         this.health -= var1;
         if (this.health <= 0) {
             foodList.objects.remove(this);
-            bank.bank.setEarnt(value+valueMod);
+            bank.bank.setEarnt(value);
         }
 
     }
@@ -45,12 +44,12 @@ public class leaf extends gameObject implements food{
     //Get/Set
     @Override
     public String getName() {
-        return "leaf";
+        return "watermelon";
     }
 
     @Override
     public int getValue() {
-        return 1;
+        return 5;
     }
 
     @Override
@@ -59,7 +58,7 @@ public class leaf extends gameObject implements food{
     }
 
     public void grow(gameObject food){
-        //
+
     }
 
 }
