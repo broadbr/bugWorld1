@@ -37,6 +37,8 @@ public class window {
     public window(int width, int height, String title, game game) {
 
 
+            loopSound("src/assets/Space Background Music.wav");
+
             //JFrame frame = new JFrame(title);
 
             //local variables defined
@@ -322,6 +324,18 @@ public class window {
             Clip clip = AudioSystem.getClip();
             clip.open(audioInputStream);
             clip.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void loopSound(String soundFilePath) {
+        try {
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(soundFilePath).getAbsoluteFile());
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+
+            clip.loop(Clip.LOOP_CONTINUOUSLY);
         } catch (Exception e) {
             e.printStackTrace();
         }
