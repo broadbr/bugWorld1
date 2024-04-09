@@ -1,4 +1,6 @@
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 //game object that have ally behaviour
 public class ant extends gameObject implements ally {
@@ -13,6 +15,7 @@ public class ant extends gameObject implements ally {
     private int canMovei = 0;
     private boolean lockOnLeaf = false;
     private boolean justPickedLeaf = false;
+    private gameObject targetedLeaf;
 
     Image image = Toolkit.getDefaultToolkit().getImage("src/assets/AntSmall.png");
     protected String name = "ant";
@@ -40,8 +43,13 @@ public class ant extends gameObject implements ally {
     public void Update() {
 
         arrUpdate();
-        
-        move(this , findNearestLeaf(this));
+        if(!lockOnLeaf)
+        {
+            move(this, findNearestLeaf(this));
+        }
+        else {
+            move(this, targetedLeaf);
+        }
     }
 
     public void Render(Graphics var1) {
@@ -96,6 +104,10 @@ public class ant extends gameObject implements ally {
             for(int i = 0; i<fl.getSize();i++)
             {
                 leaf = fl.getLeafList(i);
+                if(leaf.isTargeted())
+                {
+                    continue;
+                }
                 x = leaf.getX();
                 y = leaf.getY();
                 if(x > ant.getX())
@@ -126,6 +138,8 @@ public class ant extends gameObject implements ally {
             gameObject closestLeaf = fl.getLeafList(nearestLeaf);
             leafX = closestLeaf.getX();
             leafY = closestLeaf.getY();
+            targetedLeaf = closestLeaf;
+            closestLeaf.setTargeted();
             return closestLeaf;
         }
 

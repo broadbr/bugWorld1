@@ -12,6 +12,8 @@ import java.awt.*;
         protected int x;
         protected int y;
 
+        protected boolean targeted = false;
+
         protected gameObject(){
             x=200;
             y=200;
@@ -70,6 +72,16 @@ import java.awt.*;
         }
 
         public void setDamage(int damage) {this.damage=damage;}
+
+        public boolean isTargeted()
+        {
+            return this.targeted;
+        }
+
+        public void setTargeted()
+        {
+            this.targeted = true;
+        }
 
 
     }
