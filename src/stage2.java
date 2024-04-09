@@ -7,6 +7,7 @@ import java.util.concurrent.ThreadLocalRandom;
 //call every n seconds to make food
 public class stage2 {
 
+    public static int control =20;
 
     public void makeFood() {
         // tree location(s)
@@ -21,8 +22,7 @@ public class stage2 {
 
 
         //odds of spawning
-        int k = ThreadLocalRandom.current().nextInt(1, 20 + 1);
-
+        int k = ThreadLocalRandom.current().nextInt(1, control + 1);
         if (k == 1) {
 
 
@@ -51,8 +51,8 @@ public class stage2 {
 
 
             // creates random location within 6 units of tree
-            int x = ThreadLocalRandom.current().nextInt(currTreeX, 200 + currTreeX);
-            int y = ThreadLocalRandom.current().nextInt(currTreeY, 200 + currTreeY);
+            int x = ThreadLocalRandom.current().nextInt(currTreeX, 175 + currTreeX);
+            int y = ThreadLocalRandom.current().nextInt(currTreeY, 175 + currTreeY);
 
             //if #==1 create leaf, otherwise create other food
             if (randNum == 1) {
@@ -67,8 +67,8 @@ public class stage2 {
                 }
                 //if !ovelaping spawn food in random location
                 if (!overlap) {
-                    leaf l = new leaf(x, y);//creates new leaf
-                    foodList.objects.add(l);//adds it to list
+                    grape gp = new grape(x, y);//creates new leaf
+                    foodList.objects.add(gp);//adds it to list
                 }
             } else {
 
@@ -82,28 +82,28 @@ public class stage2 {
                 }
                 //if !ovelaping spawn food in random location
                 if (!overlap) {
-                    berry l = new berry(x, y);//creates new leaf
-                    foodList.objects.add(l);//adds it to list
+                    watermelon w = new watermelon(x, y);//creates new leaf
+                    foodList.objects.add(w);//adds it to list
                 }
             }
         }
     }
     public void makeFood2() {
         // tree location(s)
-        int tree1X = 400;
-        int tree1Y = 40;
-        int tree2X = 770;
-        int tree2Y = 130;
-        int tree3X = 100;
-        int tree3Y = 280;
-        int tree4X = 420;
-        int tree4Y = 380;
-        int tree5X = 500;
-        int tree5Y = 300;
+        int tree1X = 0;
+        int tree1Y = 175;
+        int tree2X = 200;
+        int tree2Y = 400;
+        int tree3X = 775;
+        int tree3Y = 100;
+        int tree4X = 375;
+        int tree4Y = 25;
+        int tree5X = 625;
+        int tree5Y = 400;
 
 
         //odds of spawning
-        int k = ThreadLocalRandom.current().nextInt(1, 20 + 1);
+        int k = ThreadLocalRandom.current().nextInt(1, control + 1);
 
         if (k == 1) {
 
@@ -136,8 +136,8 @@ public class stage2 {
 
 
             // creates random location within 6 units of tree
-            int x = ThreadLocalRandom.current().nextInt(currTreeX, 200 + currTreeX);
-            int y = ThreadLocalRandom.current().nextInt(currTreeY, 200 + currTreeY);
+            int x = ThreadLocalRandom.current().nextInt(currTreeX, 175 + currTreeX);
+            int y = ThreadLocalRandom.current().nextInt(currTreeY, 175 + currTreeY);
 
             //if #==1 create leaf, otherwise create other food
             if (randNum == 1) {
@@ -152,8 +152,8 @@ public class stage2 {
                 }
                 //if !ovelaping spawn food in random location
                 if (!overlap) {
-                    leaf l = new leaf(x, y);//creates new leaf
-                    foodList.objects.add(l);//adds it to list
+                    grape gp = new grape(x, y);//creates new leaf
+                    foodList.objects.add(gp);//adds it to list
                 }
             } else {
 
@@ -167,8 +167,8 @@ public class stage2 {
                 }
                 //if !ovelaping spawn food in random location
                 if (!overlap) {
-                    berry l = new berry(x, y);//creates new leaf
-                    foodList.objects.add(l);//adds it to list
+                    watermelon w = new watermelon(x, y);//creates new leaf
+                    foodList.objects.add(w);//adds it to list
                 }
             }
         }
