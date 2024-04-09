@@ -19,7 +19,7 @@ public class ant extends gameObject implements ally {
 
 
     ///Stats
-    protected static int damage = 5;
+    protected static int damage = 500;
     protected int price = 1;
     protected int health = 1;
 

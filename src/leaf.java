@@ -5,7 +5,8 @@ public class leaf extends gameObject implements food{
 
     protected String name = "leaf";
     protected int value = 1;
-    protected int health = 20;
+    //protected int health = 20;
+    protected int health = 5;
     public static int valueMod = 0;
     Image image = Toolkit.getDefaultToolkit().getImage("src/assets/REDgrass.png");
 

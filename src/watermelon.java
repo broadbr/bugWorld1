@@ -4,7 +4,8 @@ public class watermelon extends gameObject implements food{
 
     protected String name = "watermelon";
     protected int value = 5;
-    protected int health = 400;
+    //protected int health = 400;
+    protected int health = 5;
     Image image = Toolkit.getDefaultToolkit().getImage("src/assets/watermelon.png");
 
     //
