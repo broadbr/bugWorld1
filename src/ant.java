@@ -43,7 +43,14 @@ public class ant extends gameObject implements ally {
     public void Update() {
 
 
-            move(this , findNearestLeaf(this,1));
+        if(!lockOnLeaf)
+        {
+            move(this, findNearestLeaf(this , 1));
+        }
+        else {
+            move(this, targetedLeaf);
+        }
+            //move(this , findNearestLeaf(this,1));
     }
 
     public void Render(Graphics var1) {
