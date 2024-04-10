@@ -3,7 +3,7 @@ public class beatle extends gameObject implements ally {
 
     //STATS
     protected String name = "beatle";
-    protected int damage = 4;
+    protected static int damage = 4;
     protected int price = 3;
     protected int health = 20;
 

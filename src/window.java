@@ -21,6 +21,8 @@ public class window {
     public int bugLimit =5;
 
     public static JLabel shopText = new JLabel("Money: " + bank.bank.getAccount() + "$");
+
+    public static JLabel shopText2 = new JLabel("Souls: " + bank.bank.getAccount2() + "*");
     public static JPanel leftPanel = new JPanel();
     public static JPanel rightPanel = new JPanel();
 
@@ -34,6 +36,8 @@ public class window {
     }
     public window(int width, int height, String title, game game) {
 
+
+            loopSound("src/assets/Space Background Music.wav");
 
             //JFrame frame = new JFrame(title);
 
@@ -62,6 +66,7 @@ public class window {
             JLabel upgradeName = new JLabel("Upgrades: ");
             //JLabel shopText = new JLabel("Money: " + bank.bank.getAccount() + "$");
             shopText.setText("Money: " + bank.bank.getAccount() + "$");
+            shopText2.setText("Souls: " + bank.bank.getAccount2() + "*");
 
 
             //button size declared
@@ -104,14 +109,13 @@ public class window {
             leftPanel.setBackground(Color.GRAY);
             //leftPanel.setLayout(new GridLayout(2, 2, 5, 5));
             //leftPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
-            leftPanel.add(shopText);
             leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
             //leftPanel.setLayout(new BorderLayout());
             //leftPanel.setPreferredSize(new Dimension(150, 2000));
-
+            leftPanel.add(shopText);
+            leftPanel.add(Box.createRigidArea(new Dimension(0, 20)));
             leftPanel.add(shopName);
             leftPanel.add(bugNester);
-
             leftPanel.add(Box.createRigidArea(new Dimension(0, 500)));
             //leftPanel.add(Box.createRigidArea(new Dimension(0, 10)));
 
@@ -150,7 +154,8 @@ public class window {
             rightPanel.add(rateButton);
             rightPanel.add(Box.createRigidArea(new Dimension(0, 10)));
             rightPanel.add(valueButton);
-            rightPanel.add(Box.createRigidArea(new Dimension(0, 390)));
+            rightPanel.add(Box.createRigidArea(new Dimension(0, 370)));
+            rightPanel.add(shopText2);
             rightPanel.add(levelUp);
 
 
@@ -252,7 +257,7 @@ public class window {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(bank.getAccount()>10) {
-                    playSound("\"src/assets/success-1-6297.wav");
+                    playSound("src/assets/success-1-6297.wav");
                     bank.setSpend(10);
                     upgrades.incValue();
                 }
@@ -275,9 +280,13 @@ public class window {
             levelUp.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    playSound("src/assets/game-level-complete-143022.wav");
-                    game.activeStage++;
-                    activeStage++;
+                    if(bank.getAccount2()>=10) {
+                        bank.setSpend2(10);
+                        playSound("src/assets/game-level-complete-143022.wav");
+                        game.activeStage++;
+                        activeStage++;
+                    }
+                    else playSound("src/assets/invalid-selection-39351.wav");
                 }
             });
 
@@ -320,6 +329,18 @@ public class window {
         }
     }
 
+    private void loopSound(String soundFilePath) {
+        try {
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(soundFilePath).getAbsoluteFile());
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+
+            clip.loop(Clip.LOOP_CONTINUOUSLY);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public int getActiveStage(){
         return activeStage;
@@ -336,6 +357,10 @@ public class window {
         leftPanel.setVisible(true);
         middlePanel.setVisible(false);
         rightPanel.setVisible(true);
+    }
+
+    public static void overToggle(){
+
     }
 
 

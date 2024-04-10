@@ -83,17 +83,24 @@ public class game extends Canvas implements Runnable {
         
         //spawn spider
         // need a broader spawn radius for mod x = 0 or better method
-        //because if score increases by 2 and skips 10 then we are in trouble
         if(bank.bank.getIntScore()%10 ==0 && enemyList.getSize()<2) {
             spider spider = new spider();
             enemyList.addBug(spider);
-            bank.bank.setScore(1);
+            //bank.bank.setScore(1);
         }
 
         if(bank.bank.getIntScore()%15==0 && bank.bank.getIntScore()%10!=0 && enemyList.getSize()<2) {
-            hornet hornet = new hornet();
-            enemyList.addBug(hornet);
+            spider spider = new spider();
+            enemyList.addBug(spider);
+            //bank.bank.setScore(1); /
         }
+        window.shopText.setText("Money: " + bank.bank.getAccount() + "$");
+        window.shopText2.setText("Souls: " + bank.bank.getAccount2() + "*");
+
+        //spawn spider
+        
+        
+       
         
         window.shopText.setText("Money: " + bank.bank.getAccount() + "$");
 
@@ -113,6 +120,7 @@ public class game extends Canvas implements Runnable {
         if (activeStage == 3){
             stage2.makeFood();
         }
+        
         if( activeStage ==4) {
             stage2.makeFood2();// runs stage 2
         }
@@ -160,18 +168,28 @@ public class game extends Canvas implements Runnable {
             Image image4 = Toolkit.getDefaultToolkit().getImage("src/assets/Stage2Asset2.png");//asses2
             g.drawImage(image4, -100, 0, null); // loads stage 2 L2
         }
+
+
+        if (activeStage == 5) {
+            Image image4 = Toolkit.getDefaultToolkit().getImage("src/assets/Stage2Asset2.png");//asses2
+            g.drawImage(image4, -100, 0, null); // loads stage 2 L2
+
+            Image image5 = Toolkit.getDefaultToolkit().getImage("src/assets/gameOver.png");//asses2
+            g.drawImage(image5, 0, 200, null);
+
+        }
+
         // Draw portal
         if (activeStage>0) {
             Image image5 = Toolkit.getDefaultToolkit().getImage("src/assets/portal.png");
             g.drawImage(image5, 500, 290, null); //
         }
-        
-        if(gameOver) {
-            g.setFont(new Font("Serif", Font.BOLD, 100));
-            g.drawString("GAME OVER",250, 290);
-            g.setFont(new Font("Serif", Font.BOLD, 50));
-            g.drawString("Score: " + bank.bank.getStringScore(), 300, 390);
-            
+
+        // Game Over
+        if (gameOver) {
+            Image image5 = Toolkit.getDefaultToolkit().getImage("src/assets/gameOver.png");
+            g.drawImage(image5, 0, 200, null); 
+            g.drawString("Score: " + bank.bank.getStringScore(), 0, 290);
         }
 
         /////////////////////////////////////
@@ -182,12 +200,15 @@ public class game extends Canvas implements Runnable {
         g.dispose();
         buff.show();
     }
-            public static void main(String[] args){
+    public static void main(String[] args){
 
-                new game();
-            
-                ///TESTING AREA///
+        new game();
 
-            }
-        }
+        /////TESTING////////
+        bugList bugList = new bugList();
+        foodList foodList = new foodList();
+        stage1 stage1 = new stage1();
+
+    }
+}
 

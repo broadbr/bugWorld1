@@ -67,8 +67,8 @@ public class stage2 {
                 }
                 //if !ovelaping spawn food in random location
                 if (!overlap) {
-                    leaf l = new leaf(x, y);//creates new leaf
-                    foodList.objects.add(l);//adds it to list
+                    grape gp = new grape(x, y);//creates new leaf
+                    foodList.objects.add(gp);//adds it to list
                 }
             } else {
 
@@ -82,24 +82,24 @@ public class stage2 {
                 }
                 //if !ovelaping spawn food in random location
                 if (!overlap) {
-                    berry l = new berry(x, y);//creates new leaf
-                    foodList.objects.add(l);//adds it to list
+                    watermelon w = new watermelon(x, y);//creates new leaf
+                    foodList.objects.add(w);//adds it to list
                 }
             }
         }
     }
     public void makeFood2() {
         // tree location(s)
-        int tree1X = 200;
-        int tree1Y = 125;
-        int tree2X = 400;
-        int tree2Y = 125;
-        int tree3X = 600;
-        int tree3Y = 125;
-        int tree4X = 420;
-        int tree4Y = 125;
-        int tree5X = 600;
-        int tree5Y = 125;
+        int tree1X = 0;
+        int tree1Y = 175;
+        int tree2X = 200;
+        int tree2Y = 400;
+        int tree3X = 775;
+        int tree3Y = 100;
+        int tree4X = 375;
+        int tree4Y = 25;
+        int tree5X = 625;
+        int tree5Y = 400;
 
 
         //odds of spawning
@@ -152,8 +152,8 @@ public class stage2 {
                 }
                 //if !ovelaping spawn food in random location
                 if (!overlap) {
-                    leaf l = new leaf(x, y);//creates new leaf
-                    foodList.objects.add(l);//adds it to list
+                    grape gp = new grape(x, y);//creates new leaf
+                    foodList.objects.add(gp);//adds it to list
                 }
             } else {
 
@@ -167,8 +167,8 @@ public class stage2 {
                 }
                 //if !ovelaping spawn food in random location
                 if (!overlap) {
-                    berry l = new berry(x, y);//creates new leaf
-                    foodList.objects.add(l);//adds it to list
+                    watermelon w = new watermelon(x, y);//creates new leaf
+                    foodList.objects.add(w);//adds it to list
                 }
             }
         }
