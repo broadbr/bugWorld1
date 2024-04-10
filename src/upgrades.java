@@ -2,7 +2,7 @@ public class upgrades {
 
     protected int price = 10;
 
-
+    ant ant = new ant();
     //increases damage of all current insects
    public void increaseDamage(){
     /*
@@ -16,7 +16,7 @@ public class upgrades {
             }
             i++;
         }*/
-        ant.damage+=3;
+        ant.setDamage(3);
         beatle.damage+=3;
     }
 

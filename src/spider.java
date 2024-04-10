@@ -168,10 +168,6 @@ public class spider extends gameObject implements enemy {
         if((enemyX >= bugX-5 && enemyX <= bugX+5) && (enemyY >= bugY-5 && enemyY <= bugY+5))
         {
             onenemy = true;
-
-            //ryan temp
-            damageObject(3);
-
             lockOnBug = false;
             bug.damageObject(damage);
             bug.setX(enemyX);

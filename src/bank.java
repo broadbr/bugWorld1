@@ -2,10 +2,11 @@ public class bank {
 
     private static int account=3;
     private int score = 1;
+    static int a2 = 0;
 
     public static bank bank = new bank(); 
 
-    static int a2 = 0;
+    
     public static int getAccount() {
         return account;
     }

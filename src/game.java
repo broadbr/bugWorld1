@@ -90,24 +90,12 @@ public class game extends Canvas implements Runnable {
         }
 
         if(bank.bank.getIntScore()%15==0 && bank.bank.getIntScore()%10!=0 && enemyList.getSize()<2) {
-            spider spider = new spider();
-            enemyList.addBug(spider);
+            hornet hornet = new hornet();
+            enemyList.addBug(hornet);
             //bank.bank.setScore(1); /
         }
         window.shopText.setText("Money: " + bank.bank.getAccount() + "$");
         window.shopText2.setText("Souls: " + bank.bank.getAccount2() + "*");
-
-        //spawn spider
-        
-        
-       
-        
-        window.shopText.setText("Money: " + bank.bank.getAccount() + "$");
-
-
-        
-        
-    
        
 
         //select active stage
@@ -189,7 +177,8 @@ public class game extends Canvas implements Runnable {
         if (gameOver) {
             Image image5 = Toolkit.getDefaultToolkit().getImage("src/assets/gameOver.png");
             g.drawImage(image5, 0, 200, null); 
-            g.drawString("Score: " + bank.bank.getStringScore(), 0, 290);
+            g.setFont(new Font("Serif", Font.PLAIN, 50));
+            g.drawString("Score: " + bank.bank.getStringScore(), 350, 400);
         }
 
         /////////////////////////////////////
