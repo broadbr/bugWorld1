@@ -76,7 +76,6 @@ public class spider extends gameObject implements enemy {
     public void damageObject(int var1) {
        this.health -= var1;
        if(health<=0) {
-           bank.a2+=2;
            el.objects.remove(this);
        }
         
@@ -168,10 +167,6 @@ public class spider extends gameObject implements enemy {
         if((enemyX >= bugX-5 && enemyX <= bugX+5) && (enemyY >= bugY-5 && enemyY <= bugY+5))
         {
             onenemy = true;
-
-            //ryan temp
-            damageObject(3);
-
             lockOnBug = false;
             bug.damageObject(damage);
             bug.setX(enemyX);
