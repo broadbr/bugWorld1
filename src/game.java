@@ -110,7 +110,8 @@ public class game extends Canvas implements Runnable {
         if (activeStage == 3){
             stage2.makeFood();
         }
-           if( activeStage ==4) {
+        
+        if( activeStage ==4) {
             stage2.makeFood2();// runs stage 2
         }
 
@@ -143,20 +144,20 @@ public class game extends Canvas implements Runnable {
             //menuWindow.menuToggle();
         }
 
-            if (activeStage == 2) {
-                Image image2 = Toolkit.getDefaultToolkit().getImage("src/assets/Stage1Asset2.png");//asset2
-                g.drawImage(image2, -100, 0, null);  // loads stage 1 L2
-            }
+        if (activeStage == 2) {
+            Image image2 = Toolkit.getDefaultToolkit().getImage("src/assets/Stage1Asset2.png");//asset2
+            g.drawImage(image2, -100, 0, null);  // loads stage 1 L2
+        }
 
-            if (activeStage == 3) {
-                Image image3 = Toolkit.getDefaultToolkit().getImage("src/assets/Stage2Asset.png");
-                g.drawImage(image3, -100, 0, null); // loads stage 2 L1
-            }
+        if (activeStage == 3) {
+            Image image3 = Toolkit.getDefaultToolkit().getImage("src/assets/Stage2Asset.png");
+            g.drawImage(image3, -100, 0, null); // loads stage 2 L1
+        }
 
-                if (activeStage == 4) {
-                    Image image4 = Toolkit.getDefaultToolkit().getImage("src/assets/Stage2Asset2.png");//asses2
-                    g.drawImage(image4, -100, 0, null); // loads stage 2 L2
-                }
+            if (activeStage == 4) {
+                Image image4 = Toolkit.getDefaultToolkit().getImage("src/assets/Stage2Asset2.png");//asses2
+                g.drawImage(image4, -100, 0, null); // loads stage 2 L2
+            }
 
 
         if (activeStage == 5) {
@@ -169,28 +170,28 @@ public class game extends Canvas implements Runnable {
 
         }
 
-                // Draw portal
-                if (activeStage>0) {
-                    Image image5 = Toolkit.getDefaultToolkit().getImage("src/assets/portal.png");
-                    g.drawImage(image5, 500, 290, null); //
-                }
-
-
-                /////////////////////////////////////
-                enemyList.Render(g);
-                bugList.Render(g);
-                foodList.Render(g);
-
-                g.dispose();
-                buff.show();
-            }
-            public static void main(String[] args){
-
-                new game();
-                bugList bugList = new bugList();
-                foodList foodList = new foodList();
-                stage1 stage1 = new stage1();
-
-            }
+        // Draw portal
+        if (activeStage>0) {
+            Image image5 = Toolkit.getDefaultToolkit().getImage("src/assets/portal.png");
+            g.drawImage(image5, 500, 290, null); //
         }
+
+
+        /////////////////////////////////////
+        enemyList.Render(g);
+        bugList.Render(g);
+        foodList.Render(g);
+
+        g.dispose();
+        buff.show();
+    }
+    public static void main(String[] args){
+
+        new game();
+        bugList bugList = new bugList();
+        foodList foodList = new foodList();
+        stage1 stage1 = new stage1();
+
+    }
+}
 
