@@ -12,12 +12,14 @@ public class ant extends gameObject implements ally {
     private boolean lockOnLeaf = false;
     private boolean justPickedLeaf = false;
 
+    gameObject closestLeaf;
+
     Image image = Toolkit.getDefaultToolkit().getImage("src/assets/AntSmall.png");
     protected String name = "ant";
 
 
     ///Stats
-    protected int damage = 5;
+    protected int damage = 500;
     protected int price = 1;
     protected int health = 10;
 
@@ -42,7 +44,13 @@ public class ant extends gameObject implements ally {
         //move(this , findNearestLeaf(this,1));
 
         if(fl.getSize()>0) {
-            move(this , findNearestLeaf(this,1));
+            if(!lockOnLeaf) {
+                move(this, findNearestLeaf(this, 1));
+            }
+            else
+            {
+                move(this , closestLeaf);
+            }
         }
         else if(el.getSize()>0 && (this.getX() <= el.topBug().getX()+25 &&  this.getX() >=el.topBug().getX() -25) &&
         (this.getY() <= el.topBug().getY()+25 &&  this.getY() >=el.topBug().getY() -25)){
@@ -102,6 +110,10 @@ public class ant extends gameObject implements ally {
             for(int i = 0; i<fl.getSize();i++)
             {
                 leaf = fl.getLeafList(i);
+                if(leaf.isTargeted())
+                {
+                    continue;
+                }
                 x = leaf.getX();
                 y = leaf.getY();
                 if(x > ant.getX())
@@ -163,11 +175,11 @@ public class ant extends gameObject implements ally {
 
             }
         }
-        gameObject closestLeaf;
         if(g==2) { closestLeaf = el.getEnemyList(nearestLeaf);}
         else{closestLeaf = fl.getLeafList(nearestLeaf);}
         leafX = closestLeaf.getX();
         leafY = closestLeaf.getY();
+        closestLeaf.setTargeted();
         return closestLeaf;
     }
 
