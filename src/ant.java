@@ -44,8 +44,8 @@ public class ant extends gameObject implements ally {
         if(fl.getSize()>0) {
             move(this , findNearestLeaf(this,1));
         }
-        else if(el.getSize()>0 && (el.topBug().getX() >= this.getX() +10 && el.topBug().getX() >= this.getX() -10) &&
-        (el.topBug().getY() >= this.getY() +10 && el.topBug().getY() <= this.getY() -10)){
+        else if(el.getSize()>0 && (this.getX() <= el.topBug().getX()+25 &&  this.getX() >=el.topBug().getX() -25) &&
+        (this.getY() <= el.topBug().getY()+25 &&  this.getY() >=el.topBug().getY() -25)){
             move(this, findNearestLeaf(this,2));
         } 
         else{};

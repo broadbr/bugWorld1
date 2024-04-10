@@ -204,7 +204,7 @@ public class beatle extends gameObject implements ally {
             bug.setY(bugY);
         }
         //System.out.println("Ant cords:(" + bugX + "," + bugY + ") Leaf cords:(" + leafX + "," + leafY + ")");
-        if((leafX >= bugX-2 && leafX <= bugX+2)&& (leafY >= bugY-2 && leafY <= bugY+2))
+        if((leafX >= bugX-3 && leafX <= bugX+3) && (leafY >= bugY-3 && leafY <= bugY+3))
         {
             onLeaf = true;
             lockOnLeaf = false;

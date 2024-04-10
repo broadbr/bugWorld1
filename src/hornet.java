@@ -167,10 +167,6 @@ public class hornet extends gameObject implements enemy {
         if(bugX == enemyX && bugY == enemyY)
         {
             onLeaf = true;
-
-            //temp Ryan
-            damageObject(3);
-
             lockOnBug = false;
             bug.damageObject(damage);
             bug.setX(enemyX);
