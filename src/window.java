@@ -23,6 +23,9 @@ public class window {
     public static JLabel shopText = new JLabel("Money: " + bank.bank.getAccount() + "$");
 
     public static JLabel shopText2 = new JLabel("Souls: " + bank.bank.getAccount2() + "*");
+
+    public static JLabel bugLimitA = new JLabel("Max Ants  5:");
+    public static JLabel bugCurrA = new JLabel("Current Ants  0:");
     public static JPanel leftPanel = new JPanel();
     public static JPanel rightPanel = new JPanel();
 
@@ -67,6 +70,8 @@ public class window {
             //JLabel shopText = new JLabel("Money: " + bank.bank.getAccount() + "$");
             shopText.setText("Money: " + bank.bank.getAccount() + "$");
             shopText2.setText("Souls: " + bank.bank.getAccount2() + "*");
+            bugCurrA.setText("Curr Ants"+ bugList.currAnts());
+            bugLimitA.setText("Max Ants" + bugLimit);
 
 
             //button size declared
@@ -116,6 +121,8 @@ public class window {
             leftPanel.add(Box.createRigidArea(new Dimension(0, 20)));
             leftPanel.add(shopName);
             leftPanel.add(bugNester);
+            leftPanel.add(bugLimitA);
+            leftPanel.add(bugCurrA);
             leftPanel.add(Box.createRigidArea(new Dimension(0, 500)));
             //leftPanel.add(Box.createRigidArea(new Dimension(0, 10)));
 
@@ -123,8 +130,10 @@ public class window {
             //temp game testing
             //JButton tempLeaf = new JButton("Spawn Leaf");
             JButton moneyInc = new JButton("Money +1");
+            JButton limitInc = new JButton("Bug Limit +1");
             //tempLeaf.setPreferredSize(buttonA);
             moneyInc.setPreferredSize(buttonA);
+            limitInc.setPreferredSize(buttonA);
             //leftPanel.add(Box.createRigidArea(new Dimension(0, 100)));
             //leftPanel.add(tempLeaf);
 
@@ -140,6 +149,15 @@ public class window {
                 }
             });
 
+        limitInc.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //bank.bank.setEarnt(100000);
+                bugLimit++;
+                bugLimitA.setText("Max Ants " + bugLimit);
+            }
+        });
+
             ///upgrade display to right of page///
 
             rightPanel.setBackground(Color.GRAY);
@@ -154,7 +172,9 @@ public class window {
             rightPanel.add(rateButton);
             rightPanel.add(Box.createRigidArea(new Dimension(0, 10)));
             rightPanel.add(valueButton);
-            rightPanel.add(Box.createRigidArea(new Dimension(0, 370)));
+            rightPanel.add(Box.createRigidArea(new Dimension(0, 10)));
+            rightPanel.add(limitInc);
+            rightPanel.add(Box.createRigidArea(new Dimension(0, 350)));
             rightPanel.add(shopText2);
             rightPanel.add(levelUp);
 

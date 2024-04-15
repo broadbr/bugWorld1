@@ -96,6 +96,7 @@ public class game extends Canvas implements Runnable {
         }
         window.shopText.setText("Money: " + bank.bank.getAccount() + "$");
         window.shopText2.setText("Souls: " + bank.bank.getAccount2() + "*");
+        window.bugCurrA.setText("Curr Ants:" + bugList.currAnts());
        
 
         //select active stage
