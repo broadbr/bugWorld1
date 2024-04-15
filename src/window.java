@@ -7,9 +7,8 @@ import javax.sound.sampled.Clip;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.File;
+import java.awt.event.*;
 
 import javax.swing.*;
 
@@ -18,7 +17,7 @@ public class window {
 
     public int activeStage = 0;
 
-    public int bugLimit =5;
+    public int bugLimit = 5;
 
     public static JLabel shopText = new JLabel("Money: " + bank.bank.getAccount() + "$");
     public static JPanel leftPanel = new JPanel();
@@ -153,7 +152,16 @@ public class window {
             rightPanel.add(Box.createRigidArea(new Dimension(0, 390)));
             rightPanel.add(levelUp);
 
+            KeyListener listener = new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    System.out.println("Enter key pressed!");
+                    }
+                }
+            };
 
+            //startButton.addKeyListener(listener);
 
             //button functionality///
             antButton.addActionListener(new ActionListener() {
@@ -300,9 +308,14 @@ public class window {
             frame.setMinimumSize(new Dimension(width, height));
 
             frame.add(game);
+
+
             frame.add(leftPanel, BorderLayout.WEST);
             frame.add(rightPanel, BorderLayout.EAST);
-            frame.add(middlePanel, BorderLayout.NORTH);
+            //frame.add(middlePanel);
+
+
+
             frame.setResizable(true);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setLocationRelativeTo(null);
@@ -337,6 +350,7 @@ public class window {
         middlePanel.setVisible(false);
         rightPanel.setVisible(true);
     }
+
 
 
 }
