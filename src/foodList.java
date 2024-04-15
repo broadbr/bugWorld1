@@ -3,6 +3,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class foodList {
+
+    public static int valueMod = 0;
     //leaf firstLeaf = new leaf(100,100);
     public static List<gameObject> objects = new ArrayList();
 
@@ -84,7 +86,7 @@ public class foodList {
 
     public void destroy(gameObject food){
         objects.remove(food);
-        bank.bank.setEarnt(food.getValue());
+        bank.bank.setEarnt(food.getValue()+valueMod);
         
     }
 

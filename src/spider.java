@@ -1,6 +1,4 @@
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Rectangle;
+import java.awt.*;
 
 public class spider extends gameObject implements enemy {
     //Stats
@@ -9,6 +7,7 @@ public class spider extends gameObject implements enemy {
     protected int health = 10;
     //Other
     private enemyList el = new enemyList();
+    Image image = Toolkit.getDefaultToolkit().getImage("src/assets/spider32.png");
 
     //move vars
     private int canMovei = 0;
@@ -46,10 +45,7 @@ public class spider extends gameObject implements enemy {
     @Override
     public void Render(Graphics var1) {
         
-        var1.fillRect(x, y, 20, 20);
-        var1.setColor(Color.BLACK);
-        
-        
+        var1.drawImage(image,(int)x,(int)y,null);
     }
 
     @Override
@@ -81,6 +77,7 @@ public class spider extends gameObject implements enemy {
     public void damageObject(int var1) {
        this.health -= var1;
        if(health<=0) {
+           bank.a2+=2;
            el.objects.remove(this);
        }
         
@@ -172,6 +169,10 @@ public class spider extends gameObject implements enemy {
         if((enemyX >= bugX-5 && enemyX <= bugX+5) && (enemyY >= bugY-5 && enemyY <= bugY+5))
         {
             onenemy = true;
+
+            //ryan temp
+            damageObject(3);
+
             lockOnBug = false;
             bug.damageObject(damage);
             bug.setX(enemyX);

@@ -114,6 +114,7 @@ public class game extends Canvas implements Runnable, KeyListener {
         }
 
         window.shopText.setText("Money: " + bank.bank.getAccount() + "$");
+        window.shopText2.setText("Souls: " + bank.bank.getAccount2() + "*");
 
         //spawn spider
         
@@ -184,6 +185,16 @@ public class game extends Canvas implements Runnable, KeyListener {
                     g.drawImage(image4, -100, 0, null); // loads stage 2 L2
                 }
 
+
+        if (activeStage == 5) {
+            Image image4 = Toolkit.getDefaultToolkit().getImage("src/assets/Stage2Asset2.png");//asses2
+            g.drawImage(image4, -100, 0, null); // loads stage 2 L2
+
+            Image image5 = Toolkit.getDefaultToolkit().getImage("src/assets/gameOver.png");//asses2
+            g.drawImage(image5, 0, 200, null);
+
+
+        }
 
                 // Draw portal
                 if (activeStage>0) {
