@@ -78,6 +78,11 @@ import java.awt.*;
             return this.targeted;
         }
 
+        public void setNotTargeted()
+        {
+            this.targeted = false;
+        }
+
         public void setTargeted()
         {
             this.targeted = true;
