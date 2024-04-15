@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferStrategy;
 import java.awt.Canvas;
 import java.awt.Dimension;
@@ -6,8 +7,9 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.JFrame;
+import java.awt.event.KeyEvent;
 
-public class game extends Canvas implements Runnable {
+public class game extends Canvas implements Runnable, KeyListener {
 
 
     private boolean isRunning = false;
@@ -25,6 +27,7 @@ public class game extends Canvas implements Runnable {
     public game() {//
         new window(1200, 705, "Bug World 1", this);//shop+upgrades = 100x2+width = 24x20 = 480+200=680 & height = 16x20=320
         start();
+        addKeyListener(this);
 
         enemyList = new enemyList();
         bugList = new bugList();
@@ -75,11 +78,35 @@ public class game extends Canvas implements Runnable {
         }
     }
 
+    @Override
+    public void keyPressed(KeyEvent e) {
+        if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+            // Handle enter key press here
+            System.out.println("Enter key pressed!"); //
+            if (activeStage == 0) {
+                // Start the game if in menu
+                activeStage = 1;
+            }
+        }
+
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
     public void update() {
         
         enemyList.Update();
         bugList.Update();
         foodList.Update();
+
         
         //spawn spider
         // need a broader spawn radius for mod x = 0 or better method
