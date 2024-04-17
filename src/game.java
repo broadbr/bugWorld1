@@ -92,6 +92,11 @@ public class game extends Canvas implements Runnable, KeyListener {
             System.out.println("R key pressed!");
         }
 
+
+        if (e.getKeyCode() == KeyEvent.VK_I){
+            System.out.println("I key pressed!");
+        }
+
     }
 
     @Override
