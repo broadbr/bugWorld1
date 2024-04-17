@@ -19,7 +19,7 @@ public class ant extends gameObject implements ally {
 
 
     ///Stats
-    protected int damage = 500;
+    protected int damage = 5;
     protected int price = 1;
     protected int health = 10;
 
@@ -42,6 +42,13 @@ public class ant extends gameObject implements ally {
     public void Update() {
 
         //move(this , findNearestLeaf(this,1));
+        if(health <= 0)
+        {
+            if(lockOnLeaf)
+            {
+                closestLeaf.setNotTargeted();
+            }
+        }
 
         if(fl.getSize()>0) {
             if(!lockOnLeaf) {
@@ -49,14 +56,16 @@ public class ant extends gameObject implements ally {
             }
             else
             {
-                move(this , closestLeaf);
+                move(this , this.closestLeaf);
             }
         }
-        else if(el.getSize()>0 && (this.getX() <= el.topBug().getX()+25 &&  this.getX() >=el.topBug().getX() -25) &&
-        (this.getY() <= el.topBug().getY()+25 &&  this.getY() >=el.topBug().getY() -25)){
-            move(this, findNearestLeaf(this,2));
-        } 
-        else{};
+        //else if(el.getSize()>0 && (this.getX() <= el.topBug().getX()+25 &&  this.getX() >=el.topBug().getX() -25) &&
+        //(this.getY() <= el.topBug().getY()+25 &&  this.getY() >=el.topBug().getY() -25)){
+        //    move(this, findNearestLeaf(this,2));
+        //}
+        //else{
+        //    move(this , closestLeaf);
+        //};
     }
 
     public void Render(Graphics var1) {
@@ -176,7 +185,7 @@ public class ant extends gameObject implements ally {
             }
         }
         if(g==2) { closestLeaf = el.getEnemyList(nearestLeaf);}
-        else{closestLeaf = fl.getLeafList(nearestLeaf);}
+        else{this.closestLeaf = fl.getLeafList(nearestLeaf);}
         leafX = closestLeaf.getX();
         leafY = closestLeaf.getY();
         closestLeaf.setTargeted();
@@ -217,6 +226,8 @@ public class ant extends gameObject implements ally {
         bugY--;
             bug.setY(bugY);
         }
+
+        /*
         if(leaf.name.equals("spider") && (leafX >= bugX+5 && leafX <= bugX-5)&& (leafY >= bugY+5 && leafY <= bugY-5))
         {
             onLeaf = true;
@@ -227,7 +238,15 @@ public class ant extends gameObject implements ally {
             justPickedLeaf = true;
             
         }
+
+         */
+
         else if(bugX == leafX && bugY == leafY){
+            if(this.closestLeaf.getHealth() > 0)
+            {
+                leaf.damageObject(damage);
+                return;
+            }
             onLeaf = true;
             lockOnLeaf = false;
             leaf.damageObject(damage);
@@ -235,9 +254,12 @@ public class ant extends gameObject implements ally {
             bug.setY(bugY);
             justPickedLeaf = true;
         }
-        else {
+
+        else{
             onLeaf = false;
         }
+
+
         canMovei++;
 
 
