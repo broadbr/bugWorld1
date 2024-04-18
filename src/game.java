@@ -102,42 +102,60 @@ public class game extends Canvas implements Runnable, KeyListener {
     }
 
     public void update() {
-        
+
         enemyList.Update();
         bugList.Update();
         foodList.Update();
 
-        
+
         //spawn spider
         // need a broader spawn radius for mod x = 0 or better method
-        if(bank.bank.getIntScore()%10 ==0 && enemyList.getSize()<2) {
+        if (bank.bank.getIntScore() % 10 == 0 && enemyList.getSize() < 2) {
             spider spider = new spider();
             enemyList.addBug(spider);
             //bank.bank.setScore(1);
         }
 
-        if(bank.bank.getIntScore()%15==0 && bank.bank.getIntScore()%10!=0 && enemyList.getSize()<2) {
+        if (bank.bank.getIntScore() % 15 == 0 && bank.bank.getIntScore() % 10 != 0 && enemyList.getSize() < 2) {
             hornet hornet = new hornet();
             enemyList.addBug(hornet);
             //bank.bank.setScore(1); /
         }
+
+        //game display updates
+        int j = 0;
+        int k = 0;
+        for (int i = 0; i < bugList.objects.size(); i++) {
+            if (bugList.objects.get(i).getName().equals(("ant"))) {
+                k =1+ j++;
+            }
+        }
+
+        int j2 = 0;
+        int k2 = 0;
+        for (int i = 0; i < bugList.objects.size(); i++) {
+            if (bugList.objects.get(i).getName().equals(("beatle"))) {
+                k2 =1+ j2++;
+            }
+        }
         window.shopText.setText("Money: " + bank.bank.getAccount() + "$");
         window.shopText2.setText("Souls: " + bank.bank.getAccount2() + "*");
-        window.bugCurrA.setText("Curr Ants:" + bugList.currAnts());
-       
+        window.bugCurrA.setText("Curr Ants: " + k +"/"+window.bugLimit);
+        window.bugCurrB.setText("Curr Beetles: "+ k2+"/"+window.bugLimit);
+
 
         //select active stage
         if (activeStage == 1) {
             stage1.makeFood();
         }
-           if( activeStage ==2){
+        if (activeStage == 2) {
             stage1.makeFood2();// runs stage 1
         }
-        if (activeStage == 3){
+        if (activeStage == 3) {
             stage2.makeFood();
         }
-        
-        if( activeStage ==4) {
+
+        if (activeStage == 4) {
             stage2.makeFood2();// runs stage 2
         }
 

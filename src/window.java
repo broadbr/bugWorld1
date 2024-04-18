@@ -17,14 +17,21 @@ public class window {
 
     public int activeStage = 0;
 
-    public int bugLimit = 5;
+    public static int bugLimit = 5;
 
     public static JLabel shopText = new JLabel("Money: " + bank.bank.getAccount() + "$");
 
     public static JLabel shopText2 = new JLabel("Souls: " + bank.bank.getAccount2() + "*");
 
     public static JLabel bugLimitA = new JLabel("Max Ants  5:");
-    public static JLabel bugCurrA = new JLabel("Current Ants  0:");
+    public static JLabel bugCurrA = new JLabel("Current Ants  0/"+5);
+    public static JLabel bugCurrB = new JLabel("Current Ants  0/"+5);
+    public static JLabel upgrade1 = new JLabel("Damage +1");
+    public static JLabel upgrade2 = new JLabel("Heal Insects");
+    public static JLabel upgrade3 = new JLabel("Food Rate +1");
+    public static JLabel upgrade4 = new JLabel("Food Value +1");
+    public static JLabel upgrade5 = new JLabel("Increase Bug Limit");
+    public static JLabel upgrade6 = new JLabel("Stage Level +1");
     public static JPanel leftPanel = new JPanel();
     public static JPanel rightPanel = new JPanel();
 
@@ -53,14 +60,14 @@ public class window {
             //buttons created
             JButton antButton = new JButton("Ant: " + a.getPrice() + "$");
             JButton beetleButton = new JButton("Beetle: " + b.getPrice() + "$");
-            JButton attackUpgrade = new JButton("10$ Damage+1");
-            JButton healUpgrade = new JButton("10$ Heal Bugs");
-            JButton levelUp = new JButton("Level Up");
+            JButton attackUpgrade = new JButton(" $");//damage
+            JButton healUpgrade = new JButton(" $");//heal
+            JButton levelUp = new JButton("10*");
             JButton antDelete = new JButton("X");
             JButton beetleDelete = new JButton("X");
             JButton startButton = new JButton("Start");
-            JButton rateButton = new JButton("10$ Fast Food");
-            JButton valueButton = new JButton("10$ Food Value +1");
+            JButton rateButton = new JButton(" $");//foodRate
+            JButton valueButton = new JButton(" $");//value
 
 
             //text titles created
@@ -71,6 +78,7 @@ public class window {
             shopText2.setText("Souls: " + bank.bank.getAccount2() + "*");
             bugCurrA.setText("Curr Ants"+ bugList.currAnts());
             bugLimitA.setText("Max Ants" + bugLimit);
+            bugCurrB.setText("Curr Beetles: "+ bugList.currBeetles());
 
 
             //button size declared
@@ -120,8 +128,9 @@ public class window {
             leftPanel.add(Box.createRigidArea(new Dimension(0, 20)));
             leftPanel.add(shopName);
             leftPanel.add(bugNester);
-            leftPanel.add(bugLimitA);
+            //leftPanel.add(bugLimitA);
             leftPanel.add(bugCurrA);
+            leftPanel.add(bugCurrB);
             leftPanel.add(Box.createRigidArea(new Dimension(0, 500)));
             //leftPanel.add(Box.createRigidArea(new Dimension(0, 10)));
 
@@ -129,7 +138,7 @@ public class window {
             //temp game testing
             //JButton tempLeaf = new JButton("Spawn Leaf");
             JButton moneyInc = new JButton("Money +1");
-            JButton limitInc = new JButton("Bug Limit +1");
+            JButton limitInc = new JButton("2*");
             //tempLeaf.setPreferredSize(buttonA);
             moneyInc.setPreferredSize(buttonA);
             limitInc.setPreferredSize(buttonA);
@@ -151,9 +160,14 @@ public class window {
         limitInc.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //bank.bank.setEarnt(100000);
-                bugLimit++;
-                bugLimitA.setText("Max Ants " + bugLimit);
+
+                if(bank.getAccount2()>=2) {
+                    bank.setSpend2(2);
+                    playSound("src/assets/game-level-complete-143022.wav");
+                    bugLimit++;
+                    bugLimitA.setText("Max Ants " + bugLimit);
+                }
+                else playSound("src/assets/invalid-selection-39351.wav");
             }
         });
 
@@ -164,17 +178,24 @@ public class window {
             //rightPanel.setPreferredSize(new Dimension(150, 2000));
             rightPanel.add(upgradeName);
             rightPanel.add(Box.createRigidArea(new Dimension(0, 30)));
+            rightPanel.add(upgrade1);
             rightPanel.add(attackUpgrade);
             rightPanel.add(Box.createRigidArea(new Dimension(0, 10)));
+            rightPanel.add(upgrade2);
             rightPanel.add(healUpgrade);
             rightPanel.add(Box.createRigidArea(new Dimension(0, 10)));
+            rightPanel.add(upgrade3);
             rightPanel.add(rateButton);
             rightPanel.add(Box.createRigidArea(new Dimension(0, 10)));
+            rightPanel.add(upgrade4);
             rightPanel.add(valueButton);
-            rightPanel.add(Box.createRigidArea(new Dimension(0, 10)));
-            rightPanel.add(limitInc);
-            rightPanel.add(Box.createRigidArea(new Dimension(0, 350)));
+            rightPanel.add(Box.createRigidArea(new Dimension(0, 180)));
             rightPanel.add(shopText2);
+            rightPanel.add(Box.createRigidArea(new Dimension(0, 10)));
+            rightPanel.add(upgrade5);
+            rightPanel.add(limitInc);
+            rightPanel.add(Box.createRigidArea(new Dimension(0, 10)));
+            rightPanel.add(upgrade6);
             rightPanel.add(levelUp);
 
             KeyListener listener = new KeyAdapter() {
@@ -193,7 +214,7 @@ public class window {
                 @Override
                 public void actionPerformed(ActionEvent e) {
 
-                    int tempLimit = ((bugLimit + activeStage)-1);//calculates limit based on stage
+                    int tempLimit = ((bugLimit + activeStage));//calculates limit based on stage
                     boolean lim = true; // used to check if limit of bugs was reached
                     int temp = 0;
 
@@ -224,7 +245,7 @@ public class window {
                 @Override
                 public void actionPerformed(ActionEvent e) {
 
-                    int tempLimit = ((bugLimit + activeStage)-1);// calculates limit based on stage
+                    int tempLimit = ((bugLimit + activeStage));// calculates limit based on stage
                     boolean lim = true; // used to check if limit of bugs was reached
                     int temp = 0;
 
