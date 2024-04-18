@@ -3,9 +3,9 @@ public class beatle extends gameObject implements ally {
 
     //STATS
     protected String name = "beatle";
-    protected static int damage = 10000;
+    protected static int damage = 10;
     protected int price = 3;
-    protected int health = 2000;
+    protected int health = 200;
 
     //OTHER
     private enemyList el = new enemyList();
@@ -204,7 +204,7 @@ public class beatle extends gameObject implements ally {
             bug.setY(bugY);
         }
         //System.out.println("Ant cords:(" + bugX + "," + bugY + ") Leaf cords:(" + leafX + "," + leafY + ")");
-        if((leafX >= bugX-3 && leafX <= bugX+3) && (leafY >= bugY-3 && leafY <= bugY+3))
+        if((leafX >= bugX-2 && leafX <= bugX+2) && (leafY >= bugY-2 && leafY <= bugY+2))
         {
             onLeaf = true;
             lockOnLeaf = false;
