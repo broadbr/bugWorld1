@@ -16,7 +16,7 @@ public class upgrades {
             }
             i++;
         }*/
-        ant.setDamage(3);
+        ant.setDamage(ant.getDamage()+3);
         beatle.damage+=3;
     }
 

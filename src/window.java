@@ -131,6 +131,7 @@ public class window {
             //leftPanel.setLayout(new GridLayout(2, 2, 5, 5));
             //leftPanel.setLayout(new BorderLayout());
             //leftPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
+            //leftPanel.setPreferredSize(new Dimension(170,640));
             leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
             leftPanel.setBackground(Color.GRAY);
             leftPanel.add(shopText);
@@ -167,7 +168,7 @@ public class window {
 
             rightPanel.setBackground(Color.GRAY);
             rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
-            //rightPanel.setPreferredSize(new Dimension(150, 2000));
+            //rightPanel.setPreferredSize(new Dimension(150, 620));
             rightPanel.add(upgradeName);
             rightPanel.add(Box.createRigidArea(new Dimension(0, 30)));
             rightPanel.add(upgrade1);

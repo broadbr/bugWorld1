@@ -79,6 +79,10 @@ public class bugList {
         return j;
     }
 
+    public void clearList() {
+        objects.clear();
+    }
+
 
     //destroy a bug
     public void destroy(gameObject bug){

@@ -63,7 +63,11 @@ public class enemyList {
         objects.remove(enemy);
 
         //special/prestige/score increase here for killing enemy
-    }   
+    }
+
+    public void clearList() {
+        objects.clear();
+    }
 
 
 }

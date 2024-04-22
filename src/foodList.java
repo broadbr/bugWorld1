@@ -62,6 +62,11 @@ public class foodList {
         }
         System.out.print("\n");
     }
+
+    public void clearList() {
+        objects.clear();
+    }
+
     public gameObject getLeafList(int index)
     {
         return objects.get(index);
