@@ -5,6 +5,7 @@ public class grape extends gameObject implements food{
     protected String name = "grape";
     protected int value = 3;
     protected int health = 200;
+    //protected int health = 5;
     Image image = Toolkit.getDefaultToolkit().getImage("src/assets/grapes.png");
 
     //

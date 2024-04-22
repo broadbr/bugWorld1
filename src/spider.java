@@ -7,7 +7,7 @@ public class spider extends gameObject implements enemy {
     protected int health = 10;
     //Other
     private enemyList el = new enemyList();
-    Image image = Toolkit.getDefaultToolkit().getImage("src/assets/spider32.png");
+    private Image image = Toolkit.getDefaultToolkit().getImage("src/assets/spider32.png");
 
     //move vars
     private int canMovei = 0;
@@ -29,16 +29,15 @@ public class spider extends gameObject implements enemy {
 
     @Override
     public void Update() {
-        try {
+        
+        //move(this, findNearestBug(this));
+        
+        if(bl.getSize()!=0 && el.getSize()!=0) {
             move(this, findNearestBug(this));
         }
-        catch(NullPointerException e) {
-            if(bank.bank.getAccount()==0) System.out.println("GAME OVER");
-            else {
-                System.out.println("But another bug!!!");
-            }
+        else {
+            game.gameOver = true;
         }
-    
 
     }
 
@@ -169,10 +168,6 @@ public class spider extends gameObject implements enemy {
         if((enemyX >= bugX-5 && enemyX <= bugX+5) && (enemyY >= bugY-5 && enemyY <= bugY+5))
         {
             onenemy = true;
-
-            //ryan temp
-            damageObject(3);
-
             lockOnBug = false;
             bug.damageObject(damage);
             bug.setX(enemyX);

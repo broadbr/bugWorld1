@@ -1,11 +1,11 @@
 import java.awt.*;
-public class beatle extends gameObject implements ally {
+public class ladybug extends gameObject implements ally {
 
     //STATS
-    protected String name = "beatle";
-    protected static int damage = 10;
+    protected String name = "ladybug";
+    protected static int damage = 10000;
     protected int price = 3;
-    protected int health = 200;
+    protected int health = 2000;
 
     //OTHER
     private enemyList el = new enemyList();
@@ -13,7 +13,7 @@ public class beatle extends gameObject implements ally {
 
     //MOVES
     private int canMovei = 0;
-    private int leafX , leafY;
+    private int leafX, leafY;
     private int bugX, bugY;
     private boolean lockOnLeaf = false;
     private boolean onLeaf = false;
@@ -21,69 +21,61 @@ public class beatle extends gameObject implements ally {
     Image image = Toolkit.getDefaultToolkit().getImage("src/assets/beetleSmall.png");
 
     //
-    public beatle() {
-            super.setX(500);
-            super.setY(300);
-        }
-        
-    public beatle( int x, int y){
-            super.setX(x);
-            super.setY(y);
-        }
+    public ladybug() {
+        super.setX(500);
+        super.setY(300);
+    }
+
+    public ladybug(int x, int y) {
+        super.setX(x);
+        super.setY(y);
+    }
 
     //Graphics
     public void Update() {
-        
-        if(el.getSize()==0 && fl.getSize()>0) {
-            move(this , findNearestLeaf(this,1));
+
+        if (el.getSize() == 0 && fl.getSize() > 0) {
+            move(this, findNearestLeaf(this, 1));
+        } else if (el.getSize() > 0) {
+            move(this, findNearestLeaf(this, 2));
+        } else {
         }
-        else if(el.getSize()>0){
-            move(this, findNearestLeaf(this,2));
-        } 
-        else{};
+        ;
 
     }
 
     public void Render(Graphics var1) {
-        var1.drawImage(image,x,y,null);
+        var1.drawImage(image, x, y, null);
         //var1.fillRect(x, y, 20, 20);
     }
+
     public Rectangle getBounds() {
         return null;
     }
 
-    public gameObject findNearestLeaf(gameObject ant,int g)
-    {
+    public gameObject findNearestLeaf(gameObject ant, int g) {
         int nearestLeaf = 0;
-        int x , y;
-        int differenceX , differenceY , thisTotDifference;
+        int x, y;
+        int differenceX, differenceY, thisTotDifference;
         int totDifference = 0;
         gameObject leaf;
-        if(g==1) {
-            for(int i = 0; i<fl.getSize();i++)
-            {
+        if (g == 1) {
+            for (int i = 0; i < fl.getSize(); i++) {
                 leaf = fl.getLeafList(i);
                 x = leaf.getX();
                 y = leaf.getY();
-                if(x > ant.getX())
-                {
+                if (x > ant.getX()) {
                     differenceX = x - ant.getX();
-                }
-                else
-                {
+                } else {
                     differenceX = ant.getX() - x;
                 }
-                if(y > ant.getY())
-                {
+                if (y > ant.getY()) {
                     differenceY = y - ant.getY();
-                }
-                else
-                {
+                } else {
                     differenceY = ant.getY() - y;
                 }
                 thisTotDifference = differenceY + differenceX;
-                if(totDifference > thisTotDifference || i == 0)
-                {
+                if (totDifference > thisTotDifference || i == 0) {
                     totDifference = thisTotDifference;
                     nearestLeaf = i;
                 }
@@ -91,32 +83,24 @@ public class beatle extends gameObject implements ally {
 
             }
         }
-        if(g==2) {
+        if (g == 2) {
 
-            for(int i = 0; i<el.getSize();i++)
-            {
+            for (int i = 0; i < el.getSize(); i++) {
                 leaf = el.getEnemyList(i);
                 x = leaf.getX();
                 y = leaf.getY();
-                if(x > ant.getX())
-                {
+                if (x > ant.getX()) {
                     differenceX = x - ant.getX();
-                }
-                else
-                {
+                } else {
                     differenceX = ant.getX() - x;
                 }
-                if(y > ant.getY())
-                {
+                if (y > ant.getY()) {
                     differenceY = y - ant.getY();
-                }
-                else
-                {
+                } else {
                     differenceY = ant.getY() - y;
                 }
                 thisTotDifference = differenceY + differenceX;
-                if(totDifference > thisTotDifference || i == 0)
-                {
+                if (totDifference > thisTotDifference || i == 0) {
                     totDifference = thisTotDifference;
                     nearestLeaf = i;
                 }
@@ -125,8 +109,11 @@ public class beatle extends gameObject implements ally {
             }
         }
         gameObject closestLeaf;
-        if(g==2) { closestLeaf = el.getEnemyList(nearestLeaf);}
-        else{closestLeaf = fl.getLeafList(nearestLeaf);}
+        if (g == 2) {
+            closestLeaf = el.getEnemyList(nearestLeaf);
+        } else {
+            closestLeaf = fl.getLeafList(nearestLeaf);
+        }
         leafX = closestLeaf.getX();
         leafY = closestLeaf.getY();
         return closestLeaf;
@@ -134,7 +121,7 @@ public class beatle extends gameObject implements ally {
 
 
     //Kill bug
-    public void damageObject ( int var1){
+    public void damageObject(int var1) {
         this.health -= var1;
         if (this.health <= 0) {
             bugList.objects.remove(this);
@@ -145,24 +132,32 @@ public class beatle extends gameObject implements ally {
 
     //Get/Set
     @Override
-    public String getName () {
+    public String getName() {
         return this.name;
     }
+
     @Override
-        public int getDamage () {
-            return this.damage;
+    public int getDamage() {
+        return this.damage;
     }
+
     @Override
-    public int getPrice () {
+    public int getPrice() {
         return this.price;
     }
-    @Override
-        public int getHealth () {
-            return this.health;
-    }
-    public void setDamage(int damage) {this.damage=damage;}
 
-    public void setHealth(int health){this.health=health;}
+    @Override
+    public int getHealth() {
+        return this.health;
+    }
+
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
 
     public void move(gameObject bug, gameObject leaf){
         if(canMovei != 0)
@@ -204,7 +199,7 @@ public class beatle extends gameObject implements ally {
             bug.setY(bugY);
         }
         //System.out.println("Ant cords:(" + bugX + "," + bugY + ") Leaf cords:(" + leafX + "," + leafY + ")");
-        if((leafX >= bugX-2 && leafX <= bugX+2) && (leafY >= bugY-2 && leafY <= bugY+2))
+        if((leafX >= bugX-3 && leafX <= bugX+3) && (leafY >= bugY-3 && leafY <= bugY+3))
         {
             onLeaf = true;
             lockOnLeaf = false;
@@ -220,5 +215,4 @@ public class beatle extends gameObject implements ally {
 
 
     }
-
 }

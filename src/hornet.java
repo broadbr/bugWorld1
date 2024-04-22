@@ -30,7 +30,14 @@ public class hornet extends gameObject implements enemy {
     @Override
     public void Update() {
         
-        move(this, findNearestBug(this));
+        //move(this, findNearestBug(this));
+        
+        if(bl.getSize()!=0 && el.getSize()!=0) {
+            move(this, findNearestBug(this));
+        }
+        else {
+           game.gameOver = true;
+        }
     }
 
     @Override
@@ -67,7 +74,7 @@ public class hornet extends gameObject implements enemy {
     @Override
     public void damageObject(int var1) {
        this.health -= var1;
-       if(health==0) {
+       if(health<=0) {
            bank.a2+=2;
            el.objects.remove(this);
        }
@@ -160,10 +167,6 @@ public class hornet extends gameObject implements enemy {
         if(bugX == enemyX && bugY == enemyY)
         {
             onLeaf = true;
-
-            //temp Ryan
-            damageObject(3);
-
             lockOnBug = false;
             bug.damageObject(damage);
             bug.setX(enemyX);

@@ -56,6 +56,30 @@ public class bugList {
         System.out.print("\n");
     }
 
+    public static int j = 0;
+    public static int currAnts(){
+
+
+        for(int i = 0; i < objects.size(); i++)
+        {
+            if(objects.get(i).getName().equals(("ant")))
+            { j = j++;}
+        }
+        return j;
+    }
+
+    public static int currBeetles(){
+
+
+        for(int i = 0; i < objects.size(); i++)
+        {
+            if(objects.get(i).getName().equals(("beatle")))
+            { j = j++;}
+        }
+        return j;
+    }
+
+
     //destroy a bug
     public void destroy(gameObject bug){
         objects.remove(bug);
