@@ -41,6 +41,9 @@ public class bank {
         this.score +=1;
     }
 
+    public void setZero() {
+        this.account = 0;
+    }
 
 }
 

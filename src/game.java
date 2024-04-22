@@ -80,7 +80,7 @@ public class game extends Canvas implements Runnable, KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+        if ((e.getKeyCode() == KeyEvent.VK_ENTER)) {
             // Handle enter key press here
             System.out.println("Enter key pressed!"); //
             if (activeStage == 0) {
@@ -227,6 +227,7 @@ public class game extends Canvas implements Runnable, KeyListener {
 
         // Game Over
         if (gameOver) {
+            bank.bank.setZero();
             Image image5 = Toolkit.getDefaultToolkit().getImage("src/assets/gameOver.png");
             g.drawImage(image5, 0, 200, null); 
             g.setFont(new Font("Serif", Font.PLAIN, 50));
