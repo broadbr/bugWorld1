@@ -32,6 +32,7 @@ public class window {
     public static JLabel upgrade4 = new JLabel("Food Value +1");
     public static JLabel upgrade5 = new JLabel("Increase Bug Limit");
     public static JLabel upgrade6 = new JLabel("Stage Level +1");
+    public static JLabel scoreboard = new JLabel("SCORE: 0");
     public static JPanel leftPanel = new JPanel();
     public static JPanel rightPanel = new JPanel();
 
@@ -133,14 +134,17 @@ public class window {
             //leftPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
             leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
             leftPanel.setBackground(Color.GRAY);
-            leftPanel.add(shopText);
+        //leftPanel.add(shopText);
             leftPanel.add(Box.createRigidArea(new Dimension(0, 20)));
             leftPanel.add(shopName);
             leftPanel.add(bugNester);
             //leftPanel.add(bugLimitA);
-            leftPanel.add(bugCurrA);
-            leftPanel.add(bugCurrB);
-            leftPanel.add(Box.createRigidArea(new Dimension(0, 500)));
+        leftPanel.add(bugCurrA);
+        leftPanel.add(bugCurrB);
+        leftPanel.add(Box.createRigidArea(new Dimension(0, 20)));
+
+        leftPanel.add(scoreboard);
+            leftPanel.add(Box.createRigidArea(new Dimension(0, 460)));
 
 
             //bug limit
@@ -170,6 +174,8 @@ public class window {
             //rightPanel.setPreferredSize(new Dimension(150, 2000));
             rightPanel.add(upgradeName);
             rightPanel.add(Box.createRigidArea(new Dimension(0, 30)));
+        rightPanel.add(shopText);
+        rightPanel.add(Box.createRigidArea(new Dimension(0, 10)));
             rightPanel.add(upgrade1);
             rightPanel.add(attackUpgrade);
             rightPanel.add(Box.createRigidArea(new Dimension(0, 10)));
@@ -181,7 +187,7 @@ public class window {
             rightPanel.add(Box.createRigidArea(new Dimension(0, 10)));
             rightPanel.add(upgrade4);
             rightPanel.add(valueButton);
-            rightPanel.add(Box.createRigidArea(new Dimension(0, 180)));
+            rightPanel.add(Box.createRigidArea(new Dimension(0, 160)));
             rightPanel.add(shopText2);
             rightPanel.add(Box.createRigidArea(new Dimension(0, 10)));
             rightPanel.add(upgrade5);
@@ -408,6 +414,7 @@ public class window {
         middlePanel.setVisible(false);
         rightPanel.setVisible(true);
     }
+
 
     public static void overToggle(){
 

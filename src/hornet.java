@@ -16,6 +16,7 @@ public class hornet extends gameObject implements enemy {
     private boolean onLeaf = false;
     private bugList bl = new bugList();
 
+    public boolean right = true;
     public hornet() {
         super.setX(100);
         super.setY(100);
@@ -42,8 +43,11 @@ public class hornet extends gameObject implements enemy {
 
     @Override
     public void Render(Graphics var1) {
-        
-        var1.drawImage(image,(int)x,(int)y,null);
+
+        if(right){
+        var1.drawImage(image,(int)x,(int)y,null);}
+        else{
+        var1.drawImage(image,(int)x+37,(int)y,-37,26,null);}
     }
 
     @Override
@@ -143,10 +147,12 @@ public class hornet extends gameObject implements enemy {
             enemyX++;
             //x = enemyX++;
             enemy.setX(enemyX);
+            right=true;
         }
         else if(bugX < enemyX)
         {
             enemyX--;
+            right=false;
             //x = enemyX++;
             enemy.setX(enemyX);
         }
