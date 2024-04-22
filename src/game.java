@@ -6,7 +6,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
-import javax.swing.JFrame;
+import javax.swing.*;
 import java.awt.event.KeyEvent;
 
 public class game extends Canvas implements Runnable, KeyListener {
@@ -123,6 +123,7 @@ public class game extends Canvas implements Runnable, KeyListener {
         }
 
         //game display updates
+        //unmenu names
         int j = 0;
         int k = 0;
         for (int i = 0; i < bugList.objects.size(); i++) {
@@ -142,6 +143,11 @@ public class game extends Canvas implements Runnable, KeyListener {
         window.shopText2.setText("Souls: " + bank.bank.getAccount2() + "*");
         window.bugCurrA.setText("Curr Ants: " + k +"/"+window.bugLimit);
         window.bugCurrB.setText("Curr Beetles: "+ k2+"/"+window.bugLimit);
+        window.limitInc.setText(String.valueOf(window.scaler1+2)+"*");
+        window.attackUpgrade.setText("$"+String.valueOf(window.scaler2+10));
+        window.healUpgrade.setText("$"+String.valueOf(window.scaler3+10));
+        window.rateButton.setText("$"+String.valueOf(window.scaler5+10));
+        window.valueButton.setText("$"+String.valueOf(window.scaler4+10));
 
 
         //select active stage

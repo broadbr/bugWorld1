@@ -39,16 +39,26 @@ public class window {
 
     public static JFrame frame = new JFrame();
 
+    //upgrade price scaling
+    public static int scaler1 =0, scaler2 =0, scaler3 =0, scaler4 =0, scaler5 =0, scaler6 =0;
+
+    public static JButton rateButton = new JButton(" $");//foodRate
+    public static JButton valueButton = new JButton(" $");//value
+    public static JButton attackUpgrade = new JButton(" $");//damage
+    public static JButton healUpgrade = new JButton(" $");//heal
+    public static JButton limitInc = new JButton("2*");
+
 
     public window(){
 
     }
+
+
     public window(int width, int height, String title, game game) {
 
 
             loopSound("src/assets/Space Background Music.wav");
 
-            //JFrame frame = new JFrame(title);
 
             //local variables defined
             ant a = new ant();
@@ -60,14 +70,12 @@ public class window {
             //buttons created
             JButton antButton = new JButton("Ant: " + a.getPrice() + "$");
             JButton beetleButton = new JButton("Beetle: " + b.getPrice() + "$");
-            JButton attackUpgrade = new JButton(" $");//damage
-            JButton healUpgrade = new JButton(" $");//heal
             JButton levelUp = new JButton("10*");
             JButton antDelete = new JButton("X");
             JButton beetleDelete = new JButton("X");
             JButton startButton = new JButton("Start");
-            JButton rateButton = new JButton(" $");//foodRate
-            JButton valueButton = new JButton(" $");//value
+
+
 
 
             //text titles created
@@ -86,12 +94,13 @@ public class window {
             Dimension deleteButton = new Dimension(50, 30);
             antButton.setPreferredSize(buttonA);
             beetleButton.setPreferredSize(buttonA);
-            attackUpgrade.setPreferredSize(buttonA);
             antDelete.setPreferredSize(deleteButton);
             beetleDelete.setPreferredSize(deleteButton);
             startButton.setPreferredSize(buttonA);
+            attackUpgrade.setPreferredSize(buttonA);
             rateButton.setPreferredSize(buttonA);
             valueButton.setPreferredSize(buttonA);
+
 
             JPanel bugNester = new JPanel(new GridLayout(2, 1));
 
@@ -118,12 +127,12 @@ public class window {
 
 
             ////shop display to left of page////
-            leftPanel.setBackground(Color.GRAY);
+
             //leftPanel.setLayout(new GridLayout(2, 2, 5, 5));
+            //leftPanel.setLayout(new BorderLayout());
             //leftPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
             leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
-            //leftPanel.setLayout(new BorderLayout());
-            //leftPanel.setPreferredSize(new Dimension(150, 2000));
+            leftPanel.setBackground(Color.GRAY);
             leftPanel.add(shopText);
             leftPanel.add(Box.createRigidArea(new Dimension(0, 20)));
             leftPanel.add(shopName);
@@ -132,40 +141,23 @@ public class window {
             leftPanel.add(bugCurrA);
             leftPanel.add(bugCurrB);
             leftPanel.add(Box.createRigidArea(new Dimension(0, 500)));
-            //leftPanel.add(Box.createRigidArea(new Dimension(0, 10)));
 
 
-            //temp game testing
-            //JButton tempLeaf = new JButton("Spawn Leaf");
-            JButton moneyInc = new JButton("Money +1");
-            JButton limitInc = new JButton("2*");
-            //tempLeaf.setPreferredSize(buttonA);
-            moneyInc.setPreferredSize(buttonA);
+            //bug limit
+
             limitInc.setPreferredSize(buttonA);
-            //leftPanel.add(Box.createRigidArea(new Dimension(0, 100)));
-            //leftPanel.add(tempLeaf);
 
-            //leftPanel.add(moneyInc);
-
-
-            moneyInc.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    bank.bank.setEarnt(100000);
-                    shopText.setText("Money: " + bank.bank.getAccount() + "$");
-                    System.out.println(bank.bank.getAccount());
-                }
-            });
 
         limitInc.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                if(bank.getAccount2()>=2) {
-                    bank.setSpend2(2);
+                if(bank.getAccount2()>=2+scaler1) {
+                    bank.setSpend2(2+scaler1);
                     playSound("src/assets/game-level-complete-143022.wav");
                     bugLimit++;
                     bugLimitA.setText("Max Ants " + bugLimit);
+                    scaler1+=1;
                 }
                 else playSound("src/assets/invalid-selection-39351.wav");
             }
@@ -227,7 +219,7 @@ public class window {
                         }
                     }
 
-                    if ((bank.bank.getAccount() >= a.getPrice())&&lim) {
+                    if ((bank.bank.getAccount()>= a.getPrice())&&lim) {
                         ant a = new ant();
                         bugList.objects.add(a);
                         bank.bank.setSpend(a.getPrice());
@@ -261,7 +253,7 @@ public class window {
                         }
                     }
 
-                    if ((bank.bank.getAccount() >= b.getPrice())&&lim) {
+                    if ((bank.bank.getAccount()>= b.getPrice())&&lim) {
                         beatle b = new beatle();
                         bugList.objects.add(b);
                         bank.bank.setSpend(b.getPrice());
@@ -276,11 +268,12 @@ public class window {
             attackUpgrade.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    if (bank.bank.getAccount() >= upgrades.getPrice()) {
+                    if (bank.bank.getAccount()>= upgrades.getPrice()+scaler2) {
                         upgrades.increaseDamage();
                         playSound("src/assets/success-1-6297.wav");
                         System.out.println("Bug damage increased");
-                        bank.bank.setSpend(upgrades.getPrice());
+                        bank.bank.setSpend(upgrades.getPrice()+scaler2);
+                        scaler2+=5;
                     } else {
                         playSound("src/assets/invalid-selection-39351.wav");
                         System.out.println("\nNot enough money for upgrade!");
@@ -292,10 +285,11 @@ public class window {
             healUpgrade.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    if(bank.getAccount()>10) {
+                    if(bank.getAccount()>10+scaler3) {
                         playSound("\"src/assets/success-1-6297.wav");
-                        bank.setSpend(10);
+                        bank.setSpend(10+scaler3);
                         upgrades.healBugs();
+                        scaler3+=5;
                     }
                     else playSound("src/assets/invalid-selection-39351.wav");
                 }
@@ -305,9 +299,10 @@ public class window {
         valueButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(bank.getAccount()>10) {
+                if(bank.getAccount()>10+scaler4) {
                     playSound("src/assets/success-1-6297.wav");
-                    bank.setSpend(10);
+                    bank.setSpend(10+scaler4);
+                    scaler4+=5;
                     upgrades.incValue();
                 }
                 else playSound("src/assets/invalid-selection-39351.wav");
@@ -316,10 +311,11 @@ public class window {
         rateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(bank.getAccount()>10) {
+                if(bank.getAccount()>10+scaler5) {
                     playSound("src/assets/success-1-6297.wav");
-                    bank.setSpend(10);
+                    bank.setSpend(10+scaler5);
                     upgrades.fastFood();
+                    scaler5+=5;
                 }
                 else playSound("src/assets/invalid-selection-39351.wav");
 
