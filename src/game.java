@@ -21,6 +21,7 @@ public class game extends Canvas implements Runnable, KeyListener {
     public  int activeStage = 0;//1
     private enemyList enemyList;
     public static boolean gameOver = false;
+    public static boolean rules = false;
     
 
 
@@ -89,39 +90,15 @@ public class game extends Canvas implements Runnable, KeyListener {
             }
         }
 
-        if (e.getKeyCode() == KeyEvent.VK_R){
-            System.out.println("R key pressed!");
-            if (e.getKeyCode() == KeyEvent.VK_R) {
-                // Restart game to menu
-                activeStage = 0; // Set active stage to menu (0)
-                enemyList.clearList(); // Clear enemy list
-                bugList.clearList();  // Clear bug list
-                foodList.clearList();  // Clear food list
-                window.scaler1 = 0;
-                window.scaler2 = 0;
-                window.scaler3 = 0;
-                window.scaler4 = 0;
-                window.scaler5 = 0;
-                window.scaler6 = 0;
-                //ant.setDamage(5);
-                //beatle.setDamage(10);
-                foodList.valueMod = 0;
-                leaf.valueMod = 0;
-                stage1.control = 20;
-                stage2.control = 20;
-                bank.score = 1;
-                window.bugLimit = 5;
-
-            }
+        if (e.getKeyCode() == KeyEvent.VK_E){
+            System.out.println("E key pressed!");
         }
 
 
         if (e.getKeyCode() == KeyEvent.VK_I){
             System.out.println("I key pressed!");
-        }
+            rules = true;
 
-        if (e.getKeyCode() == KeyEvent.VK_E) {
-            System.exit(0); // Close window on 'e' press
         }
 
     }
@@ -183,6 +160,7 @@ public class game extends Canvas implements Runnable, KeyListener {
         window.healUpgrade.setText("$"+String.valueOf(window.scaler3+10));
         window.rateButton.setText("$"+String.valueOf(window.scaler5+10));
         window.valueButton.setText("$"+String.valueOf(window.scaler4+10));
+        window.scoreboard.setText("SCORE: "+ bank.bank.getIntScore());
 
 
         //select active stage
@@ -215,7 +193,7 @@ public class game extends Canvas implements Runnable, KeyListener {
         //load stage
 
         if (activeStage == 0) {
-            Image image = Toolkit.getDefaultToolkit().getImage("src/assets/newMenu1.png");
+            Image image = Toolkit.getDefaultToolkit().getImage("src/assets/newMenu2.png");
             g.drawImage(image, 0, 0, null); // loads menu png
             window.menuToggle();
             //menuWindow.menuToggleOn();
@@ -266,7 +244,15 @@ public class game extends Canvas implements Runnable, KeyListener {
             Image image5 = Toolkit.getDefaultToolkit().getImage("src/assets/gameOver.png");
             g.drawImage(image5, 0, 200, null); 
             g.setFont(new Font("Serif", Font.PLAIN, 50));
-            g.drawString("Score: " + bank.bank.getStringScore(), 350, 400);
+            g.drawString("Score: " + (bank.bank.getStringScore()), 350, 400);
+        }
+
+        if (rules) {
+            bank.bank.setZero();
+            Image image6 = Toolkit.getDefaultToolkit().getImage("src/assets/rules.png");
+            g.drawImage(image6, 0, 0, null);
+           // g.setFont(new Font("Serif", Font.PLAIN, 50));
+            //g.drawString("Score: " + bank.bank.getStringScore(), 350, 400);
         }
 
         /////////////////////////////////////

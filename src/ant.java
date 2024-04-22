@@ -24,7 +24,7 @@ public class ant extends gameObject implements ally {
     protected int health = 10;
 
     protected boolean onLeaf = false;
-
+    protected boolean left = true;
 
     //
     public ant(){
@@ -69,7 +69,11 @@ public class ant extends gameObject implements ally {
     }
 
     public void Render(Graphics var1) {
-        var1.drawImage(image,(int)x,(int)y,null);
+
+        if(left){
+        var1.drawImage(image,(int)x,(int)y,null);}
+        else{
+        var1.drawImage(image, (int)x+25, (int)y, -25, 13, null);}
     }
     public Rectangle getBounds() {
         return null;
@@ -207,12 +211,14 @@ public class ant extends gameObject implements ally {
             bugX++;
             //x = bugX++;
             bug.setX(bugX);
+            left = false;
         }
         else if(leafX < bugX)
         {
             bugX--;
             //x = bugX++;
             bug.setX(bugX);
+            left = true;
         }
 
         if(leafY > bugY)
