@@ -180,7 +180,7 @@ public class game extends Canvas implements Runnable, KeyListener {
         //load stage
 
         if (activeStage == 0) {
-            Image image = Toolkit.getDefaultToolkit().getImage("src/assets/menuAsset.png");
+            Image image = Toolkit.getDefaultToolkit().getImage("src/assets/newMenu1.png");
             g.drawImage(image, 0, 0, null); // loads menu png
             window.menuToggle();
             //menuWindow.menuToggleOn();
