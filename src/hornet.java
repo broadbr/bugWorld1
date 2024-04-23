@@ -144,14 +144,14 @@ public class hornet extends gameObject implements enemy {
         }
         if(bugX > enemyX)
         {   
-            enemyX++;
+            enemyX+=2;
             //x = enemyX++;
             enemy.setX(enemyX);
             right=true;
         }
         else if(bugX < enemyX)
         {
-            enemyX--;
+            enemyX-=2;
             right=false;
             //x = enemyX++;
             enemy.setX(enemyX);
@@ -159,18 +159,18 @@ public class hornet extends gameObject implements enemy {
 
         if(bugY > enemyY)
         {
-            enemyY++;
+            enemyY+=2;
             //y = enemyY++;
             enemy.setY(enemyY);
         }
         else if(bugY < enemyY)
         {
-            enemyY--;
+            enemyY-=2;
             //y = enemyY++;
             enemy.setY(enemyY);
         }
         //System.out.println("Ant cords:(" + enemyX + "," + enemyY + ") Leaf cords:(" + bugX + "," + bugY + ")");
-        if(bugX == enemyX && bugY == enemyY)
+        if((bugX >= enemyX-2 && bugX <= enemyX+2) && (bugY >= enemyY-2 && bugY <= enemyY+2))
         {
             onLeaf = true;
             lockOnBug = false;
