@@ -41,11 +41,6 @@ public class ant extends gameObject implements ally {
         catch(IOException e){
             e.printStackTrace();
         }
-    };
-
-    public ant(int x, int y) {
-        super.setX(x);
-        super.setY(y);
     }
 
 

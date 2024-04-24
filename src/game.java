@@ -84,7 +84,7 @@ public class game extends Canvas implements Runnable, KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if ((e.getKeyCode() == KeyEvent.VK_ENTER)) {
+        if ((e.getKeyCode() == KeyEvent.VK_ENTER) || true) {
             // Handle enter key press here
             System.out.println("Enter key pressed!"); //
             if (activeStage == 0) {
@@ -240,7 +240,7 @@ public class game extends Canvas implements Runnable, KeyListener {
         if (activeStage == 1) {
             try{
                 ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-                InputStream input = classLoader.getResourceAsStream("assets/Stage1Asset.png");
+                InputStream input = classLoader.getResourceAsStream("assets/stage1Asset.png");
                 image1 = ImageIO.read(input);
             }
             catch(IOException e){
@@ -254,7 +254,7 @@ public class game extends Canvas implements Runnable, KeyListener {
         if (activeStage == 2) {
             try{
                 ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-                InputStream input = classLoader.getResourceAsStream("assets/Stage1Asset2.png");
+                InputStream input = classLoader.getResourceAsStream("assets/stage1Asset2.png");
                 image2 = ImageIO.read(input);
             }
             catch(IOException e){
@@ -266,7 +266,7 @@ public class game extends Canvas implements Runnable, KeyListener {
         if (activeStage == 3) {
             try{
                 ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-                InputStream input = classLoader.getResourceAsStream("assets/Stage2Asset.png");
+                InputStream input = classLoader.getResourceAsStream("assets/stage2Asset.png");
                 image3 = ImageIO.read(input);
             }
             catch(IOException e){
@@ -278,7 +278,7 @@ public class game extends Canvas implements Runnable, KeyListener {
         if (activeStage == 4) {
             try{
                 ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-                InputStream input = classLoader.getResourceAsStream("assets/Stage2Asset2.png");
+                InputStream input = classLoader.getResourceAsStream("assets/stage2Asset2.png");
                 image4 = ImageIO.read(input);
             }
             catch(IOException e){
@@ -291,7 +291,7 @@ public class game extends Canvas implements Runnable, KeyListener {
         if (activeStage == 5) {
             try{
                 ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-                InputStream input = classLoader.getResourceAsStream("assets/Stage2Asset2.png");
+                InputStream input = classLoader.getResourceAsStream("assets/stage2Asset2.png");
                 image5 = ImageIO.read(input);
             }
             catch(IOException e){

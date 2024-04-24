@@ -1,4 +1,8 @@
 import java.awt.*;
+import java.io.IOException;
+import java.io.InputStream;
+import javax.imageio.ImageIO;
+
 public class beatle extends gameObject implements ally {
 
     //STATS
@@ -17,8 +21,8 @@ public class beatle extends gameObject implements ally {
     private int bugX, bugY;
     private boolean lockOnLeaf = false;
     private boolean onLeaf = false;
-
-    Image image = Toolkit.getDefaultToolkit().getImage("src/assets/beetleSmall.png");
+    
+    private Image image;
 
     //
     public beatle() {
@@ -29,6 +33,14 @@ public class beatle extends gameObject implements ally {
     public beatle( int x, int y){
             super.setX(x);
             super.setY(y);
+            try{
+                ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+                InputStream input = classLoader.getResourceAsStream("assets/beetleSmall.png");
+                image = ImageIO.read(input);
+            }
+            catch(IOException e){
+                e.printStackTrace();
+            }
         }
 
     //Graphics
