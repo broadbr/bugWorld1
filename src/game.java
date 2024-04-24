@@ -95,6 +95,7 @@ public class game extends Canvas implements Runnable, KeyListener {
 
         if (e.getKeyCode() == KeyEvent.VK_E){
             System.out.println("E key pressed!");
+            System.exit(0);
         }
 
 
@@ -103,6 +104,8 @@ public class game extends Canvas implements Runnable, KeyListener {
             rules = true;
 
         }
+
+
 
     }
 
