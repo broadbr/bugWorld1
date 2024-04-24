@@ -8,6 +8,9 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.*;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
+import java.io.InputStream;
+import javax.imageio.ImageIO;
 
 public class game extends Canvas implements Runnable, KeyListener {
 
@@ -22,7 +25,7 @@ public class game extends Canvas implements Runnable, KeyListener {
     private enemyList enemyList;
     public static boolean gameOver = false;
     public static boolean rules = false;
-    
+    private Image image0, image1, image2, image3, image4, image5, portal, image6;
 
 
     public game() {//
@@ -193,55 +196,120 @@ public class game extends Canvas implements Runnable, KeyListener {
         //load stage
 
         if (activeStage == 0) {
-            Image image = Toolkit.getDefaultToolkit().getImage("src/assets/newMenu2.png");
-            g.drawImage(image, 0, 0, null); // loads menu png
+            
+            try{
+                ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+                InputStream input = classLoader.getResourceAsStream("assets/newMenu2.png");
+                image0 = ImageIO.read(input);
+            }
+            catch(IOException e){
+                e.printStackTrace();
+            }
+            
+            g.drawImage(image0, 0, 0, null); // loads menu png
             window.menuToggle();
             //menuWindow.menuToggleOn();
 
 
         }
         if (activeStage == 1) {
-            Image image1 = Toolkit.getDefaultToolkit().getImage("src/assets/stage1Asset.png");
+            try{
+                ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+                InputStream input = classLoader.getResourceAsStream("assets/Stage1Asset.png");
+                image1 = ImageIO.read(input);
+            }
+            catch(IOException e){
+                e.printStackTrace();
+            }
             g.drawImage(image1, -100, 0, null); // loads stage 1 L1
             window.menuToggleOn();
             //menuWindow.menuToggle();
         }
 
         if (activeStage == 2) {
-            Image image2 = Toolkit.getDefaultToolkit().getImage("src/assets/Stage1Asset2.png");//asset2
+            try{
+                ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+                InputStream input = classLoader.getResourceAsStream("assets/Stage1Asset2.png");
+                image2 = ImageIO.read(input);
+            }
+            catch(IOException e){
+                e.printStackTrace();
+            }//asset2
             g.drawImage(image2, -100, 0, null);  // loads stage 1 L2
         }
 
         if (activeStage == 3) {
-            Image image3 = Toolkit.getDefaultToolkit().getImage("src/assets/Stage2Asset.png");
+            try{
+                ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+                InputStream input = classLoader.getResourceAsStream("assets/Stage2Asset.png");
+                image3 = ImageIO.read(input);
+            }
+            catch(IOException e){
+                e.printStackTrace();
+            }
             g.drawImage(image3, -100, 0, null); // loads stage 2 L1
         }
 
         if (activeStage == 4) {
-            Image image4 = Toolkit.getDefaultToolkit().getImage("src/assets/Stage2Asset2.png");//asses2
+            try{
+                ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+                InputStream input = classLoader.getResourceAsStream("assets/Stage2Asset2.png");
+                image4 = ImageIO.read(input);
+            }
+            catch(IOException e){
+                e.printStackTrace();
+            }
             g.drawImage(image4, -100, 0, null); // loads stage 2 L2
         }
 
 
         if (activeStage == 5) {
-            Image image4 = Toolkit.getDefaultToolkit().getImage("src/assets/Stage2Asset2.png");//asses2
+            try{
+                ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+                InputStream input = classLoader.getResourceAsStream("assets/Stage2Asset2.png");
+                image5 = ImageIO.read(input);
+            }
+            catch(IOException e){
+                e.printStackTrace();
+            }
             g.drawImage(image4, -100, 0, null); // loads stage 2 L2
 
-            Image image5 = Toolkit.getDefaultToolkit().getImage("src/assets/gameOver.png");//asses2
+            try{
+                ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+                InputStream input = classLoader.getResourceAsStream("assets/gameOver.png");
+                image5 = ImageIO.read(input);
+            }
+            catch(IOException e){
+                e.printStackTrace();
+            }
             g.drawImage(image5, 0, 200, null);
 
         }
 
         // Draw portal
         if (activeStage>0) {
-            Image image5 = Toolkit.getDefaultToolkit().getImage("src/assets/portal.png");
-            g.drawImage(image5, 500, 290, null); //
+            try{
+                ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+                InputStream input = classLoader.getResourceAsStream("assets/portal.png");
+                portal = ImageIO.read(input);
+            }
+            catch(IOException e){
+                e.printStackTrace();
+            }
+            g.drawImage(portal, 500, 290, null); //
         }
 
         // Game Over
         if (gameOver) {
             bank.bank.setZero();
-            Image image5 = Toolkit.getDefaultToolkit().getImage("src/assets/gameOver.png");
+            try{
+                ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+                InputStream input = classLoader.getResourceAsStream("assets/gameOver.png");
+                image5 = ImageIO.read(input);
+            }
+            catch(IOException e){
+                e.printStackTrace();
+            }
             g.drawImage(image5, 0, 200, null); 
             g.setFont(new Font("Serif", Font.PLAIN, 50));
             g.drawString("Score: " + (bank.bank.getStringScore()), 350, 400);
@@ -249,7 +317,14 @@ public class game extends Canvas implements Runnable, KeyListener {
 
         if (rules) {
             bank.bank.setZero();
-            Image image6 = Toolkit.getDefaultToolkit().getImage("src/assets/rules.png");
+            try{
+                ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+                InputStream input = classLoader.getResourceAsStream("assets/rules.png");
+                image6 = ImageIO.read(input);
+            }
+            catch(IOException e){
+                e.printStackTrace();
+            }
             g.drawImage(image6, 0, 0, null);
            // g.setFont(new Font("Serif", Font.PLAIN, 50));
             //g.drawString("Score: " + bank.bank.getStringScore(), 350, 400);

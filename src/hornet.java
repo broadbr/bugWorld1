@@ -1,4 +1,7 @@
 import java.awt.*;
+import java.io.IOException;
+import java.io.InputStream;
+import javax.imageio.ImageIO;
 
 public class hornet extends gameObject implements enemy {
     //Stats
@@ -7,7 +10,7 @@ public class hornet extends gameObject implements enemy {
     protected int health = 1;
     //Other
     private enemyList el = new enemyList();
-    Image image = Toolkit.getDefaultToolkit().getImage("src/assets/hornet.png");
+    private Image image;
 
     //move vars
     private int canMovei = 0;
@@ -25,6 +28,14 @@ public class hornet extends gameObject implements enemy {
     public hornet(int x, int y) {
         super.setX(x);
         super.setY(y);
+        try{
+            ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+            InputStream input = classLoader.getResourceAsStream("assets/hornet.png");
+            image = ImageIO.read(input);
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
     }
 
 

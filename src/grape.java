@@ -1,4 +1,7 @@
 import java.awt.*;
+import java.io.IOException;
+import java.io.InputStream;
+import javax.imageio.ImageIO;
 
 public class grape extends gameObject implements food{
 
@@ -6,7 +9,7 @@ public class grape extends gameObject implements food{
     protected int value = 3;
     protected int health = 200;
     //protected int health = 5;
-    Image image = Toolkit.getDefaultToolkit().getImage("src/assets/grapes.png");
+    private Image image;
 
     //
     public grape(){
@@ -15,6 +18,15 @@ public class grape extends gameObject implements food{
     public grape(int x, int y) {
         super.setX(x);
         super.setY(y);
+
+        try{
+            ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+            InputStream input = classLoader.getResourceAsStream("assets/grapes.png");
+            image = ImageIO.read(input);
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
     }
 
 

@@ -1,4 +1,7 @@
 import java.awt.*;
+import java.io.IOException;
+import java.io.InputStream;
+import javax.imageio.ImageIO;
 
 public class watermelon extends gameObject implements food{
 
@@ -6,7 +9,7 @@ public class watermelon extends gameObject implements food{
     protected int value = 5;
     protected int health = 400;
 
-    Image image = Toolkit.getDefaultToolkit().getImage("src/assets/watermelon.png");
+    private Image image;
 
     //
     public watermelon(){
@@ -15,6 +18,14 @@ public class watermelon extends gameObject implements food{
     public watermelon(int x, int y) {
         super.setX(x);
         super.setY(y);
+        try{
+            ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+            InputStream input = classLoader.getResourceAsStream("assets/watermelon.png");
+            image = ImageIO.read(input);
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
     }
 
 

@@ -1,4 +1,7 @@
 import java.awt.*;
+import java.io.IOException;
+import java.io.InputStream;
+import javax.imageio.ImageIO;
 
 public class spider extends gameObject implements enemy {
     //Stats
@@ -7,7 +10,7 @@ public class spider extends gameObject implements enemy {
     protected int health = 10;
     //Other
     private enemyList el = new enemyList();
-    private Image image = Toolkit.getDefaultToolkit().getImage("src/assets/spider32.png");
+    private Image image;
 
     //move vars
     private int canMovei = 0;
@@ -19,6 +22,14 @@ public class spider extends gameObject implements enemy {
     public spider() {
         super.setX(100);
         super.setY(100);
+        try{
+            ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+            InputStream input = classLoader.getResourceAsStream("assets/spider32.png");
+            image = ImageIO.read(input);
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
     }
 
     public spider(int x, int y) {

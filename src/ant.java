@@ -1,4 +1,7 @@
 import java.awt.*;
+import java.io.IOException;
+import java.io.InputStream;
+import javax.imageio.ImageIO;
 
 //game object that have ally behaviour
 public class ant extends gameObject implements ally {
@@ -14,7 +17,7 @@ public class ant extends gameObject implements ally {
 
     gameObject closestLeaf;
 
-    Image image = Toolkit.getDefaultToolkit().getImage("src/assets/AntSmall.png");
+    private Image image;
     protected String name = "ant";
 
 
@@ -30,6 +33,14 @@ public class ant extends gameObject implements ally {
     public ant(){
         super.setX(500);
         super.setY(300);
+        try{
+            ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+            InputStream input = classLoader.getResourceAsStream("assets/AntSmall.png");
+            image = ImageIO.read(input);
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
     };
 
     public ant(int x, int y) {
