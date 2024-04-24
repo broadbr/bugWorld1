@@ -92,6 +92,29 @@ public class game extends Canvas implements Runnable, KeyListener {
 
         if (e.getKeyCode() == KeyEvent.VK_E){
             System.out.println("E key pressed!");
+            System.exit(0);
+        }
+
+        if (e.getKeyCode() == KeyEvent.VK_R) {
+            // Restart game to menu
+            activeStage = 0; // Set active stage to menu (0)
+            enemyList.clearList(); // Clear enemy list
+            bugList.clearList();  // Clear bug list
+            foodList.clearList();  // Clear food list
+            window.scaler1 = 0;
+            window.scaler2 = 0;
+            window.scaler3 = 0;
+            window.scaler4 = 0;
+            window.scaler5 = 0;
+            window.scaler6 = 0;
+            //ant.setDamage(5);
+            //beatle.setDamage(10);
+            foodList.valueMod = 0;
+            leaf.valueMod = 0;
+            stage1.control = 20;
+            stage2.control = 20;
+            bank.score = 1;
+            window.bugLimit = 5;
         }
 
 
