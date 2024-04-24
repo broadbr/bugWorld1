@@ -8,8 +8,6 @@ public class bugList {
     public bugList() {
     }
 
-
-
     public void Update() {
         for(int var1 = 0; var1 < objects.size(); ++var1) {
             gameObject var2 = (gameObject)objects.get(var1);
@@ -37,18 +35,15 @@ public class bugList {
     //also try bugList.objects.get(i);
     public void topBug(){objects.get(0);}
 
+    //get bug at index i
+    public gameObject getBugList(int i) {
+        return objects.get(i);
+    }
 
-    //list type of object
-    /*
-    public String bugName(){
-        bug top = objects.get(0);
-        if (top instanceof ant) {
-            ant a = (ant)top;
-            String n = a.getName();
-        }
-        return n;
-    }*/
-
+    //returns size of arraylist
+    public int getSize() {
+        return objects.size();
+    }
 
     //display all bugs to terminal
     public void listBugs(){
@@ -60,6 +55,39 @@ public class bugList {
         }
         System.out.print("\n");
     }
+
+    public static int j = 0;
+    public static int currAnts(){
+
+
+        for(int i = 0; i < objects.size(); i++)
+        {
+            if(objects.get(i).getName().equals(("ant")))
+            { j = j++;}
+        }
+        return j;
+    }
+
+    public static int currBeetles(){
+
+
+        for(int i = 0; i < objects.size(); i++)
+        {
+            if(objects.get(i).getName().equals(("beatle")))
+            { j = j++;}
+        }
+        return j;
+    }
+
+    public void clearList() {
+        objects.clear();
+    }
+
+
+    //destroy a bug
+    public void destroy(gameObject bug){
+        objects.remove(bug);
+    }   
 
 
 }

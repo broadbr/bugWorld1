@@ -9,6 +9,8 @@ import java.awt.*;
         protected int price;
         protected int health;
 
+        protected boolean targeted = false;
+
         protected int x;
         protected int y;
 
@@ -30,7 +32,7 @@ import java.awt.*;
 
         public abstract Rectangle getBounds();
 
-
+        public abstract void damageObject(int var1);
 
         public int getX() {
             return this.x;
@@ -70,6 +72,21 @@ import java.awt.*;
         }
 
         public void setDamage(int damage) {this.damage=damage;}
+
+        public boolean isTargeted()
+        {
+            return this.targeted;
+        }
+
+        public void setNotTargeted()
+        {
+            this.targeted = false;
+        }
+
+        public void setTargeted()
+        {
+            this.targeted = true;
+        }
 
 
     }

@@ -3,14 +3,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class foodList {
+
+    public static int valueMod = 0;
     //leaf firstLeaf = new leaf(100,100);
     public static List<gameObject> objects = new ArrayList();
-    
 
+    
     public foodList() {
     }
-
-
 
     public void Update() {
         for(int var1 = 0; var1 < objects.size(); ++var1) {
@@ -62,6 +62,11 @@ public class foodList {
         }
         System.out.print("\n");
     }
+
+    public void clearList() {
+        objects.clear();
+    }
+
     public gameObject getLeafList(int index)
     {
         return objects.get(index);
@@ -70,9 +75,23 @@ public class foodList {
     {
         return objects.size();
     }
-    public void destroy(gameObject g){
-        objects.remove(g);
-        bank.bank.setEarnt(g.getValue());
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public void destroy(gameObject food){
+        objects.remove(food);
+        bank.bank.setEarnt(food.getValue()+valueMod);
         
     }
 

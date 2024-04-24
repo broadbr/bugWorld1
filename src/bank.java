@@ -1,22 +1,49 @@
 public class bank {
 
-
-    //code from Colin
-    private int account=3;
+    private static int account=3;
+    public static int score = 1;
+    static int a2 = 0;
 
     public static bank bank = new bank(); 
 
-
-    public int getAccount() {
-        return this.account;
+    
+    public static int getAccount() {
+        return account;
     }
 
-    public void setSpend(int withdrawal) {
-        this.account -= withdrawal;
+    public static int getAccount2() {
+        return a2;
     }
+
+    public String getStringScore() {
+        return String.valueOf(this.score);
+    }
+    
+    public int getIntScore() {
+        return this.score;
+    }
+
+    public static void setSpend(int withdrawal) {
+        account -= withdrawal;
+    }
+
+    public static void setSpend2(int withdrawal) {
+        a2 -= withdrawal;}
 
     public void setEarnt(int pay) {
         this.account += pay;
+        this.score += 1;
     }
+    public void setEarnt2(int pay) {
+        this.a2 += pay;
+    }
+    public void setScore(int plus) {
+        this.score +=1;
+    }
+
+    public void setZero() {
+        this.account = 0;
+    }
+
 }
 
