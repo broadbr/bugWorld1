@@ -272,6 +272,13 @@ public class game extends Canvas implements Runnable, KeyListener {
         foodList foodList = new foodList();
         stage1 stage1 = new stage1();
 
+        while(true) { 
+
+            ant ant = new ant(); 
+            
+            beatle beetle = new beatle(); 
+            
+            System.out.println("ANT DAMAGE:" + ant.getDamage() +"\n BEETLE DAMAGE: " + beetle.getDamage());} 
     }
 }
 
