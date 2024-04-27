@@ -23,6 +23,14 @@ public class hornet extends gameObject implements enemy {
     public hornet() {
         super.setX(100);
         super.setY(100);
+        try{
+            ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+            InputStream input = classLoader.getResourceAsStream("assets/hornet.png");
+            image = ImageIO.read(input);
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
     }
 
     public hornet(int x, int y) {

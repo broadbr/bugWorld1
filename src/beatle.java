@@ -22,12 +22,20 @@ public class beatle extends gameObject implements ally {
     private boolean lockOnLeaf = false;
     private boolean onLeaf = false;
     
-    private Image image;
+    Image image;
 
     //
     public beatle() {
             super.setX(500);
             super.setY(300);
+            try{
+                ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+                InputStream input = classLoader.getResourceAsStream("assets/beetleSmall.png");
+                image = ImageIO.read(input);
+            }
+            catch(IOException e){
+                e.printStackTrace();
+            }
         }
         
     public beatle( int x, int y){
